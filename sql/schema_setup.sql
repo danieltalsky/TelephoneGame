@@ -17,19 +17,15 @@ CREATE TABLE works (
   workType TEXT,
   
   INDEX works_parentWorkRef_ind (parentWorkRef), 
-  /* these need to get moved out to seperate CREATE INDEX statements */
   
   FOREIGN KEY (parentWorkRef) 
     REFERENCES works(workId),  
-  /* read about postgres foriegn key references and make sure these are right */
   
   INDEX works_ArtistId_ind (artistRef), 
   
   FOREIGN KEY (artistRef) 
     REFERENCES artists(artistId)
     ON DELETE CASCADE,
-  /* read about postgres cascade rules and check all the foriegn key
-     references are right and make sense */
 );
 
 CREATE TABLE workRepresentations (
