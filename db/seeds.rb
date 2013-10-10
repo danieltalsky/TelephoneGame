@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-5.times do |i|
-	Artist.create(name: "Artist ##{i}", url: "http://google.com")
+require 'csv'
+
+CSV.foreach("/vagrant/TelephoneGame/db/telephone_directory.csv") do |row|
+   Artist.create(name:    row[0],
+                 contact: row[1],
+                 bio:     row[2],
+                 url:     row[3],
+                 location:row[4])
 end
