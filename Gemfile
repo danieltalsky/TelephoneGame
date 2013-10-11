@@ -43,3 +43,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Use Chris Roberts's acts_as_sane_tree: https://github.com/chrisroberts/acts_as_sane_tree
+gem 'acts_as_sane_tree'
