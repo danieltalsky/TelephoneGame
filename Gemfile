@@ -52,3 +52,6 @@ end
 
 # Use Chris Roberts's acts_as_sane_tree: https://github.com/chrisroberts/acts_as_sane_tree
 gem 'acts_as_sane_tree'
+
+# Use clearance for login and authentication
+gem 'clearance'
