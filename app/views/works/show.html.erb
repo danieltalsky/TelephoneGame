@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @work.title %>
+</p>
+
+<% unless @work.parent.nil? %>
+<p>
+  <strong>Parent:</strong>
+  <%= @work.parent.title %>
+</p>
+<% end %>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @work.artist.name %>
+</p>
+
+<p>
+  <strong>Medium:</strong>
+  <%= @work.medium %>
+</p>
+
+<% unless @work.children.empty? %>
+<p>
+  <strong>Children:</strong>
+<ul id="submenu">
+  <% for work in @work.children %>
+    <li><%= link_to h(work.title), work %></li>
+  <% end %>
+</ul>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_work_path(@work) %> |
+<%= link_to 'Back', works_path %>

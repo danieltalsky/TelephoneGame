@@ -1,4 +1,6 @@
 TelephoneGame::Application.routes.draw do
+  resources :works
+
   get "application/index"
   resources :artists
 
