@@ -7,10 +7,33 @@ class WorksController < ApplicationController
     @works = Work.all
   end
 
+  # GET /works/tree
+  def tree
+    #@works = Work.all
+    rootWork = Work.find_by_parent_id(nil)
+    @treehtml = generate_nested_list(rootWork)
+    #@tree = rootWork.descendents()
+    #@tree = ActsAsSaneTree::nodes_and_descendents(rootWork)
+  end
+  
+  def generate_nested_list (node)
+    ghtml = '<ul>'    
+    unless node.children.empty?
+        node.children.each do |childnode|
+            ghtml << '<li>'
+            ghtml << '<a href="/works/%s" class="%s">'%[childnode.id, childnode.medium] + childnode.title + '</a>'
+            ghtml << generate_nested_list(childnode)
+            ghtml << '</li>'
+        end
+    end
+    ghtml << '</ul>'
+    ghtml
+  end
+  
   # GET /works/1
   def show
   end
-
+  
   # GET /works/new
   def new
     @work = Work.new

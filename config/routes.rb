@@ -1,4 +1,5 @@
 TelephoneGame::Application.routes.draw do
+  get "works/tree"
   resources :works
 
   get "application/index"
