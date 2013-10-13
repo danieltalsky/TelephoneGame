@@ -8,13 +8,13 @@
 <% unless @work.parent.nil? %>
 <p>
   <strong>Parent:</strong>
-  <%= @work.parent.title %>
+  <%= link_to h(@work.parent.title), @work.parent %>
 </p>
 <% end %>
 
 <p>
   <strong>Artist:</strong>
-  <%= @work.artist.name %>
+  <%= link_to h(@work.artist.name), @work.artist %>
 </p>
 
 <p>

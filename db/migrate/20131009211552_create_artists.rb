@@ -6,7 +6,7 @@ class CreateArtists < ActiveRecord::Migration
       t.text :bio
       t.text :url
       t.text :location
-      t.has_many :works
+#      t.has_many :works
 
       t.timestamps
     end

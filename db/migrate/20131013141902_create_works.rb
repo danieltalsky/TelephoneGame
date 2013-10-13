@@ -4,6 +4,9 @@ class CreateWorks < ActiveRecord::Migration
       t.text :title
       t.integer :parent_id
       t.integer :artist_id
+      t.text :orig_id
+      t.text :orig_parent_id
+      t.text :full_orig_id
       t.text :medium
       t.belongs_to :artist
       
