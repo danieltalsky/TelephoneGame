@@ -1,16 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<% unless @work.parent.nil? %>
-<p>
-  <strong>Parent:</strong>
-  <%= link_to h(@work.parent.title), @work.parent %>
-</p>
-<% end %>
-
-<p>
-  <strong>Title:</strong>
+<h1>
   <%= @work.title %>
-</p>
+</h1>
 
 <p>
   <strong>Artist:</strong>
@@ -23,7 +15,7 @@
 </p>
 
 <p>
-  <strong>Representations</strong>
+  <h2>Experience the work:</h2>
   <ul>
   <%  for wr in @work.work_representations %>
       <% case wr.fileext %>
@@ -36,16 +28,31 @@
   </ul>
 </p>
 
-<% unless @work.children.empty? %>
-<p>
-  <strong>Children:</strong>
-<ul id="submenu">
-  <% for work in @work.children %>
-    <li><%= link_to h(work.title), work %></li>
-  <% end %>
-</ul>
-</p>
-<% end %>
+<div class="inspirationNavigation">
+    <div class="inspiredby">
+    <% unless @work.parent.nil? %>
+    <p>
+      <h4>Inspired by:</h4>
+      <%= link_to h(@work.parent.title), @work.parent %>
+    </p>
+    <% end %>
+    </div>
 
+    <div class="inspired">
+    <% unless @work.children.empty? %>
+    <p>
+      <h4>Inspired:</h4>
+        <ul id="submenu">
+          <% for work in @work.children %>
+            <li><%= link_to h(work.title), work %></li>
+          <% end %>
+        </ul>
+    </p>
+    <% end %>
+    </div>
+</div>
+
+<div style="clear:both;">
 <%= link_to 'Edit', edit_work_path(@work) %> |
 <%= link_to 'Back', works_path %>
+</div>

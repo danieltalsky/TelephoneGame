@@ -2,3 +2,9 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+body { font-family: Corbel, Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", sans-serif;}
+figure#logo {margin: 0; -webkit-margin: 0;}
+
+/* Individual Work Page */
+.inspiredby {padding: 10px; background: #EEE; width: 48%; height: 200px; float: left;}
+.inspired {padding: 10px; background: #EEE; width: 48%; height: 200px; float: right;}
