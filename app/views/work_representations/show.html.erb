@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @work_representation.url %>
+</p>
+
+<p>
+  <strong>Fileext:</strong>
+  <%= @work_representation.fileext %>
+</p>
+
+<p>
+  <strong>Work:</strong>
+  <%= @work_representation.Work %>
+</p>
+
+<%= link_to 'Edit', edit_work_representation_path(@work_representation) %> |
+<%= link_to 'Back', work_representations_path %>

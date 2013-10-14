@@ -1,16 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @work.title %>
-</p>
-
 <% unless @work.parent.nil? %>
 <p>
   <strong>Parent:</strong>
   <%= link_to h(@work.parent.title), @work.parent %>
 </p>
 <% end %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @work.title %>
+</p>
 
 <p>
   <strong>Artist:</strong>
@@ -20,6 +20,20 @@
 <p>
   <strong>Medium:</strong>
   <%= @work.medium %>
+</p>
+
+<p>
+  <strong>Representations</strong>
+  <ul>
+  <%  for wr in @work.work_representations %>
+      <% case wr.fileext %>
+       <% when 'jpg' %>
+         <li><a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a></li>
+      <% else %>    
+         <li><a href="<%= wr.url %>"><%= wr.url %></a></li>
+      <% end %>
+  <% end %>
+  </ul>
 </p>
 
 <% unless @work.children.empty? %>
