@@ -3,6 +3,7 @@ class CreateWorkRepresentations < ActiveRecord::Migration
     create_table :work_representations do |t|
       t.text :url
       t.text :fileext
+      t.text :text_body_markdown
       t.belongs_to :work
 
       t.timestamps

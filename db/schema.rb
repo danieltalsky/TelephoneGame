@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20131014002929) do
   create_table "work_representations", force: true do |t|
     t.text     "url"
     t.text     "fileext"
+    t.text     "text_body_markdown"
     t.integer  "work_id"
     t.datetime "created_at"
     t.datetime "updated_at"
