@@ -15,7 +15,32 @@ workRepsPath = '/vagrant/workrepresentations/'
 if (File.directory?(workRepsPath))
     fileList = Dir.glob(workRepsPath + '*').select 
 end
-    
+
+localArtist = Artist.create(
+  name: "Satellite Collective",
+  contact: "Daniel@Satellite-Collective.org",
+  bio: "We create accessible and diverse opportunities for artists in the performing and visual arts.",
+  url: "http://satellitecollective.org",
+  location: "New York, NY USA"
+)
+
+localWork = Work.create(
+  title: "Breton Fisherman's Prayer",
+  orig_id: "0001",
+  full_orig_id: "0001-0000",
+  medium: "Poem",
+  parent_id: nil,
+  artist_id: localArtist.id
+)
+
+WorkRepresentation.create(
+  work_id: localWork.id,
+  #url: 'http://telephone.satellitepress.org/workrepresentations/' + URI::encode(filename),
+  #fileext: filename.split(".").pop.downcase,
+  text_body_markdown: "*'Oh God thy sea is so great and my boat is so small.'*
+- Breton Fisherman's Prayer"
+)
+
 if (File.exists?(artistsTempCSV))
     CSV.foreach(artistsTempCSV) do |row|
        localartist = Artist.create(name:    (row[0].nil? ? "":row[0]) + " " + (row[1].nil? ? "":row[1]),
