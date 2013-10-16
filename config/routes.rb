@@ -1,4 +1,5 @@
 TelephoneGame::Application.routes.draw do
+  get "data/seed"
   resources :work_representations
 
   get "works/tree"
