@@ -53,6 +53,6 @@ class WorkRepresentationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def work_representation_params
-      params.require(:work_representation).permit(:url, :fileext, :Work_id)
+      params.require(:work_representation).permit(:url, :fileext, :text_body_markdown, :work_id)
     end
 end

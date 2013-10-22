@@ -12,6 +12,9 @@ gem 'pg'
 # Allows Heroku asset packaging
 gem 'rails_12factor', group: :production
 
+# Markdown library
+gem 'redcarpet'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

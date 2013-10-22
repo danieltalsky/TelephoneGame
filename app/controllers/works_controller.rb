@@ -9,11 +9,8 @@ class WorksController < ApplicationController
 
   # GET /works/tree
   def tree
-    #@works = Work.all
     rootWork = Work.find_by_parent_id(nil)
     @treehtml = generate_nested_list(rootWork)
-    #@tree = rootWork.descendents()
-    #@tree = ActsAsSaneTree::nodes_and_descendents(rootWork)
   end
   
   def generate_nested_list (node)
@@ -32,6 +29,7 @@ class WorksController < ApplicationController
   
   # GET /works/1
   def show
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)  
   end
   
   # GET /works/new

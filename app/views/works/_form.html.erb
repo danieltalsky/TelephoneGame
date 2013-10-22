@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :artist_id %><br>
-    <%= f.number_field :artist_id %>
+    <%= f.collection_select :artist_id, Artist.all(:order => "name"), :id, :name, :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :medium %><br>

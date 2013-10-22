@@ -20,8 +20,13 @@
     <%= f.text_area :fileext %>
   </div>
   <div class="field">
+    <%= f.label :text_body_markdown %><br>
+    <%= f.text_area :text_body_markdown %>
+  </div>
+  <div class="field">
     <%= f.label :Work %><br>
-    <%= f.text_field :Work %>
+    <%= f.collection_select :work_id, Work.all(:order => "title"), :id, :title, :include_blank => true %>
+
   </div>
   <div class="actions">
     <%= f.submit %>

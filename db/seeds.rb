@@ -19,7 +19,7 @@ localArtist = Artist.create(
 localWork = Work.create(
   title: "Breton Fisherman's Prayer",
   orig_id: "0001",
-  full_orig_id: "0001-0000",
+  full_orig_id: "0001_0000",
   medium: "Poem",
   parent_id: nil,
   artist_id: localArtist.id
