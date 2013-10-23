@@ -4,7 +4,7 @@ require 'open-uri'
 
 class DataController < ApplicationController
   def seed
-	work_representations = open("http://dl.dropboxusercontent.com/u/418477/reps.txt").lines
+	work_representations = open("http://dl.dropboxusercontent.com/u/418477/reps.txt").read
 	dir_str = open("http://dl.dropboxusercontent.com/u/418477/Telephone_Directory.csv").read
     CSV.parse(dir_str) do |row2|
        row = row2.map{|item| (item.nil? ? "":item).sub(/[\*\s]*\z/,"").strip}
@@ -27,12 +27,12 @@ class DataController < ApplicationController
 	               artist_id:      localartist.id)
 	
 		
-		work_representations.each do |filename| 
+		work_representations.each_line do |filename| 
 		    if filename.start_with?(localWork.full_orig_id)
 		        WorkRepresentation.create(
 		            work_id: localWork.id,
-		            url: 'http://telephone.satellitepress.org/workrepresentations/' + URI::encode(filename),
-		            fileext: filename.split(".").pop.downcase
+		            url: 'http://telephone.satellitepress.org/workrepresentations/' + URI::encode(filename.chomp),
+		            fileext: filename.split(".").pop.downcase.chomp
 		        )
 		    end
 		end
