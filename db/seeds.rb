@@ -13,7 +13,7 @@ localArtist = Artist.create(
   contact: "Daniel@Satellite-Collective.org",
   bio: "We create accessible and diverse opportunities for artists in the performing and visual arts.",
   url: "http://satellitecollective.org",
-  location: "New York, NY USA"
+  location: "New York City New York USA"
 )
 
 localWork = Work.create(
