@@ -4,7 +4,16 @@ require 'open-uri'
 
 class DataController < ApplicationController
   def seed
-	work_representations = open("http://dl.dropboxusercontent.com/u/418477/reps.txt").read
+
+  # Note that this way of getting a list of representations depends on the 
+    # directory being viewable, which is suboptimal.
+    work_representations_html = open("http://telephone.satellitepress.org/workrepresentations/").read
+    work_representations = work_representations_html.scan(/(?<=")\d\d\d\d[^<>]+(?=")/)
+
+    # Note that this way of getting a list of representations depends on us 
+    # keeping an up-to-date list in my Dropbox, which is suboptimal.    
+    #work_representations = open("http://dl.dropboxusercontent.com/u/418477/reps.txt").read
+    
 	dir_str = open("http://dl.dropboxusercontent.com/u/418477/Telephone_Directory.csv").read
     CSV.parse(dir_str) do |row2|
        row = row2.map{|item| (item.nil? ? "":item).sub(/[\*\s]*\z/,"").strip}
