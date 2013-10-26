@@ -7,28 +7,41 @@
 <p>
   <strong>Artist:</strong>
   <%= link_to h(@work.artist.name), @work.artist %>
-</p>
-
-<p>
+  
   <strong>Medium:</strong>
   <%= @work.medium %>
 </p>
 
 <p>
   <h2>Experience the work:</h2>
-  <ul>
-  <%  for wr in @work.work_representations %>
-      <% case wr.fileext %>
-       <% when 'jpg' %>
-         <li><a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>
-       <% when 'md' %>
-         <li><%= raw(@markdown.render wr.text_body_markdown) %>
-      <% else %>    
-         <li><a href="<%= wr.url %>"><%= wr.url %></a>
-      <% end %>
+  <ul class="experienceTheWork">
+  <% if !@work.work_representations.empty? %>
+      <% for wr in @work.work_representations %>
+          <li class="<%= wr.fileext %>">
+          <% case wr.fileext %>
+           <% when 'jpg' %>
+             <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>
+           <% when 'gif' %>
+             <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>      
+           <% when 'png' %>
+             <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>         
+           <% when 'doc' %>
+             Download the original file: <br /><a href="<%= wr.url %>"><%= wr.url %></a>
+           <% when 'docx' %>
+             Download the original file: <br /><a href="<%= wr.url %>"><%= wr.url %></a>     
+           <% when 'pdf' %>
+             Download the original file: <br /><a href="<%= wr.url %>"><%= wr.url %></a>              
+           <% when 'md' %>
+             <p>Read the text here:</p>
+             <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
+          <% else %>    
+             <a href="<%= wr.url %>"><%= wr.url %></a>
+          <% end %>
 
-      <%=link_to h('edit'), wr %></li>
-      
+          <%=link_to h('(edit this entry)'), edit_work_representation_path(wr) %></li>     
+      <% end %>
+  <% else %>
+    <div class="noWorkRepresentations">This Work is Still in Progress</div>
   <% end %>
   </ul>
 </p>
