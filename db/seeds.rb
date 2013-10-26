@@ -28,8 +28,8 @@ localWork = Work.create(
 WorkRepresentation.create(
   work_id: localWork.id,
   #url: 'http://telephone.satellitepress.org/workrepresentations/' + URI::encode(filename),
-  #fileext: filename.split(".").pop.downcase,
-  text_body_markdown: "*'Oh God thy sea is so great and my boat is so small.'*
+  fileext: 'md',
+  text_body_markdown: "*'Oh God thy sea is so great and my boat is so small.'*  
 - Breton Fisherman's Prayer"
 )
 

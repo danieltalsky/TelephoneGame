@@ -8,6 +8,15 @@
 </head>
 <body>
 <figure id="logo"><a href="/"><img src="<%= asset_path 'telephoneTempHeader.png' %>" /></a></figure>
+<nav>
+<a href="/works/1">root work</a> 
+|
+<a href="/works/tree">tree view</a>
+|
+<a href="/artists/">artist list</a>
+|
+<a href="/works/">works list</a>
+</nav>
 <div class="main">
     <%= yield %>
 </div>
