@@ -10,20 +10,19 @@ class WorksController < ApplicationController
   # GET /works/tree
   def tree
     rootWork = Work.find_by_parent_id(nil)
-    @treehtml = generate_nested_list(rootWork)
+    @treehtml = '<ul>' + generate_nested_list(rootWork) + '</ul>'
   end
   
   def generate_nested_list (node)
-    ghtml = '<ul>'    
+    ghtml = '<li><a href="/works/%s" class="%s">'%[node.id, node.medium] + node.title + '</a>'
     unless node.children.empty?
-        node.children.each do |childnode|
-            ghtml << '<li>'
-            ghtml << '<a href="/works/%s" class="%s">'%[childnode.id, childnode.medium] + childnode.title + '</a>'
-            ghtml << generate_nested_list(childnode)
-            ghtml << '</li>'
-        end
+      ghtml << '<ul>'
+      node.children.each do |childnode|
+        ghtml << generate_nested_list(childnode)
+      end
+      ghtml << '</ul>'
     end
-    ghtml << '</ul>'
+    ghtml << '</li>'
     ghtml
   end
   
