@@ -3,6 +3,7 @@ TelephoneGame::Application.routes.draw do
   resources :work_representations
 
   get "works/tree"
+  get "works/jsontree"
   resources :works
 
   get "application/index"

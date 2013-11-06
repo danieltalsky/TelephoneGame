@@ -13,6 +13,12 @@ class WorksController < ApplicationController
     @treehtml = '<ul>' + generate_nested_list(rootWork) + '</ul>'
   end
   
+  # GET /works/jsontree
+  def jsontree
+    rootWork = Work.all#Work.find_by_parent_id(nil)
+    @treehtml = rootWork
+  end  
+  
   def generate_nested_list (node)
     ghtml = '<li><a href="/works/%s" class="%s">'%[node.id, node.medium] + node.title + '</a>'
     unless node.children.empty?
