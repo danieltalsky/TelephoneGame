@@ -47,8 +47,6 @@ ActiveRecord::Schema.define(version: 20131014002929) do
     t.datetime "updated_at"
   end
 
-  add_index "work_representations", ["work_id"], name: "index_work_representations_on_work_id", using: :btree
-
   create_table "works", force: true do |t|
     t.text     "title"
     t.integer  "parent_id"
