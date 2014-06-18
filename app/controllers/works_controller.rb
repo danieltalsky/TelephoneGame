@@ -20,7 +20,7 @@ class WorksController < ApplicationController
   end  
   
   def generate_nested_list (node)
-    ghtml = '<li><a href="/works/%s" class="%s">'%[node.id, node.medium] + node.title + '</a>'
+    ghtml = '<li><a>&nbsp;</a><span><a href="/works/%s" class="%s">%s</a></span>'%[node.id, node.medium, node.title]
     unless node.children.empty?
       ghtml << '<ul>'
       node.children.each do |childnode|
