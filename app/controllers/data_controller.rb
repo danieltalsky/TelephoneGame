@@ -15,24 +15,25 @@ class DataController < ApplicationController
     # keeping an up-to-date list in my Dropbox, which is suboptimal.    
     #work_representations = open("http://dl.dropboxusercontent.com/u/418477/reps.txt").read
     
-    dir_str = open("http://dl.dropboxusercontent.com/u/418477/Telephone_Directory.csv").read
+    dir_str = open("https://dl.dropboxusercontent.com/u/418477/Telephone%20Directory%202014-06-11.csv").read
     CSV.parse(dir_str) do |row2|
       row = row2.map{|item| (item.nil? ? "":item).sub(/[\*\s]*\z/,"").strip}
+      
       localartist = Artist.create(name:    row[0] + " " + row[1],
-                                  contact: row[10],
-                                  bio:     row[9], # We don't actually have a bio field
-                                  url:     row[11],
-                                  location:row[7] + " " + row[6] + " " + row[5])
+                                  contact: row[11],
+                                  bio:     row[6], # We don't actually have a bio field
+                                  url:     row[12],
+                                  location:row[9] + " " + row[8] + " " + row[7])
 
-      parentWork = Work.find_by_orig_id(row[4].rjust(4, '0'))
+      parentWork = Work.find_by_orig_id(row[5].rjust(4, '0'))
 
       localWork = Work.create(
                    # We don't actually have a title field
-                   title:          row[9] + " by " + row[0] + " " + row[1], 
-                   orig_id:        row[3].rjust(4, '0'),
-                   orig_parent_id: row[4].rjust(4, '0'),
-                   full_orig_id:   row[3].rjust(4, '0') + "_" + row[4].rjust(4, '0'),
-                   medium:         row[9],
+                   title:          row[10] + " by " + row[0] + " " + row[1], 
+                   orig_id:        row[4].rjust(4, '0'),
+                   orig_parent_id: row[5].rjust(4, '0'),
+                   full_orig_id:   row[4].rjust(4, '0') + "_" + row[5].rjust(4, '0'),
+                   medium:         row[10],
                    parent_id:      (parentWork.nil? ? nil : parentWork.id),
                    artist_id:      localartist.id)
 
