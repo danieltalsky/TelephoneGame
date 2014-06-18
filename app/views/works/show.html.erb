@@ -53,9 +53,12 @@
       <h4>Inspired by:</h4>
       <%= link_to h(@work.parent.title), @work.parent %>
     </p>
+    <p>
+        <h5>Other works inspired by <%= h(@work.parent.title) %></h5>
+    </p>
     <% end %>
-    </div>
-
+    </div>    
+    
     <div class="inspired">
     <% unless @work.children.empty? %>
     <p>
