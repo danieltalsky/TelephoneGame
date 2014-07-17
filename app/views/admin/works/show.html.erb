@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @work.title %>
+</h1>
+
+<p>
+  <strong>Artist:</strong>
+  <%= link_to h(@work.artist.name), @work.artist %>
+  
+  <strong>Medium:</strong>
+  <%= @work.medium %>
+</p>
+
+<p>
+  <h2>Experience the work:</h2>
+  <ul class="experienceTheWork">
+  <% if !@work.work_representations.empty? %>
+      <% for wr in @work.work_representations %>
+          <li class="<%= wr.fileext %>">
+          <% case wr.fileext %>
+           <% when 'jpg' %>
+             <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>
+           <% when 'gif' %>
+             <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>      
+           <% when 'png' %>
+             <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>         
+           <% when 'doc' %>
+             Download the original file: <br /><a href="<%= wr.url %>"><%= wr.url %></a>
+           <% when 'docx' %>
+             Download the original file: <br /><a href="<%= wr.url %>"><%= wr.url %></a>     
+           <% when 'pdf' %>
+             Download the original file: <br /><a href="<%= wr.url %>"><%= wr.url %></a>              
+           <% when 'md' %>
+             <p>Read the text here:</p>
+             <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
+          <% else %>    
+             <a href="<%= wr.url %>"><%= wr.url %></a>
+          <% end %>
+
+          <%=link_to h('(edit this entry)'), edit_work_representation_path(wr) %></li>     
+      <% end %>
+  <% else %>
+    <div class="noWorkRepresentations">This Work is Still in Progress</div>
+  <% end %>
+  </ul>
+</p>
+
+<div class="inspirationNavigation">
+    <div class="inspiredby">
+    <% unless @work.parent.nil? %>
+    <p>
+      <h4>Inspired by:</h4>
+      <%= link_to h(@work.parent.title), @work.parent %>
+    </p>
+    <p>
+        <h5>Other works inspired by <%= h(@work.parent.title) %></h5>
+    </p>
+    <% end %>
+    </div>    
+    
+    <div class="inspired">
+    <% unless @work.children.empty? %>
+    <p>
+      <h4>Inspired:</h4>
+        <ul id="submenu">
+          <% for work in @work.children %>
+            <li><%= link_to h(work.title), work %></li>
+          <% end %>
+        </ul>
+    </p>
+    <% end %>
+    </div>
+</div>
+
+<div style="clear:both;">
+<%= link_to 'Edit', edit_work_path(@work) %> |
+<%= link_to 'Back', works_path %>
+</div>
