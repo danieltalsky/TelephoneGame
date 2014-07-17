@@ -1,6 +1,18 @@
 TelephoneGame::Application.routes.draw do
-  get "data/seed"
-  resources :work_representations
+
+  namespace :admin do
+    # Directs /admin/products/* to Admin::ProductsController
+    # (app/controllers/admin/products_controller.rb)
+    get "data/seed"
+    resources :work_representations
+
+    get "works/tree"
+    get "works/jsontree"
+    resources :works
+
+    get "application/index"
+    resources :artists
+  end
 
   get "works/tree"
   get "works/jsontree"
@@ -9,6 +21,8 @@ TelephoneGame::Application.routes.draw do
   get "application/index"
   resources :artists
 
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
