@@ -6,16 +6,23 @@ class Admin::DataController < Admin::ApplicationController
 
   def seed
 
+    work_representations_url = "http://telephone.satellitepress.org/workrepresentations/"
+    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/Telephone%20Directory-20140718.csv"
+    works_created = 0
+  
+    @data_report = "<h2>Starting import</h2>";
+    
     # Note that this way of getting a list of representations depends on the 
     # directory being viewable, which is suboptimal.
-    work_representations_html = open("http://telephone.satellitepress.org/workrepresentations/").read
+    @data_report << "<h3>Opening work representations URL: #{work_representations_url}</h3>";
+    work_representations_html = open(work_representations_url).read
     work_representations = work_representations_html.scan(/(?<=")\d\d\d\d[^<>]+(?=")/)
 
     # Note that this way of getting a list of representations depends on us 
     # keeping an up-to-date list in my Dropbox, which is suboptimal.    
-    #work_representations = open("http://dl.dropboxusercontent.com/u/418477/reps.txt").read
     
-    dir_str = open("https://dl.dropboxusercontent.com/u/418477/Telephone%20Directory%202014-06-11.csv").read
+    @data_report << "<h3>Opening works CSV URL: #{works_csv_url}</h3>";
+    dir_str = open(works_csv_url).read
     CSV.parse(dir_str) do |row2|
       row = row2.map{|item| (item.nil? ? "":item).sub(/[\*\s]*\z/,"").strip}
       
@@ -37,8 +44,13 @@ class Admin::DataController < Admin::ApplicationController
                    parent_id:      (parentWork.nil? ? nil : parentWork.id),
                    artist_id:      localartist.id)
 
+      works_created += 1             
+      
+      work_representations_for_this_work = 0      
       work_representations.each do |filename| 
+
         if filename.start_with?(localWork.full_orig_id)
+        
           # This originally created the WorkRep and then added the text_body_markdown only if
           # there was an md file in the directory. That is a better way to do this, but I am on a time crunch.
           
@@ -58,11 +70,20 @@ class Admin::DataController < Admin::ApplicationController
                   fileext: tmp_fileext,
               )
           end
+          work_representations_for_this_work += 1
         end
-      end
+       
+      end # work_representations each
 
+      @data_report << "<div style=\"font-size:11px;\">Work created for artist: #{row[0] + " " + row[1]}.  Work representations added: #{work_representations_for_this_work.to_s}</div>";
+      
     end
-  end
+    
+    @data_report << "<h3>Total works created: #{works_created.to_s}</h3>";
+    
+  end #end seed
+  
+  
 end
 
 
