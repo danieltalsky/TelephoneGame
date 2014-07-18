@@ -7,13 +7,18 @@ class Admin::DataController < Admin::ApplicationController
   def seed
 
     work_representations_url = "http://telephone.satellitepress.org/workrepresentations/"
-    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/Telephone%20Directory-20140718.csv"
+    works_csv_url = "http://telephone.satellitepress.org/TelephoneDirectory-20140718.csv"
     works_created = 0
   
     @data_report = "<h2>Starting import</h2>";
     
     # Note that this way of getting a list of representations depends on the 
     # directory being viewable, which is suboptimal.
+    # Also, to pull all jpegs out of foldersm log into the work reps directory and do:
+    # find . -iname '*.jpg' -exec cp \{\} ./ \;
+    # and then:
+    # rm -r */
+    # to delete the directories themselves
     @data_report << "<h3>Opening work representations URL: #{work_representations_url}</h3>";
     work_representations_html = open(work_representations_url).read
     work_representations = work_representations_html.scan(/(?<=")\d\d\d\d[^<>]+(?=")/)
@@ -55,7 +60,7 @@ class Admin::DataController < Admin::ApplicationController
           # there was an md file in the directory. That is a better way to do this, but I am on a time crunch.
           
           tmp_fileext = filename.split(".").pop.downcase.chomp
-          tmp_url = 'http://telephone.satellitepress.org/workrepresentations/' + URI::encode(filename.chomp)
+          tmp_url = work_representations_url + URI::encode(filename.chomp)
           if tmp_fileext == "md"
               localRep = WorkRepresentation.create(
                   work_id: localWork.id,
