@@ -7,6 +7,11 @@ class WorksController < ApplicationController
     @works = Work.all
   end
 
+  # GET /works/by_medium
+  def by_medium
+    @works = Work.order('works.medium DESC').all
+  end  
+  
   # GET /works/tree
   def tree
     rootWork = Work.find_by_parent_id(nil)
