@@ -22,9 +22,9 @@
         <td><%= artist.bio %></td>
         <td><%= artist.url %></td>
         <td><%= artist.location %></td>
-        <td><%= link_to 'Show', artist %></td>
-        <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
-        <td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [:admin, artist] %></td>
+        <td><%= link_to 'Edit', edit_admin_artist_path(artist) %></td>
+        <td><%= link_to 'Destroy', [:admin, artist], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Artist', new_artist_path %>
+<%= link_to 'New Artist', new_admin_artist_path %>

@@ -1,4 +1,4 @@
-class ArtistsController < ApplicationController
+class Admin::ArtistsController < Admin::ApplicationController
   before_filter :authorize
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
@@ -25,7 +25,7 @@ class ArtistsController < ApplicationController
     @artist = Artist.new(artist_params)
 
     if @artist.save
-      redirect_to @artist, notice: 'Artist was successfully created.'
+      redirect_to [:admin, @artist], notice: 'Artist was successfully created.'
     else
       render action: 'new'
     end
@@ -34,7 +34,7 @@ class ArtistsController < ApplicationController
   # PATCH/PUT /artists/1
   def update
     if @artist.update(artist_params)
-      redirect_to @artist, notice: 'Artist was successfully updated.'
+      redirect_to [:admin, @artist], notice: 'Artist was successfully updated.'
     else
       render action: 'edit'
     end
@@ -43,7 +43,7 @@ class ArtistsController < ApplicationController
   # DELETE /artists/1
   def destroy
     @artist.destroy
-    redirect_to artists_url, notice: 'Artist was successfully destroyed.'
+    redirect_to admin_artists_url, notice: 'Artist was successfully destroyed.'
   end
 
   private

@@ -18,9 +18,9 @@
         <td><%= work_representation.url %></td>
         <td><%= work_representation.fileext %></td>
         <td><%= work_representation.Work %></td>
-        <td><%= link_to 'Show', work_representation %></td>
-        <td><%= link_to 'Edit', edit_work_representation_path(work_representation) %></td>
-        <td><%= link_to 'Destroy', work_representation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [:admin, work_representation] %></td>
+        <td><%= link_to 'Edit', edit_admin_work_representation_path(work_representation) %></td>
+        <td><%= link_to 'Destroy', [:admin, work_representation], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Work representation', new_work_representation_path %>
+<%= link_to 'New Work representation', new_admin_work_representation_path %>

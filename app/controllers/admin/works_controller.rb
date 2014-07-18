@@ -1,4 +1,4 @@
-class WorksController < ApplicationController
+class Admin::WorksController < Admin::ApplicationController
   before_filter :authorize
   before_action :set_work, only: [:show, :edit, :update, :destroy]
 
@@ -51,7 +51,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      redirect_to @work, notice: 'Work was successfully created.'
+      redirect_to [:admin, @work], notice: 'Work was successfully created.'
     else
       render action: 'new'
     end
@@ -60,7 +60,7 @@ class WorksController < ApplicationController
   # PATCH/PUT /works/1
   def update
     if @work.update(work_params)
-      redirect_to @work, notice: 'Work was successfully updated.'
+      redirect_to [:admin, @work], notice: 'Work was successfully updated.'
     else
       render action: 'edit'
     end
@@ -69,7 +69,7 @@ class WorksController < ApplicationController
   # DELETE /works/1
   def destroy
     @work.destroy
-    redirect_to works_url, notice: 'Work was successfully destroyed.'
+    redirect_to admin_works_url, notice: 'Work was successfully destroyed.'
   end
 
   private

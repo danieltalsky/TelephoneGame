@@ -2,7 +2,7 @@ require 'csv'
 require 'open-uri'
 
 
-class DataController < ApplicationController
+class Admin::DataController < Admin::ApplicationController
 
   def seed
 

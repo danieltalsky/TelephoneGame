@@ -1,4 +1,4 @@
-class WorkRepresentationsController < ApplicationController
+class Admin::WorkRepresentationsController < Admin::ApplicationController
   before_action :set_work_representation, only: [:show, :edit, :update, :destroy]
 
   # GET /work_representations
@@ -24,7 +24,7 @@ class WorkRepresentationsController < ApplicationController
     @work_representation = WorkRepresentation.new(work_representation_params)
 
     if @work_representation.save
-      redirect_to @work_representation, notice: 'Work representation was successfully created.'
+      redirect_to [:admin, @work_representation], notice: 'Work representation was successfully created.'
     else
       render action: 'new'
     end
@@ -33,7 +33,7 @@ class WorkRepresentationsController < ApplicationController
   # PATCH/PUT /work_representations/1
   def update
     if @work_representation.update(work_representation_params)
-      redirect_to @work_representation, notice: 'Work representation was successfully updated.'
+      redirect_to [:admin, @work_representation], notice: 'Work representation was successfully updated.'
     else
       render action: 'edit'
     end
@@ -42,7 +42,7 @@ class WorkRepresentationsController < ApplicationController
   # DELETE /work_representations/1
   def destroy
     @work_representation.destroy
-    redirect_to work_representations_url, notice: 'Work representation was successfully destroyed.'
+    redirect_to admin_work_representations_url, notice: 'Work representation was successfully destroyed.'
   end
 
   private

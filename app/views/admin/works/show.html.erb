@@ -38,7 +38,7 @@
              <a href="<%= wr.url %>"><%= wr.url %></a>
           <% end %>
 
-          <%=link_to h('(edit this entry)'), edit_work_representation_path(wr) %></li>     
+          <%=link_to h('(edit this entry)'), edit_admin_work_representation_path(wr) %></li>     
       <% end %>
   <% else %>
     <div class="noWorkRepresentations">This Work is Still in Progress</div>
@@ -74,6 +74,6 @@
 </div>
 
 <div style="clear:both;">
-<%= link_to 'Edit', edit_work_path(@work) %> |
-<%= link_to 'Back', works_path %>
+<%= link_to 'Edit', edit_admin_work_path(@work) %> |
+<%= link_to 'Back', admin_works_path %>
 </div>
