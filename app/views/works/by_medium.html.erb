@@ -1,26 +1,20 @@
 <h1>Listing works by medium</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Parent</th>
-      <th>Artist</th>
-      <th>Medium</th>
-      <th></th>
-    </tr>
-  </thead>
+<% @media_collection.sort.each do |medium, works| %>
 
-  <tbody>
-    <% @works.each do |work| %>
-      <tr>
-        <td><%= work.title %></td>
-        <td><%= work.parent_id %></td>
-        <td><%= work.artist_id %></td>
-        <td><%= work.medium %></td>
-        <td><%= link_to 'Show', work %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <h2><%= medium %></h2>
+
+    <ul>
+        <% works.each do |work| %>
+            <li>
+                <%= link_to work.title, work %> 
+                <em>
+                    (<%= work.work_representations.count %> 
+                    <%= 'file'.pluralize(work.work_representations.count) %>)
+                </em>
+            </li>
+        <% end %>
+    </ul>
+
+<% end %>
 

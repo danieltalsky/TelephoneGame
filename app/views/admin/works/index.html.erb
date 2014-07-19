@@ -4,10 +4,8 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Parent</th>
-      <th>Artist</th>
-      <th>Medium</th>
-      <th></th>
+      <!--<th>Parent</th>-->
+      <th># Of Files</th>
       <th></th>
       <th></th>
     </tr>
@@ -16,11 +14,9 @@
   <tbody>
     <% @works.each do |work| %>
       <tr>
-        <td><%= work.title %></td>
-        <td><%= work.parent_id %></td>
-        <td><%= work.artist_id %></td>
-        <td><%= work.medium %></td>
-        <td><%= link_to 'Show', [:admin, work] %></td>
+        <td><%= link_to work.title, [:admin, work] %></td>
+        <!--<td><%= work.parent_id %></td>-->
+        <td><%= work.work_representations.count %></td>
         <td><%= link_to 'Edit', edit_admin_work_path(work) %></td>
         <td><%= link_to 'Destroy', [:admin, work], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

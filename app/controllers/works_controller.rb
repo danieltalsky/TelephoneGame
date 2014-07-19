@@ -9,7 +9,12 @@ class WorksController < ApplicationController
 
   # GET /works/by_medium
   def by_medium
-    @works = Work.order('works.medium DESC').all
+    @media = Work.uniq.pluck(:medium)
+  
+    @media_collection = Hash.new
+    @media.each do |medium| 
+        @media_collection[medium] = Work.where(:medium => medium)
+    end
   end  
   
   # GET /works/tree
