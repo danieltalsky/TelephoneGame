@@ -1,12 +1,13 @@
 <h1>Listing works</h1>
-
+<style>td {border-bottom: 1px solid #ccc; border-left: 1px solid #ccc;}</style>
 <table>
   <thead>
     <tr>
+      <th>Spreadsheet ID</th>
       <th>Title</th>
-      <!--<th>Parent</th>-->
       <th># Of Files</th>
-      <th></th>
+      <th>Generation</th>
+      <th># Of Descendents</th>
       <th></th>
     </tr>
   </thead>
@@ -14,11 +15,13 @@
   <tbody>
     <% @works.each do |work| %>
       <tr>
+        <td><%= work.orig_id %>_<%= work.parent ? work.parent.orig_id : '0000' %></td>    
         <td><%= link_to work.title, [:admin, work] %></td>
-        <!--<td><%= work.parent_id %></td>-->
-        <td><%= work.work_representations.count %></td>
+        <td><%= work.work_representations.count %></td>        
+        <td><%= work.depth %></td>
+        <td><%= work.descendents.count %></td>
         <td><%= link_to 'Edit', edit_admin_work_path(work) %></td>
-        <td><%= link_to 'Destroy', [:admin, work], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!--<td><%= link_to 'Destroy', [:admin, work], method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
   </tbody>

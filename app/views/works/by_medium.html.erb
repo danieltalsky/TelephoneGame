@@ -7,6 +7,7 @@
     <ul>
         <% works.each do |work| %>
             <li>
+                <%= work.orig_id %>_<%= work.parent ? work.parent.orig_id : '0000' %>
                 <%= link_to work.title, work %> 
                 <em>
                     (<%= work.work_representations.count %> 
