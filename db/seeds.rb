@@ -10,7 +10,7 @@ require 'open-uri'
 
 localArtist = Artist.create(
   name: "Satellite Collective",
-  contact: "Daniel@Satellite-Collective.org",
+  contact: "langston.nathan@gmail.com",
   bio: "We create accessible and diverse opportunities for artists in the performing and visual arts.",
   url: "http://satellitecollective.org",
   location: "New York City New York USA"
@@ -41,3 +41,5 @@ nathanUser = User.create(:email => 'langston.nathan@gmail.com')
 nathanUser.update_password 'fakePASSWORDSonlyYo'
 kevinUser = User.create(:email => 'kevin@satellite-collective.org')
 kevinUser.update_password 'fakePASSWORDSonlyYo'
+danielPadmosUser = User.create(:email => 'daniel@dexnewyork.com')
+danielPadmosUser.update_password 'fakePASSWORDSonlyYo'
