@@ -7,7 +7,7 @@ class Admin::DataController < Admin::ApplicationController
   def seed
 
     work_representations_url = "http://telephone.satellitepress.org/workrepresentations/"
-    works_csv_url = "http://telephone.satellitepress.org/TelephoneDirectory-20140718.csv"
+    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20140828.csv"
     works_created = 0
   
     @data_report = "<h2>Starting import</h2>";

@@ -43,3 +43,6 @@ kevinUser = User.create(:email => 'kevin@satellite-collective.org')
 kevinUser.update_password 'fakePASSWORDSonlyYo'
 danielPadmosUser = User.create(:email => 'daniel@dexnewyork.com')
 danielPadmosUser.update_password 'fakePASSWORDSonlyYo'
+mattUser = User.create(:email => 'mattdabrowiak@gmail.com')
+mattUser.update_password 'fakePASSWORDSonlyYo'
+
