@@ -1,13 +1,13 @@
 require 'csv'
 require 'open-uri'
 
-
 class Admin::DataController < Admin::ApplicationController
 
   def seed
 
     work_representations_url = "http://telephone.satellitepress.org/workrepresentations/"
     works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20140828.csv"
+    artist_bios_url = "http://telephone.satellitepress.org/artistbios"
     works_created = 0
   
     @data_report = "<h2>Starting import</h2>";
@@ -22,7 +22,7 @@ class Admin::DataController < Admin::ApplicationController
     @data_report << "<h3>Opening work representations URL: #{work_representations_url}</h3>";
     work_representations_html = open(work_representations_url).read
     work_representations = work_representations_html.scan(/(?<=")\d\d\d\d[^<>]+(?=")/)
-
+    
     # Note that this way of getting a list of representations depends on us 
     # keeping an up-to-date list in my Dropbox, which is suboptimal.    
     
@@ -33,12 +33,12 @@ class Admin::DataController < Admin::ApplicationController
       
       localartist = Artist.create(name:    row[0] + " " + row[1],
                                   contact: row[11],
-                                  bio:     row[6], # We don't actually have a bio field
                                   url:     row[12],
                                   location:row[9] + " " + row[8] + " " + row[7])
 
       parentWork = Work.find_by_orig_id(row[5].rjust(4, '0'))
 
+      # Create the work
       localWork = Work.create(
                    # We don't actually have a title field
                    title:          row[10] + " by " + row[0] + " " + row[1], 
@@ -51,14 +51,25 @@ class Admin::DataController < Admin::ApplicationController
 
       works_created += 1             
       
+      # Bio's in markdown 
+      artist_bios_html = open(artist_bios_url).read
+      artist_bios = work_representations_html.scan(/(?<=")\d\d\d\d[^<>]+(?=")/)
+      artist_bios.each do |filename| 
+        if filename.start_with?(localWork.full_orig_id)       
+          tmp_fileext = filename.split(".").pop.downcase.chomp
+          tmp_url = work_representations_url + URI::encode(filename.chomp)
+          if tmp_fileext == "md"
+              localartist.update(bio: open(tmp_url).read)
+          end
+        end  
+      end # artist_bios each
+      
+      # Work representations
       work_representations_for_this_work = 0      
       work_representations.each do |filename| 
 
         if filename.start_with?(localWork.full_orig_id)
         
-          # This originally created the WorkRep and then added the text_body_markdown only if
-          # there was an md file in the directory. That is a better way to do this, but I am on a time crunch.
-          
           tmp_fileext = filename.split(".").pop.downcase.chomp
           tmp_url = work_representations_url + URI::encode(filename.chomp)
           if tmp_fileext == "md"
@@ -80,6 +91,16 @@ class Admin::DataController < Admin::ApplicationController
        
       end # work_representations each
 
+      # Vimeo URL's are a special case for videos where the URL is stored in the spreadsheet
+      if row[14].strip
+        vimeoRep = WorkRepresentation.create(
+            work_id: localWork.id,
+            url: row[14].strip,
+            fileext: 'vimeo'
+        )        
+        work_representations_for_this_work += 1
+      end
+
       @data_report << "<div style=\"font-size:11px;\">Work created for artist: #{row[0] + " " + row[1]}.  Work representations added: #{work_representations_for_this_work.to_s}</div>";
       
     end
@@ -91,5 +112,3 @@ class Admin::DataController < Admin::ApplicationController
   
 end
 
-
-# @file = IO.read(params[:report].tempfile.path)
