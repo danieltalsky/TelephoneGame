@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tour_author: MyString
+  tour_string: MyString
+
+two:
+  tour_author: MyString
+  tour_string: MyString

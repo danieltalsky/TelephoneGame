@@ -58,3 +58,6 @@ gem 'acts_as_sane_tree'
 
 # Use clearance for login and authentication
 gem 'clearance'
+
+# Use Sequenced for the curated tours: https://github.com/djreimer/sequenced
+gem 'sequenced'

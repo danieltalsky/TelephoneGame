@@ -36,8 +36,8 @@
              <p>Read the text here:</p>
              <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
           <% else %>  
-          <p>Link to file:</p>  
-             <a href="<%= wr.url %>"><%= wr.url %></a>
+          <p>Link to file:  
+             <a href="<%= wr.url %>"><%= wr.url %></a></p>
           <% end %>
           </li>
       <% end %>

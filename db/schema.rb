@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131014002929) do
+ActiveRecord::Schema.define(version: 20140901013843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,25 @@ ActiveRecord::Schema.define(version: 20131014002929) do
     t.text     "bio"
     t.text     "url"
     t.text     "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "curated_tour_stops", force: true do |t|
+    t.text     "caption_text"
+    t.integer  "sequential_id"
+    t.integer  "work_id"
+    t.integer  "curated_tour_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "curated_tour_stops", ["curated_tour_id"], name: "index_curated_tour_stops_on_curated_tour_id", using: :btree
+  add_index "curated_tour_stops", ["work_id"], name: "index_curated_tour_stops_on_work_id", using: :btree
+
+  create_table "curated_tours", force: true do |t|
+    t.string   "tour_author"
+    t.string   "tour_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
