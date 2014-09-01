@@ -17,13 +17,8 @@
       	<td><%= curated_tour.tour_author %></td>
 				<td><%= curated_tour.tour_name %></td>
         <td><%= link_to 'Show', curated_tour %></td>
-        <td><%= link_to 'Edit', edit_curated_tour_path(curated_tour) %></td>
-        <td><%= link_to 'Destroy', curated_tour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Curated tour', new_curated_tour_path %>

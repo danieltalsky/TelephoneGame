@@ -61,3 +61,6 @@ gem 'clearance'
 
 # Use Sequenced for the curated tours: https://github.com/djreimer/sequenced
 gem 'sequenced'
+
+# Allows adding admin scaffolding that refers to the regular non-admin models
+gem 'rails-admin-scaffold'

@@ -18,8 +18,14 @@
         <td><%= curated_tour_stop.curated_tour.tour_name %></td>
         <td><%= curated_tour_stop.sequential_id %></td>
         <td><%= truncate(curated_tour_stop.caption_text, length: 35, omission: '...') %></td>
-        <td><%= link_to 'Show', curated_tour_stop %></td>
+        <td><%= link_to 'Show', [:admin, curated_tour_stop] %></td>
+        <td><%= link_to 'Edit', edit_admin_curated_tour_stop_path(curated_tour_stop) %></td>
+        <td><%= link_to 'Destroy', [:admin, curated_tour_stop], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<%= link_to 'New Curated tour stop', new_admin_curated_tour_stop_path %>

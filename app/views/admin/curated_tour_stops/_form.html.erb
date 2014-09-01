@@ -1,0 +1,33 @@
+<%= form_for([:admin, @curated_tour_stop]) do |f| %>
+  <% if @curated_tour_stop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@curated_tour_stop.errors.count, "error") %> prohibited this curated_tour_stop from being saved:</h2>
+
+      <ul>
+      <% @curated_tour_stop.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+      <%= f.label :caption_text %><br>
+    <%= f.text_area :caption_text %>
+    </div>
+  <div class="field">
+      <%= f.label :sequential_id %><br>
+    <%= f.number_field :sequential_id %>
+    </div>
+  <div class="field">
+      <%= f.label :work_id %><br>
+    <%= f.text_field :work_id %>
+    </div>
+  <div class="field">
+      <%= f.label :curated_tour_id %><br>
+    <%= f.text_field :curated_tour_id %>
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

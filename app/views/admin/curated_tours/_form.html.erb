@@ -1,4 +1,4 @@
-<%= form_for(@curated_tour) do |f| %>
+<%= form_for([:admin, @curated_tour]) do |f| %>
   <% if @curated_tour.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@curated_tour.errors.count, "error") %> prohibited this curated_tour from being saved:</h2>
@@ -12,14 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :tour_author %><br>
-    <%= f.text_area :tour_author %>
-  </div>
+      <%= f.label :tour_author %><br>
+    <%= f.text_field :tour_author %>
+    </div>
   <div class="field">
-    <%= f.label :tour_name %><br>
-    <%= f.text_area :tour_name %>
-  </div>
-
+      <%= f.label :tour_name %><br>
+    <%= f.text_field :tour_name %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>

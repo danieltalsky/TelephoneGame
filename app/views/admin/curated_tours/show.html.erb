@@ -10,4 +10,6 @@
   <%= @curated_tour.tour_name %>
 </p>
 
-<%= link_to 'Back', curated_tours_path %>
+
+<%= link_to 'Edit', edit_admin_curated_tour_path(@curated_tour) %> |
+<%= link_to 'Back', admin_curated_tours_path %>

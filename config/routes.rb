@@ -1,36 +1,35 @@
 TelephoneGame::Application.routes.draw do
 
+  get "application/index"
   get "works/tree"
   get "works/jsontree"
   get "works/by_medium"
   resources :works
-
-  get "application/index"
   resources :artists
+  resources :curated_tour_stops
+  resources :curated_tours
+  # You can have the root of your site routed with "root"
+  root 'application#index'
 
   # Admin Interface
   namespace :admin do
     # Directs /admin/artists/* to Admin::ArtistsController
     # (app/controllers/admin/artist_controller.rb)
-
     resources :works
     resources :work_representations
     resources :artists
-
+    resources :curated_tours
+    resources :curated_tour_stops
     get "data/seed"
     get "works/tree"
     get "works/jsontree"
     get "application/index"
-    
     root 'application#index'
   end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  root 'application#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

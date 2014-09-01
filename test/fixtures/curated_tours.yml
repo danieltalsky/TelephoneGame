@@ -2,8 +2,8 @@
 
 one:
   tour_author: MyString
-  tour_string: MyString
+  tour_name: MyString
 
 two:
   tour_author: MyString
-  tour_string: MyString
+  tour_name: MyString

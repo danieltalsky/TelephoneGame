@@ -6,7 +6,7 @@ body { font-family: Corbel, Arial, Helvetica, "Nimbus Sans L", "Liberation Sans"
 figure#logo {margin: 0; -webkit-margin: 0;}
 
 .main { padding: 20px; padding-top: 0px; }
-
+textarea { width: 50em; height: 5em;}
 
 
 /* Individual Work Page */
