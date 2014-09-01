@@ -24,8 +24,8 @@
     <%= f.collection_select :work_id, Work.all(:order => "title"), :id, :title, :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :curated_tour_id %><br>
-    <%= f.collection_select :curated_tour_id, Artist.all(:order => "tour_name"), :id, :tour_name, :include_blank => true %>
+    <%= f.label :curated_tour %><br>
+    <%= f.collection_select :curated_tour_id, CuratedTour.all(:order => "tour_name"), :id, :tour_name, :include_blank => true %>
   </div>		
 		
   <div class="actions">
