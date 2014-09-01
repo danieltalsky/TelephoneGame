@@ -24,20 +24,22 @@
            <% when 'gif' %>
              <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>      
            <% when 'png' %>
-             <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>         
-           <% when 'doc' %>
-             Download the original file: <br /><a href="<%= wr.url %>"><%= wr.url %></a>
-           <% when 'docx' %>
-             Download the original file: <br /><a href="<%= wr.url %>"><%= wr.url %></a>     
-           <% when 'pdf' %>
-             Download the original file: <br /><a href="<%= wr.url %>"><%= wr.url %></a>              
+             <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>            
+           <% when 'vimeo' %>	
+             <iframe src="//player.vimeo.com/video/<%= wr.url[/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/, 3] %>?title=0&amp;byline=0&amp;portrait=0" 
+                width="860" height="645" 
+                frameborder="0" 
+                webkitallowfullscreen 
+                mozallowfullscreen 
+                allowfullscreen></iframe>	           
            <% when 'md' %>
              <p>Read the text here:</p>
              <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
-          <% else %>    
+          <% else %>  
+          <p>Link to file:</p>  
              <a href="<%= wr.url %>"><%= wr.url %></a>
           <% end %>
-   
+          </li>
       <% end %>
   <% else %>
     <div class="noWorkRepresentations">This Work is Still in Progress</div>

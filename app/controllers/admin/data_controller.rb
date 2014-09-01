@@ -6,7 +6,7 @@ class Admin::DataController < Admin::ApplicationController
   def seed
 
     work_representations_url = "http://telephone.satellitepress.org/workrepresentations/"
-    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20140828.csv"
+    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20140831.csv"
     artist_bios_url = "http://telephone.satellitepress.org/artistbios"
     works_created = 0
   
@@ -30,6 +30,11 @@ class Admin::DataController < Admin::ApplicationController
     dir_str = open(works_csv_url).read
     CSV.parse(dir_str) do |row2|
       row = row2.map{|item| (item.nil? ? "":item).sub(/[\*\s]*\z/,"").strip}
+      
+      # Skip header row
+      if row[0] == 'First Name'
+        next
+      end
       
       localartist = Artist.create(name:    row[0] + " " + row[1],
                                   contact: row[11],
@@ -92,7 +97,7 @@ class Admin::DataController < Admin::ApplicationController
       end # work_representations each
 
       # Vimeo URL's are a special case for videos where the URL is stored in the spreadsheet
-      if row[14].strip
+      if row[14][0,4]=='http'
         vimeoRep = WorkRepresentation.create(
             work_id: localWork.id,
             url: row[14].strip,
