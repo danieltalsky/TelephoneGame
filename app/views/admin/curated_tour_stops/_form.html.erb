@@ -20,13 +20,14 @@
     <%= f.number_field :sequential_id %>
     </div>
   <div class="field">
-      <%= f.label :work_id %><br>
-    <%= f.text_field :work_id %>
-    </div>
+    <%= f.label :work_id %><br>
+    <%= f.collection_select :work_id, Work.all(:order => "title"), :id, :title, :include_blank => true %>
+  </div>
   <div class="field">
-      <%= f.label :curated_tour_id %><br>
-    <%= f.text_field :curated_tour_id %>
-    </div>
+    <%= f.label :curated_tour_id %><br>
+    <%= f.collection_select :curated_tour_id, Artist.all(:order => "tour_name"), :id, :tour_name, :include_blank => true %>
+  </div>		
+		
   <div class="actions">
     <%= f.submit %>
   </div>
