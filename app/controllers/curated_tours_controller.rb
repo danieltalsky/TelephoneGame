@@ -1,5 +1,6 @@
 class CuratedToursController < ApplicationController
-  before_action :set_curated_tour, only: [:show]
+  before_filter :authorize
+  before_action :set_curated_tours, only: [:show]
 
   # GET /curated_tours
   def index
@@ -9,5 +10,11 @@ class CuratedToursController < ApplicationController
   # GET /curated_tours/1
   def show
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_curated_tours
+      @curated_tour = CuratedTour.find(params[:id])
+    end
 
 end

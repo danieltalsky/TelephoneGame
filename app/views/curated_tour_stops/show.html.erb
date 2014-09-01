@@ -1,23 +1,46 @@
 <p id="notice"><%= notice %></p>
 
+<h2>
+  <%= @curated_tour_stop.curated_tour.tour_name %>
+</h2>
+
 <p>
-  <strong>Caption text:</strong>
+	(<%= @curated_tour_stop.sequential_id %> of <%= @curated_tour_stops_count %>)
+</p>
+
+<p>
   <%= @curated_tour_stop.caption_text %>
 </p>
 
-<p>
-  <strong>Sequential:</strong>
-  <%= @curated_tour_stop.sequential_id %>
-</p>
+<ul class="experienceTheWork">
+<% if !@curated_tour_stop.work.work_representations.empty? %>
+    <% for wr in @curated_tour_stop.work.work_representations %>
+        <li class="<%= wr.fileext %>">
+        <% case wr.fileext %>
+         <% when 'jpg' %>
+           <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>
+         <% when 'gif' %>
+           <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>      
+         <% when 'png' %>
+           <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>            
+         <% when 'vimeo' %> 
+           <iframe src="//player.vimeo.com/video/<%= wr.url[/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/, 3] %>?title=0&amp;byline=0&amp;portrait=0" 
+              width="860" height="645" 
+              frameborder="0" 
+              webkitallowfullscreen 
+              mozallowfullscreen 
+              allowfullscreen></iframe>            
+         <% when 'md' %>
+           <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
+        <% else %>  
+        <div>placeholder</div>
+        <% end %>
+        </li>
+    <% end %>
+<% else %>
+  <div class="noWorkRepresentations">This Work is Still in Progress</div>
+<% end %>
+</ul>
 
-<p>
-  <strong>Work:</strong>
-  <%= @curated_tour_stop.work %>
-</p>
-
-<p>
-  <strong>Curated tour:</strong>
-  <%= @curated_tour_stop.curated_tour %>
-</p>
-
-<%= link_to 'Back', admin_curated_tour_stops_path %>
+<%= link_to 'NEXT ON THE TOUR', curated_tour_stops_path %>
+<%= link_to 'Back', curated_tour_stops_path %>

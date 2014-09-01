@@ -1,4 +1,5 @@
 class Admin::CuratedToursController < Admin::ApplicationController
+  before_filter :authorize
   before_action :set_curated_tour, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/curated_tours

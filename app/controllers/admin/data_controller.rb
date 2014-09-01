@@ -2,7 +2,8 @@ require 'csv'
 require 'open-uri'
 
 class Admin::DataController < Admin::ApplicationController
-
+  before_filter :authorize
+  
   def seed
 
     work_representations_url = "http://telephone.satellitepress.org/workrepresentations/"
