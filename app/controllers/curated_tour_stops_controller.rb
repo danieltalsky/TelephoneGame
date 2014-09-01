@@ -1,5 +1,6 @@
 class CuratedTourStopsController < ApplicationController
   before_filter :authorize
+  before_action :set_curated_tour, only: [:show]
   before_action :set_curated_tour_stops, only: [:show]
   
   # GET /curated_tour_stops
@@ -9,16 +10,18 @@ class CuratedTourStopsController < ApplicationController
 
   # GET /curated_tour_stops/1
   def show
-     parentTour = CuratedTour.find_by_id(@curated_tour_stop.curated_tour_id)
-     @curated_tour_stops_count = parentTour.curated_tour_stop.count  
-     
+     @curated_tour_stops_count = @curated_tour.curated_tour_stop.count  
      @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)  
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    def set_curated_tour
+      @curated_tour = CuratedTour.find(params[:curated_tour_id])
+    end
+
     def set_curated_tour_stops
-      @curated_tour_stop = CuratedTourStop.find(params[:id])
+      @curated_tour_stop = @curated_tour.curated_tour_stop.where(:sequential_id => params[:id]).first
     end
 
 end

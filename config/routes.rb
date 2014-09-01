@@ -6,8 +6,9 @@ TelephoneGame::Application.routes.draw do
   get "works/by_medium"
   resources :works
   resources :artists
-  resources :curated_tour_stops
-  resources :curated_tours
+    resources :curated_tours do
+      resources :curated_tour_stops 
+    end   
   # You can have the root of your site routed with "root"
   root 'application#index'
 
@@ -18,8 +19,8 @@ TelephoneGame::Application.routes.draw do
     resources :works
     resources :work_representations
     resources :artists
-    resources :curated_tours
     resources :curated_tour_stops
+    resources :curated_tours
     get "data/seed"
     get "works/tree"
     get "works/jsontree"
