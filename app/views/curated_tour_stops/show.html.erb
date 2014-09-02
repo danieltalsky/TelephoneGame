@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h2>
+<h1>
   <%= @curated_tour_stop.curated_tour.tour_name %>
-</h2>
+</h1>
 
 <p>
 	(<%= @curated_tour_stop.sequential_id %> of <%= @curated_tour_stops_count %>)
@@ -15,27 +15,29 @@
 <ul class="experienceTheWork">
 <% if !@curated_tour_stop.work.work_representations.empty? %>
     <% for wr in @curated_tour_stop.work.work_representations %>
-        <li class="<%= wr.fileext %>">
-        <% case wr.fileext %>
-         <% when 'jpg' %>
-           <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>
-         <% when 'gif' %>
-           <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>      
-         <% when 'png' %>
-           <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>            
-         <% when 'vimeo' %> 
-           <iframe src="//player.vimeo.com/video/<%= wr.url[/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/, 3] %>?title=0&amp;byline=0&amp;portrait=0" 
-              width="860" height="645" 
-              frameborder="0" 
-              webkitallowfullscreen 
-              mozallowfullscreen 
-              allowfullscreen></iframe>            
-         <% when 'md' %>
-           <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
+    <li class="<%= wr.fileext %>">
+      <% case wr.fileext %>
+      <% when 'jpg' %>
+        <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>
+      <% when 'gif' %>
+        <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>      
+      <% when 'png' %>
+        <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>    
+      <% when 'mp3' %>
+        thisis an mp3
+      <% when 'vimeo' %> 
+        <iframe src="//player.vimeo.com/video/<%= wr.url[/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/, 3] %>?title=0&amp;byline=0&amp;portrait=0" 
+          width="860" height="645" 
+          frameborder="0" 
+          webkitallowfullscreen 
+          mozallowfullscreen 
+          allowfullscreen></iframe>            
+        <% when 'md' %>
+          <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
         <% else %>  
-        <div>placeholder</div>
-        <% end %>
-        </li>
+          <div>(( filetype for <em><%= wr.url %></em> is not supported yet ))</div>
+      <% end %>
+    </li>
     <% end %>
 <% else %>
   <div class="noWorkRepresentations">This Work is Still in Progress</div>

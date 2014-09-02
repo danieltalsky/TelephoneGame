@@ -1,3 +1,9 @@
 // Place all the styles related to the Works controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.inspiredby {padding: 10px; background: #EEE; width: 48%; height: 200px; float: left;}
+.inspired {padding: 10px; background: #EEE; width: 48%; height: 200px; float: right;}
+
+ul.experienceTheWork {list-style: none;}
+ul.experienceTheWork li.md div.md-work{border: 1px solid #ccc; padding: 15px;}

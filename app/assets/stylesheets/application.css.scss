@@ -1,0 +1,50 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+$telephoneRed: #CB213E;
+
+body { font-family: Corbel, Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", sans-serif;}
+figure#logo { margin: 0 0 20px 20px; }
+
+a {
+  color: $telephoneRed;
+  text-decoration: none;
+  &:hover { color: #510D1A }
+}
+
+
+nav {
+  ul {
+    border: 0;
+    padding: 0;
+    list-style-type: none;
+    li {
+      float: left;
+      margin-left: 20px;
+      a {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+.main { padding: 20px; padding-top: 2px; clear: both;}
+
+h1 {
+  margin-left: -22px;
+  padding: 6px 0 6px 20px;
+  background: $telephoneRed;
+  color: white;
+  font-weight: normal;
+}
+
+table {
+  th {
+    text-align: left;
+    padding: 3px;
+  }
+  td {
+    padding: 3px;
+  }
+}
