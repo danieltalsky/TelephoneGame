@@ -24,7 +24,13 @@
       <% when 'png' %>
         <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>    
       <% when 'mp3' %>
-        thisis an mp3
+        <audio id="demo" src="<%= wr.url %>"></audio>
+        <div>
+          <button onclick="document.getElementById('demo').play()">Play the Audio</button>
+          <button onclick="document.getElementById('demo').pause()">Pause the Audio</button>
+          <button onclick="document.getElementById('demo').volume+=0.1">Increase Volume</button>
+          <button onclick="document.getElementById('demo').volume-=0.1">Decrease Volume</button>
+        </div>
       <% when 'vimeo' %> 
         <iframe src="//player.vimeo.com/video/<%= wr.url[/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/, 3] %>?title=0&amp;byline=0&amp;portrait=0" 
           width="860" height="645" 
