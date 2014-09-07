@@ -34,7 +34,7 @@ danielPadmosCuratedTour = CuratedTour.create(
   tour_name: 'Daniel Padmos’ Curated Tour'
 )
 CuratedTourStop.create(work_id: scWork.id, curated_tour_id: danielPadmosCuratedTour.id, 
-  caption_text: 'Original Message: Oh god thy sea is so great and my ship is so small.')
+  caption_text: 'Original Message: Oh god thy sea is so great and my boat is so small.')
 CuratedTourStop.create(work_id: scWork.id, curated_tour_id: danielPadmosCuratedTour.id, 
   caption_text: 'The first recipient of the original message works through her resistance to “ideas of godhood”, finding comfort in “the idea of an expanding cosmos”. Her naked subject launches a folded paper boat onto the sea.')
 CuratedTourStop.create(work_id: scWork.id, curated_tour_id: danielPadmosCuratedTour.id, 
