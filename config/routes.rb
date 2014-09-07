@@ -21,7 +21,9 @@ TelephoneGame::Application.routes.draw do
     resources :artists
     resources :curated_tour_stops
     resources :curated_tours
-    get "data/seed"
+    get "data/import_spreadsheet"
+    get "data/import_work_representations"
+    get "data/populate_tour"
     get "works/tree"
     get "works/jsontree"
     get "application/index"

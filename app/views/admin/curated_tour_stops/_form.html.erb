@@ -21,7 +21,7 @@
     </div>
   <div class="field">
     <%= f.label :work_id %><br>
-    <%= f.collection_select :work_id, Work.all(:order => "title"), :id, :title, :include_blank => true %>
+    <%= f.collection_select :work_representation_id, Work.all(:order => "url"), :id, :url, :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :curated_tour %><br>
