@@ -7,7 +7,7 @@ class Admin::DataController < Admin::ApplicationController
   # Step 1
   def import_spreadsheet
 
-    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20140831.csv"
+    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20140906.csv"
     artist_bios_url = "http://telephone.satellitepress.org/artistbios/"
     works_created = 0
     
@@ -135,14 +135,35 @@ class Admin::DataController < Admin::ApplicationController
     
     @data_report = "<h2>Starting tour population</h2>";
     
-    
+    # Map of sequence ID's to orig_id's
+    tour_map = {
+      "1" => "0001_0000",
+      "2" => "0002_0001",
+      "3" => "0005_0002",
+      "4" => "0013_0005",
+      "5" => "0018_0013",
+      "6" => "0033_0018",
+      "7" => "0091_0033",
+      "8" => "0189_0091",
+      "9" => "0254_0189",
+      "10" => "0307_0254",
+      "11" => "0420_0307"
+    }
     
     ctsList = CuratedTourStop.all
-    ctsList.each do |stop|
-         #Person.find_by(url: 'Spartacus', rating: 4)
+    ctsList.each do |cts| 
+      original_id = tour_map[cts.sequential_id.to_s]
+      associated_work = Work.find_by(full_orig_id: original_id)
+      if associated_work.nil? 
+        associated_work = Work.find_by(full_orig_id: "0001_0000")
+        @data_report << "<div>Failed for original id #{original_id}</div>"
+      end
+      cts.work_id = associated_work.id
+      cts.save
+      @data_report << "<div>Assigned work to tour stop # #{cts.sequential_id.to_s}</div>"
     end
   end  
-  
-  
+
 end
+
 
