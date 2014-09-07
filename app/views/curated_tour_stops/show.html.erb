@@ -5,31 +5,53 @@
 </h1>
 
 <p>
-	(<%= @curated_tour_stop.sequential_id %> of <%= @curated_tour_stops_count %>)
+	
 </p>
 
-<p>
+<nav id="tourStops">
+
+  <div id="stepCount"><%= @curated_tour_stop.sequential_id %> of <%= @curated_tour_stops_count %></div>       
+    
+  <div id="tourStepBack">   
+  <%=
+    if @curated_tour_stop.sequential_id > 1 
+      link_to('&#x25C0; Previous Tour Stop'.html_safe, curated_tour_curated_tour_stop_path(@curated_tour.id, @curated_tour_stop.sequential_id - 1))
+    end
+  %>
+  </div>
+  
+  <div id="tourStepNext">
+  <%=
+    if @curated_tour_stop.sequential_id < @curated_tour_stops_count 
+      link_to('Next Tour Stop &#9654;'.html_safe, curated_tour_curated_tour_stop_path(@curated_tour.id, @curated_tour_stop.sequential_id + 1))
+    end
+  %>
+
+  </div>
+</nav>
+
+<section id="tourStopCaption">
   <%= @curated_tour_stop.caption_text %>
-</p>
+</section>
 
-<ul class="experienceTheWork">
+<ul id="tourStopWorks" class="experienceTheWork">
 <% if !@curated_tour_stop.work.work_representations.empty? %>
     <% for wr in @curated_tour_stop.work.work_representations %>
     <li class="<%= wr.fileext %>">
       <% case wr.fileext %>
       <% when 'jpg' %>
-        <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>
+        <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="600"/></a>
       <% when 'gif' %>
-        <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>      
+        <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="600"/></a>      
       <% when 'png' %>
-        <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="400"/></a>    
+        <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="600"/></a>    
       <% when 'mp3' %>
         <audio controls="controls">
           <source src="<%= wr.url %>" type="audio/mpeg" />
         </audio>
       <% when 'vimeo' %> 
         <iframe src="//player.vimeo.com/video/<%= wr.url[/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/, 3] %>?title=0&amp;byline=0&amp;portrait=0" 
-          width="860" height="645" 
+          width="600"
           frameborder="0" 
           webkitallowfullscreen 
           mozallowfullscreen 
@@ -37,7 +59,7 @@
         <% when 'md' %>
           <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
         <% else %>  
-          <div>(( filetype for <em><%= wr.url %></em> is not supported yet ))</div>
+          <div style="display: none;">(( filetype for <em><%= wr.url %></em> is not supported yet ))</div>
       <% end %>
     </li>
     <% end %>
@@ -46,20 +68,6 @@
 <% end %>
 </ul>
 
-<nav>
-<%=
-  if @curated_tour_stop.sequential_id > 1 
-    link_to '<< JUMP BACK JACK', curated_tour_curated_tour_stop_path(@curated_tour.id, @curated_tour_stop.sequential_id - 1)
-  end
-%>
-|||
-<%=
-  if @curated_tour_stop.sequential_id < @curated_tour_stops_count 
-    link_to 'NEXT ON THE TOUR >>', curated_tour_curated_tour_stop_path(@curated_tour.id, @curated_tour_stop.sequential_id + 1)
-  end
-%>
-
 <br /> <br />
 
 <%= link_to 'Back To Beginning',  curated_tour_curated_tour_stop_path(@curated_tour.id, 1) %>
-</nav>

@@ -49,6 +49,72 @@ table {
   }
 }
 
+/*
+  Tour stuff
+*/
 
-ul.experienceTheWork {list-style: none;}
-ul.experienceTheWork li.md div.md-work{border: 1px solid #ccc; padding: 15px;}
+ul.experienceTheWork {
+  list-style: none;
+  
+  li.md div.md-work{ 
+    text-align: left;
+    border: 1px solid #ccc; 
+    padding: 15px; 
+    font-size: 16px;
+    
+    pre,code{
+      margin: 0;
+      padding: 0;
+      font-family: inherit;
+    }  
+  }
+}
+
+
+
+ul#tourStopWorks {
+  margin: 0;
+  padding: 0;
+  width: 750px;
+  text-align: center;
+}
+
+nav#tourStops {
+  position: relative;
+  height: 1.6em;
+  width: 750px;
+  font-weight: bold;
+  margin-bottom: 1em;
+  font-size: 18px;
+  background-color: #eee;
+  
+  #stepCount {
+    text-align: center;
+    position: absolute;
+    width: 750px;
+    top: .1em;
+  }
+  #tourStepBack {
+    width: 200px;
+    position: absolute;
+    text-align: left;
+    top: .1em;
+    left: .1em;
+  }
+  #tourStepNext {
+    width: 200px;
+    position: absolute;
+    right: .1em;
+    text-align: right;
+    top: .1em;
+  }
+}
+
+section#tourStopCaption {
+  width: 750px;
+  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+  font-size: 21px;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
