@@ -1,13 +1,13 @@
-<h1>Listing artists</h1>
+<h1>Artists</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Contact</th>
-      <th>Bio</th>
+      <th>Location</th>        
+      <th>Contact</th>    
       <th>Url</th>
-      <th>Location</th>
+      <th>Bio</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,10 +18,10 @@
     <% @artists.each do |artist| %>
       <tr>
         <td><%= artist.name %></td>
-        <td><%= artist.contact %></td>
-        <td><%= artist.bio %></td>
-        <td><%= artist.url %></td>
-        <td><%= artist.location %></td>
+        <td><%= artist.location %></td>         
+        <td><%= artist.contact %></td>       
+        <td><%= truncate(artist.url.to_s, length: 35) %></td>
+        <td><%= raw(@markdown.render(truncate(artist.bio.to_s, length: 35))) %></td>  
         <td><%= link_to 'Show', artist %></td>
       </tr>
     <% end %>

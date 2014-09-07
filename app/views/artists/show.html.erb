@@ -12,7 +12,7 @@
 
 <p>
   <strong>Bio:</strong>
-  <%= @artist.bio %>
+  <%= raw(@markdown.render @artist.bio) %>
 </p>
 
 <p>
