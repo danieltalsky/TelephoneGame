@@ -40,7 +40,7 @@
           </li>
       <% end %>
   <% else %>
-    <div class="noWorkRepresentations">This Work is Still in Progress</div>
+    <div class="noWorkRepresentations">No file exists in the database for this work yet.</div>
   <% end %>
   </ul>
 </p>
@@ -51,9 +51,6 @@
     <p>
       <h4>Inspired by:</h4>
       <%= link_to h(@work.parent.title), @work.parent %>
-    </p>
-    <p>
-        <h5>Other works inspired by <%= h(@work.parent.title) %></h5>
     </p>
     <% end %>
     </div>    
