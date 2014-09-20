@@ -70,4 +70,6 @@ danielPadmosUser = User.create(:email => 'daniel@dexnewyork.com')
 danielPadmosUser.update_password 'fakePASSWORDSonlyYo'
 mattUser = User.create(:email => 'mattdabrowiak@gmail.com')
 mattUser.update_password 'fakePASSWORDSonlyYo'
+guestUser = User.create(:email => 'demo@satellitecollective.com')
+guestUser.update_password 's_56_&#%6' 
 
