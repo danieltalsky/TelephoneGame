@@ -19,6 +19,13 @@
 <a href="/admin/curated_tours/">curated tours</a> 
 |
 <a href="/admin/curated_tour_stops/">stops on the tour</a> 
+
+<% if signed_in? -%>
+  | <%= button_to t('.sign_out'), sign_out_path, :method => :delete %>
+<% else -%>
+  | <%= link_to t('.sign_in').downcase, sign_in_path %>
+<% end -%> 
+
 </nav>
 <div class="main">
     <%= yield %>

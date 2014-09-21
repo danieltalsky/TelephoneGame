@@ -14,6 +14,11 @@
     <li><a href="/works/by_medium/">works by medium</a></li>
     <li><a href="/artists/">artists</a></li>
     <li><a href="/curated_tours/1/curated_tour_stops/1">curated tour</a></li>
+    <% if signed_in? -%>
+      <li><%= button_to t('.sign_out'), sign_out_path, :method => :delete %></li>
+    <% else -%>
+      <li><%= link_to t('.sign_in').downcase, sign_in_path %></li>
+    <% end -%> 
   </ul>
 </nav>
 <div class="main">
