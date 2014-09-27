@@ -7,7 +7,7 @@ class Admin::DataController < Admin::ApplicationController
   # Step 1
   def import_spreadsheet
 
-    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20140920.csv"
+    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20140927.csv"
     artist_bios_url = "http://telephone.satellitepress.org/artistbios/"
     works_created = 0
     
@@ -54,6 +54,7 @@ class Admin::DataController < Admin::ApplicationController
           tmp_url = artist_bios_url + URI::encode(filename.chomp)
           if tmp_fileext == "md"
               localartist.update(bio: open(tmp_url).read)
+              @data_report << "<div style=\"font-size:10px;\">Bio added for artist: #{row[0] + " " + row[1]}.</div>";
           end
         end  
       end # artist_bios each
@@ -67,7 +68,7 @@ class Admin::DataController < Admin::ApplicationController
         )        
       end  
 
-      @data_report << "<div style=\"font-size:11px;\">Work created for artist: #{row[0] + " " + row[1]}.";
+      @data_report << "<div style=\"font-size:11px;\">Work created for artist: #{row[0] + " " + row[1]}.</div>";
       
     end
     
@@ -102,6 +103,7 @@ class Admin::DataController < Admin::ApplicationController
         
           tmp_fileext = filename.split(".").pop.downcase.chomp
           tmp_url = work_representations_url + URI::encode(filename.chomp)
+          # If the file is a markdown file, store the actual text contents instead of a URL to the work
           if tmp_fileext == "md"
               localRep = WorkRepresentation.create(
                   work_id: localWork.id,
@@ -109,6 +111,14 @@ class Admin::DataController < Admin::ApplicationController
                   fileext: tmp_fileext,
                   text_body_markdown: open(tmp_url).read
               )
+          # If the file is a text file with just a URL in it, store the contents in URL
+          elsif tmp_fileext == "url"   
+               localRep = WorkRepresentation.create(
+                  work_id: localWork.id,
+                  url: open(tmp_url).read,
+                  fileext: tmp_fileext
+              )    
+          # Otherwise just import a URL to the work representation
           else
               localRep = WorkRepresentation.create(
                   work_id: localWork.id,
