@@ -56,6 +56,21 @@ table {
 .inspired {padding: 10px; background: #EEE; width: 48%; height: 200px; float: right;}
 
 /*
+
+  Artist Page
+
+*/
+.bio {
+  margin-top: 1em; 
+  margin-bottom: 1em;
+  text-align: left;
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  font-size: 16px;
+}
+
+
+/*
   Tour stuff
 */
 
@@ -79,6 +94,21 @@ ul.experienceTheWork {
       font-family: inherit;
     }  
   }
+  
+  li div.zip-work { 
+    margin: 10px;
+    text-align: left;
+    border: 1px solid #ccc; 
+    padding: 5px; 
+    font-size: 18px; 
+  } 
+  li div.url-work { 
+    margin: 10px;
+    text-align: left;
+    border: 1px solid #ccc; 
+    padding: 5px; 
+    font-size: 18px; 
+  }   
 }
 
 

@@ -10,6 +10,7 @@ class ArtistsController < ApplicationController
 
   # GET /artists/1
   def show
+    @work = Work.find_by_artist_id(params[:id])
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true) 
   end
 

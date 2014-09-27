@@ -1,28 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @artist.name %>
-</p>
+<h1><%= @artist.name %></h1>
 
-<p>
+<div>
   <strong>Contact:</strong>
   <%= @artist.contact %>
+  
+  <% if ! @artist.url.empty? %>    
+    |
+    <strong>Url:</strong>
+    <%= @artist.url %>
+  <% end %>
+
+  <% if ! @artist.location.empty? %>  
+    |
+    <strong>Location:</strong>
+    <%= @artist.location %>  
+  <% end %>
+</div>
+
+<% if ! @artist.bio.nil? %>
+  <div class="bio">
+    <%= raw(@markdown.render @artist.bio) if @artist.bio %>
+  </div>
+<% end %>
+
+<p>
+<%= 
+link_to 'Back to the work', @work
+%>
 </p>
 
 <p>
-  <strong>Bio:</strong>
-  <%= raw(@markdown.render @artist.bio) if @artist.bio %>
+<%= link_to 'View all artists', artists_path %>
 </p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @artist.url %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @artist.location %>
-</p>
-
-<%= link_to 'Back', artists_path %>

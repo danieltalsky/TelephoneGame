@@ -44,6 +44,7 @@ class WorksController < ApplicationController
   
   # GET /works/1
   def show
+    @artist = Artist.find_by_id(@work.artist_id);
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)  
   end
 
