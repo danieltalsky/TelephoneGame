@@ -7,7 +7,7 @@ class Admin::DataController < Admin::ApplicationController
   # Step 1
   def import_spreadsheet
 
-    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20140927.csv"
+    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20141014.csv"
     artist_bios_url = "http://telephone.satellitepress.org/artistbios/"
     works_created = 0
     
