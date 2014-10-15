@@ -8,12 +8,7 @@ class Admin::DataController < Admin::ApplicationController
   def import_spreadsheet
 
     works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20141014.csv"
-    artist_bios_url = "http://telephone.satellitepress.org/artistbios/"
     works_created = 0
-    
-    # populate artist bio file list
-    artist_bios_html = open(artist_bios_url).read
-    artist_bios = artist_bios_html.scan(/(?<=")\d\d\d\d[^<>]+(?=")/)    
   
     @data_report = "<h2>Starting spreadsheet import</h2>";  
     
@@ -47,18 +42,6 @@ class Admin::DataController < Admin::ApplicationController
 
       works_created += 1             
       
-      # Bios in markdown 
-      artist_bios.each do |filename| 
-        if filename.start_with?(localWork.full_orig_id)       
-          tmp_fileext = filename.split(".").pop.downcase.chomp
-          tmp_url = artist_bios_url + URI::encode(filename.chomp)
-          if tmp_fileext == "md"
-              localartist.update(bio: open(tmp_url).read)
-              @data_report << "<div style=\"font-size:10px;\">Bio added for artist: #{row[0] + " " + row[1]}.</div>";
-          end
-        end  
-      end # artist_bios each
-      
       # Vimeo URL's are a special case for videos where the work representation URL is stored in the spreadsheet
       if row[14][0,4]=='http'
         vimeoRep = WorkRepresentation.create(
@@ -76,10 +59,41 @@ class Admin::DataController < Admin::ApplicationController
     
   end #end import_spreadsheet
   
+  def import_bios
+
+    artist_bios_url = "http://telephone.satellitepress.org/artistbios/"
+
+    @data_report = "<h2>Starting artist bio import</h2>";
+
+    # populate artist bio file list
+    artist_bios_html = open(artist_bios_url).read
+    artist_bios = artist_bios_html.scan(/(?<=")\d\d\d\d[^<>]+(?=")/)    
+  
+    # Bios in markdown 
+    artist_bios.each do |filename| 
+      
+      filename_id_prefix = filename[0,9]
+      work = Work.find_by full_orig_id: filename_id_prefix 
+      if ! work.nil?
+        artist = Artist.find_by_id work.artist_id
+      else
+        @data_report << "<div style=\"font-size:10px; background: pink;\">Couldn't find an artist for this file: #{filename}.</div>";
+      end
+      
+      if ! artist.nil?      
+        filetype = filename.split(".").pop.downcase.chomp       
+        if filetype == "md"
+            biopath = artist_bios_url + URI::encode(filename.chomp)
+            artist.update(bio: open(biopath).read)
+            @data_report << "<div style=\"font-size:10px;\">Bio added for artist: #{artist.name}.</div>";
+        end
+      end  
+    end # artist_bios each  
+  
+  end #end import_bios
   
   
-  
-  # step 2
+  # step 3
   def import_work_representations
 
     work_representations_url = "http://telephone.satellitepress.org/workrepresentations/"
@@ -140,7 +154,7 @@ class Admin::DataController < Admin::ApplicationController
   
   
   
-  #step 3
+  #step 4
   def populate_tour
     
     @data_report = "<h2>Starting tour population</h2>";

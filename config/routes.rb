@@ -22,6 +22,7 @@ TelephoneGame::Application.routes.draw do
     resources :curated_tour_stops
     resources :curated_tours
     get "data/import_spreadsheet"
+    get "data/import_bios"    
     get "data/import_work_representations"
     get "data/populate_tour"
     get "works/tree"
