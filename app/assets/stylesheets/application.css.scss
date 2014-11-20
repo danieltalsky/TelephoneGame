@@ -3,8 +3,38 @@
   They will automatically be included in application.css.
 */
 $telephoneRed: #CB213E;
+$workNavBG: #e0e0e0;
 
-body { font-family: Corbel, Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", sans-serif;}
+$categoryPhotography: #e96a1e;
+
+/*
+ * Web Fonts from fontspring.com
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ * (c) 2010-2014 Fontspring
+ * The fonts included are copyrighted by the vendor listed below.
+ * Vendor:      Mark Simonson Studio
+ * License URL: http://www.fontspring.com/licenses/mark-simonson-studio/webfont
+ */
+
+@font-face {
+    font-family: 'proxima_nova_ltlight';
+    src: font-url('ProximaNova-Light-webfont.eot');
+    src: font-url('ProximaNova-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('ProximaNova-Light-webfont.woff2') format('woff2'),
+         font-url('ProximaNova-Light-webfont.woff') format('woff'),
+         font-url('ProximaNova-Light-webfont.ttf') format('truetype'),
+         font-url('ProximaNova-Light-webfont.svg#proxima_nova_ltlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body { font-family: 'proxima_nova_ltlight', 'Times New Roman', sans-serif;}
 figure#logo { margin: 0 0 20px 20px; }
 
 a {
@@ -13,6 +43,7 @@ a {
   &:hover { color: #510D1A }
 }
 
+.main { width: 960px; border: 1px solid #999; padding: 20px; margin: 40px auto; clear: both; position: relative;}
 
 nav {
   ul {
@@ -29,7 +60,7 @@ nav {
   }
 }
 
-.main { padding: 20px; padding-top: 2px; clear: both;}
+
 
 h1 {
   margin-left: -22px;
@@ -37,6 +68,7 @@ h1 {
   background: $telephoneRed;
   color: white;
   font-weight: normal;
+  display: none;
 }
 
 table {
@@ -52,35 +84,36 @@ table {
 /*
   Works
 */
-.inspiredby {padding: 10px; background: #EEE; width: 48%; height: 200px; float: left;}
-.inspired {padding: 10px; background: #EEE; width: 48%; height: 200px; float: right;}
-
-/*
-
-  Artist Page
-
-*/
-.bio {
-  margin-top: 1em; 
-  margin-bottom: 1em;
-  text-align: left;
-  border: 1px solid #ccc; 
-  padding: 10px; 
-  font-size: 16px;
+section.workInfoPane { position: absolute; left: 20px; top: 20px; text-transform: uppercase; }
+section.artistInfo { 
+  width: 200px; background-color: $categoryPhotography; color: white; 
+  .artistName { font-size: 28px; line-height: 90%; padding: 16px 0 0 16px;}
+  .workMedium { font-size: 20px; margin: 11px 0; padding: 0 0 0 16px; }
+  .workLocation { font-size: 14px; width: 65%; padding: 0 0 14px 16px; }
+  a.bioLink { color: white; border: 1px solid white; margin-right: 16px; padding: 1px; width: 20%; float: right;  }  
 }
 
-
-/*
-  Tour stuff
-*/
-
-div.curator {
-  margin-top: -1em;
-  margin-bottom: 1em;
+nav.workNav {
+  clear: both;
+  a { display: block; margin-top: 14px; border: 1px solid $telephoneRed; width: 200px; text-align: center; color: $telephoneRed;  }
+  a.homeLink { font-size: 48px; }
+  a.mapLink { font-size: 31px; }
 }
+
+.whatCameBefore {position: absolute; left: 20px; bottom: 20px; width: 122px; height: 140px; background: $workNavBG; }
+.whatCameNext {position: absolute; right: 20px; top: 20px; width: 79px; height: 340px; background: $workNavBG; }
 
 ul.experienceTheWork {
+
+  margin: 0px;
+  margin-left: 244px;
+  margin-top: 120px;
+  padding: 0px;
   list-style: none;
+  
+  img {
+    border: 1px solid #999;
+  }
   
   li.md div.md-work{ 
     text-align: left;
@@ -111,7 +144,29 @@ ul.experienceTheWork {
   }   
 }
 
+/*
 
+  Artist Page
+
+*/
+.bio {
+  margin-top: 1em; 
+  margin-bottom: 1em;
+  text-align: left;
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  font-size: 16px;
+}
+
+
+/*
+  Tour stuff
+*/
+
+div.curator {
+  margin-top: -1em;
+  margin-bottom: 1em;
+}
 
 ul#tourStopWorks {
   margin: 0;
@@ -158,4 +213,3 @@ section#tourStopCaption {
   text-align: center;
   margin-bottom: 1em;
 }
-

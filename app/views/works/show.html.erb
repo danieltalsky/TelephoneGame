@@ -1,85 +1,82 @@
-<p id="notice"><%= notice %></p>
-
-<h1>
-  <%= @work.title %>
-</h1>
-
-
-<% if !@artist.bio.nil? 
-%>  
-  <h3><%= link_to h('Read more about the artist and work...'), @work.artist %></h3>
-<% 
-end 
-%>
-
-
-<p>
-  <h2>Experience the work:</h2>
-  <ul class="experienceTheWork">
-  <% if !@work.work_representations.empty? %>
-      <% for wr in @work.work_representations %>
-          <li class="<%= wr.fileext %>">
-            <% case wr.fileext %>
-            <% when 'url' %>
-              <div class="url-work">This work is an external website. Visit it by clicking on the link: <a href="<%= wr.url %>" target="_blank"><%= wr.url %></a></div>           
-            <% when 'jpg' %>
-              <a href="<%= wr.url %>"><img src="<%= wr.url %><%#= get_resized_jpg_path(wr.url) %>" width="600"/></a>
-            <% when 'gif' %>
-              <a href="<%= wr.url %>"><img src="<%= wr.url %>" /></a>      
-            <% when 'png' %>
-              <a href="<%= wr.url %>"><img src="<%= wr.url %><%#= get_resized_jpg_path(wr.url) %>" width="600"/></a>   
-            <% when 'pdf' %>
-              <a href="<%= wr.url %>" target="_blank">Open the original PDF document of this work.</a>    
-            <% when 'zip' %>
-              <div class="zip-work">This work has a downloadable ZIP file: <a href="<%= wr.url %>"><%= wr.url %></a></div>                  
-            <% when 'mp3' %>
-              <audio controls="controls">
-                <source src="<%= wr.url %>" type="audio/mpeg" />
-              </audio>
-            <% when 'vimeo' %> 
-              <iframe src="//player.vimeo.com/video/<%= wr.url[/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/, 3] %>?title=0&amp;byline=0&amp;portrait=0" 
-                width="860" height="645" 
-                frameborder="0" 
-                webkitallowfullscreen 
-                mozallowfullscreen 
-                allowfullscreen></iframe>            
-              <% when 'md' %>
-                <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
-              <% else %>  
-                <div style="font-size: 11px; background-color: pink;">(( filetype for <em><%= wr.url %></em> is not supported  ))</div>
-            <% end %>
-          </li>
-      <% end %>
-  <% else %>
-    <div class="noWorkRepresentations">No file exists in the database for this work yet.</div>
-  <% end %>
-  </ul>
-</p>
-
-<div class="inspirationNavigation">
-    <div class="inspiredby">
-    <% unless @work.parent.nil? %>
-    <p>
-      <h4>Inspired by:</h4>
-      <%= link_to h(@work.parent.title), @work.parent %>
-    </p>
+<section class="workInfoPane">
+  <section class="artistInfo">
+    <div class="artistName"><%= @work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
+    <div class="workMedium"><%= @work.medium %></div>
+    <% if !@artist.bio.nil? %>  
+      <%= link_to h('bio'), @work.artist, :class => "bioLink" %>
     <% end %>
-    </div>    
-    
-    <div class="inspired">
-    <% unless @work.children.empty? %>
-    <p>
-      <h4>Inspired:</h4>
-        <ul id="submenu">
-          <% for work in @work.children %>
-            <li><%= link_to h(work.title), work %></li>
+    <div class="workLocation"><%= @work.artist.location.gsub(/\s+/, '<br>').html_safe %></div>
+  </section>
+  
+  <nav class="workNav">
+    <a class="homeLink" href="/">Home</a>
+    <a class="mapLink" href="/works/tree">The Map</a>
+  </nav>
+</section>
+
+<ul class="experienceTheWork">
+<% if !@work.work_representations.empty? %>
+    <% for wr in @work.work_representations %>
+        <li class="<%= wr.fileext %>">
+          <% case wr.fileext %>
+          <% when 'url' %>
+            <div class="url-work">This work is an external website. Visit it by clicking on the link: <a href="<%= wr.url %>" target="_blank"><%= wr.url %></a></div>           
+          <% when 'jpg' %>
+            <a href="<%= wr.url %>"><img src="<%= wr.url %><%#= get_resized_jpg_path(wr.url) %>" width="600"/></a>
+          <% when 'gif' %>
+            <a href="<%= wr.url %>"><img src="<%= wr.url %>" /></a>      
+          <% when 'png' %>
+            <a href="<%= wr.url %>"><img src="<%= wr.url %><%#= get_resized_jpg_path(wr.url) %>" width="600"/></a>   
+          <% when 'pdf' %>
+            <a href="<%= wr.url %>" target="_blank">Open the original PDF document of this work.</a>    
+          <% when 'zip' %>
+            <div class="zip-work">This work has a downloadable ZIP file: <a href="<%= wr.url %>"><%= wr.url %></a></div>                  
+          <% when 'mp3' %>
+            <audio controls="controls">
+              <source src="<%= wr.url %>" type="audio/mpeg" />
+            </audio>
+          <% when 'vimeo' %> 
+            <iframe src="//player.vimeo.com/video/<%= wr.url[/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/, 3] %>?title=0&amp;byline=0&amp;portrait=0" 
+              width="860" height="645" 
+              frameborder="0" 
+              webkitallowfullscreen 
+              mozallowfullscreen 
+              allowfullscreen></iframe>            
+            <% when 'md' %>
+              <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
+            <% else %>  
+              <div style="font-size: 11px; background-color: pink;">(( filetype for <em><%= wr.url %></em> is not supported  ))</div>
           <% end %>
-        </ul>
-    </p>
+        </li>
     <% end %>
-    </div>
-</div>
+<% else %>
+  <div class="noWorkRepresentations">No file exists in the database for this work yet.</div>
+<% end %>
+</ul>
 
-<div style="clear:both;">
-<%= link_to 'Back', works_path %>
+<section class="whatCameBefore">
+<% unless @work.parent.nil? %>
+<p>
+  <h4>What Came Before</h4>
+  <%= link_to h(@work.parent.title), @work.parent %>
+</p>
+<% end %>
+</section>    
+
+<section class="whatCameNext">
+<% unless @work.children.empty? %>
+<p>
+  <h4>What Came Next</h4>
+    <!--
+    <ul id="submenu">
+      <% for work in @work.children %>
+        <li><%= link_to h(work.title), work %></li>
+      <% end %>
+    </ul>
+    -->
+</p>
+<% end %>
+</section>
+
+
 </div>
