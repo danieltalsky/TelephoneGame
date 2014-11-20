@@ -56,25 +56,27 @@
 
 <section class="whatCameBefore">
 <% unless @work.parent.nil? %>
-<p>
-  <h4>What Came Before</h4>
-  <%= link_to h(@work.parent.title), @work.parent %>
-</p>
+  <header>What<br>Came<br>Before</header>
+  <%= link_to h(image_tag('workCameBeforeNavDefault.png', :alt => @work.parent.title)), @work.parent %> 
 <% end %>
 </section>    
 
 <section class="whatCameNext">
 <% unless @work.children.empty? %>
-<p>
-  <h4>What Came Next</h4>
-    <!--
-    <ul id="submenu">
-      <% for work in @work.children %>
-        <li><%= link_to h(work.title), work %></li>
-      <% end %>
-    </ul>
-    -->
-</p>
+  <header>What<br>Came<br>Next</header>
+	<ul>
+  	<% for work in @work.children %>
+    	<li title="<%=work.title %>">
+            <%= link_to h(image_tag('workCameNextNavDefault.png', :alt => work.parent.title)), work %>
+            <div class="connectLine">ff</div>
+            <section class="artistInfo">
+                <div class="artistName"><%= work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
+                <div class="workMedium"><%= work.medium %></div>
+                <div class="workLocation"><%= work.artist.location.gsub(/\s+/, '<br>').html_safe %></div>
+            </section>
+    	</li>
+  	<% end %>
+	</ul>
 <% end %>
 </section>
 

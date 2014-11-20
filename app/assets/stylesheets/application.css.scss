@@ -50,47 +50,27 @@ nav {
     border: 0;
     padding: 0;
     list-style-type: none;
-    li {
-      float: left;
-      margin-left: 20px;
-      a {
-        font-size: 24px;
-      }
-    }
+    li { float: left;  margin-left: 20px; }
   }
 }
 
-
-
-h1 {
-  margin-left: -22px;
-  padding: 6px 0 6px 20px;
-  background: $telephoneRed;
-  color: white;
-  font-weight: normal;
-  display: none;
-}
+h1 { display: none; }
 
 table {
-  th {
-    text-align: left;
-    padding: 3px;
-  }
-  td {
-    padding: 3px;
-  }
+  th { text-align: left;padding: 3px; }
+  td { padding: 3px; }
 }
 
 /*
-  Works
-*/
+ *   Works
+ */
 section.workInfoPane { position: absolute; left: 20px; top: 20px; text-transform: uppercase; }
 section.artistInfo { 
   width: 200px; background-color: $categoryPhotography; color: white; 
-  .artistName { font-size: 28px; line-height: 90%; padding: 16px 0 0 16px;}
-  .workMedium { font-size: 20px; margin: 11px 0; padding: 0 0 0 16px; }
+  .artistName { font-size: 28px; line-height: 90%; padding: 16px 0 0 16px; }
+  .workMedium { font-size: 20px; margin: 11px 0; padding: 0 0 0 16px; } 
   .workLocation { font-size: 14px; width: 65%; padding: 0 0 14px 16px; }
-  a.bioLink { color: white; border: 1px solid white; margin-right: 16px; padding: 1px; width: 20%; float: right;  }  
+  a.bioLink { color: white; border: 1px solid white; margin-right: 16px; padding: 1px; width: 20%; float: right; }  
 }
 
 nav.workNav {
@@ -100,20 +80,34 @@ nav.workNav {
   a.mapLink { font-size: 31px; }
 }
 
-.whatCameBefore {position: absolute; left: 20px; bottom: 20px; width: 122px; height: 140px; background: $workNavBG; }
-.whatCameNext {position: absolute; right: 20px; top: 20px; width: 79px; height: 340px; background: $workNavBG; }
+@mixin h4title { position: absolute; text-transform: uppercase; font-size: 14px; line-height: 95%; }
+.whatCameBefore {position: absolute; left: 20px; top: 500px; width: 122px; height: 140px; background: $workNavBG; 
+  header { @include h4title; left: 10px; bottom: 10px; }
+  a { position: absolute; right: 0; top: 0; }
+}
+@mixin rotator {
+  -webkit-transform: rotate(-40deg);
+  -moz-transform: rotate(-40deg);
+  transform: rotate(-40deg);
+}
+.whatCameNext {position: absolute; right: 20px; top: 20px; width: 79px; height: 340px; background: $workNavBG; 
+  header { @include h4title; left: 10px; top: 10px; }
+  ul { position: absolute; top: 110px; margin: 0; padding: 0; list-style: none; }
+  li { margin: 0; padding: 0; margin-top: -40px; 
+    div.connectLine { position: absolute; width: 300px; top: 75px; right: -14px; @include rotator; border-top: 2px solid red;}
+    section.artistInfo { position: absolute; top: 300px; left: -300px; }
+  }
+  a {  }
+}
 
 ul.experienceTheWork {
-
   margin: 0px;
   margin-left: 244px;
   margin-top: 120px;
   padding: 0px;
   list-style: none;
   
-  img {
-    border: 1px solid #999;
-  }
+  img { border: 1px solid #999; }
   
   li.md div.md-work{ 
     text-align: left;
@@ -121,10 +115,7 @@ ul.experienceTheWork {
     padding: 15px; 
     font-size: 16px;
     
-    pre,code{
-      margin: 0;
-      padding: 0;
-      font-family: inherit;
+    pre,code{ margin: 0; padding: 0; font-family: inherit;
     }  
   }
   
