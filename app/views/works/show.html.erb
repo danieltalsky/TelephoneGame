@@ -1,12 +1,18 @@
+<!-- Work Information Pane -->
 <section class="workInfoPane">
   <section class="artistInfo">
     <div class="artistName"><%= @work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
     <div class="workMedium"><%= @work.medium %></div>
-    <% if !@artist.bio.nil? %>  
-      <%= link_to h('bio'), @work.artist, :class => "bioLink" %>
-    <% end %>
     <div class="workLocation"><%= @work.artist.location.gsub(/\s+/, '<br>').html_safe %></div>
   </section>
+  
+  <% unless @artist.bio.nil? %>  
+  <nav class="bioNav"> 
+        <a id="artLink" href="#" class="selected">Art</a>
+        <a id="moreInfoLink" href="#">More Info</a>
+        <!-- <%= link_to h('bio'), @work.artist, :class => "bioLink" %> -->   
+  </nav>
+  <% end %>
   
   <nav class="workNav">
     <a class="homeLink" href="/">Home</a>
@@ -14,6 +20,7 @@
   </nav>
 </section>
 
+<!-- Work Representations -->
 <ul class="experienceTheWork">
 <% if !@work.work_representations.empty? %>
     <% for wr in @work.work_representations %>
@@ -32,12 +39,13 @@
           <% when 'zip' %>
             <div class="zip-work">This work has a downloadable ZIP file: <a href="<%= wr.url %>"><%= wr.url %></a></div>                  
           <% when 'mp3' %>
+            <p>Press play to hear this recording:</p>
             <audio controls="controls">
               <source src="<%= wr.url %>" type="audio/mpeg" />
             </audio>
           <% when 'vimeo' %> 
             <iframe src="//player.vimeo.com/video/<%= wr.url[/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/, 3] %>?title=0&amp;byline=0&amp;portrait=0" 
-              width="860" height="645" 
+              width="540" height="405" 
               frameborder="0" 
               webkitallowfullscreen 
               mozallowfullscreen 
@@ -53,6 +61,12 @@
   <div class="noWorkRepresentations">No file exists in the database for this work yet.</div>
 <% end %>
 </ul>
+
+<% unless @artist.bio.nil? %>  
+<section class="moreInfo">
+    <%= raw(@markdown.render @work.artist.bio) %>    
+</section>
+<% end %>
 
 <section class="whatCameBefore">
 <% unless @work.parent.nil? %>
