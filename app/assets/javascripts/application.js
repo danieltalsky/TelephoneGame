@@ -39,6 +39,26 @@ $( document ).ready(function() {
         $("section.moreInfo").show();
         console.log('moreinfo link clicked');
     });
+    console.log('loading');
+    /*
+     * Next Work Nav Rollovers
+     */
+    $("a.nextWork").hover(
+        function() {      
+            /* Roll Over */      
+            var workId = $(this).attr('id');
+            $("#nextWorkInfo" + workId).show();
+        
+      }, function() {
+        /* Roll Out */
+        var workId = $(this).attr('id');
+        $("#nextWorkInfo" + workId).hide();
+      }
+    );        
+            
+        
+
+ 
 });
 
 

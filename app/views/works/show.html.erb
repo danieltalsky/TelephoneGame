@@ -81,12 +81,18 @@
 	<ul>
   	<% for work in @work.children %>
     	<li title="<%=work.title %>">
-            <%= link_to h(image_tag('workCameNextNav' + work.medium.downcase! + '.png', :alt => work.parent.title)), work %>
+            <%= 
+                link_to h(image_tag(
+                    'workCameNextNav' + work.medium.downcase + '.png', 
+                    :alt    => work.parent.title,
+                )), work,                     :class  => 'nextWork',
+                    :id     => work.id 
+            %>
             <div class="connectLine">ff</div>
-            <section class="artistInfo">
-                <div class="artistName"><%= work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
-                <div class="workMedium"><%= work.medium %></div>
-                <div class="workLocation"><%= work.artist.location.gsub(/\s+/, '<br>').html_safe %></div>
+            <section class="artistInfo category<%= work.medium %>" id="nextWorkInfo<%= work.id %>">
+              <div class="artistName"><%= work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
+              <div class="workMedium"><%= work.medium %></div>
+              <div class="workLocation"><%= work.artist.location.gsub(/[,]\s+/, '<br>').html_safe %></div>
             </section>
     	</li>
   	<% end %>
