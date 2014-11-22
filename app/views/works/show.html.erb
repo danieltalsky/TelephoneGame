@@ -1,6 +1,6 @@
 <!-- Work Information Pane -->
 <section class="workInfoPane">
-  <section class="artistInfo">
+  <section class="artistInfo <%= @work.medium %>">
     <div class="artistName"><%= @work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
     <div class="workMedium"><%= @work.medium %></div>
     <div class="workLocation"><%= @work.artist.location.gsub(/\s+/, '<br>').html_safe %></div>
@@ -71,7 +71,7 @@
 <section class="whatCameBefore">
 <% unless @work.parent.nil? %>
   <header>What<br>Came<br>Before</header>
-  <%= link_to h(image_tag('workCameBeforeNavDefault.png', :alt => @work.parent.title)), @work.parent %> 
+  <%= link_to h(image_tag('workCameBeforeNav' + @work.parent.medium.downcase! + '.png', :alt => @work.parent.title)), @work.parent %> 
 <% end %>
 </section>    
 
@@ -81,7 +81,7 @@
 	<ul>
   	<% for work in @work.children %>
     	<li title="<%=work.title %>">
-            <%= link_to h(image_tag('workCameNextNavDefault.png', :alt => work.parent.title)), work %>
+            <%= link_to h(image_tag('workCameNextNav' + work.medium.downcase! + '.png', :alt => work.parent.title)), work %>
             <div class="connectLine">ff</div>
             <section class="artistInfo">
                 <div class="artistName"><%= work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>

@@ -5,8 +5,39 @@
 $telephoneRed: #CB213E;
 $workNavBG: #e0e0e0;
 
+$categoryDesign: purple;
+$categoryMultimedia: purple;
+$categoryPerformance: purple;
+$categoryPrint: purple;
+$categoryInstallation: purple;
+$categoryProse: purple;
+$categoryPoetry: purple;
+$categoryMusic: purple;
+$categoryAudio: purple;
+$categoryCollage: purple;
+$categoryPainting: purple;
+$scategorySculpture: purple;
 $categoryPhotography: #e96a1e;
+$categoryFilm: purple;
+$categoryEmbroidery: purple;
+$categoryOther: purple;
 
+@mixin categoryDesignBackground { color: $categoryDesign; border-color: $categoryDesign;}
+@mixin categoryMultimediaBackground { color: $categoryMultimedia; border-color: $categoryMultimedia;}
+@mixin categoryPerformanceBackground { color: $categoryPerformance; border-color: $categoryPerformance;}
+@mixin categoryPrintBackground { color: $categoryPrint; border-color: $categoryPrint;}
+@mixin categoryInstallationBackground { color: $categoryInstallation; border-color: $categoryInstallation;}
+@mixin categoryProseBackground { color: $categoryProse; border-color: $categoryProse;}
+@mixin categoryPoetryBackground { color: $categoryPoetry; border-color: $categoryPoetry;}
+@mixin categoryMusicBackground { color: $categoryMusic; border-color: $categoryMusic;}
+@mixin categoryAudioBackground { color: $categoryAudio; border-color: $categoryAudio;}
+@mixin categoryCollageBackground { color: $categoryCollage; border-color: $categoryCollage;}
+@mixin categoryPaintingBackground { color: $categoryPainting; border-color: $categoryPainting;}
+@mixin categorySculptureBackground { color: $scategorySculpture; border-color: $scategorySculpture;}
+@mixin categoryPhotographyBackground { color: $categoryPhotography; border-color: $categoryPhotography;}
+@mixin categoryFilmBackground { color: $categoryFilm; border-color: $categoryFilm;}
+@mixin categoryEmbroideryBackground { color: $categoryEmbroidery; border-color: $categoryEmbroidery;}
+@mixin categoryOtherBackground { color: $categoryOther; border-color: $categoryOther;}
 /*
  * Web Fonts from fontspring.com
  * All OpenType features and all extended glyphs have been removed.
@@ -77,6 +108,28 @@ section.artistInfo {
   .workLocation { font-size: 14px; width: 65%; padding: 0 0 14px 16px; }
   a.bioLink { color: white; border: 1px solid white; margin-right: 16px; padding: 1px; width: 20%; float: right; }  
 }
+
+/*
+section.Design        { @import categoryDesignBackground; }
+section.Multimedia    { @import categoryMultimediaBackground; }
+section.Performance   { @import categoryPerformanceBackground; }
+section.Print         { @import categoryPrintBackground; }
+section.Installation  { @import categoryInstallationBackground; }
+section.Prose         { @import categoryProseBackground; }
+section.Poetry        { @import categoryPoetryBackground; }
+section.Music         { @import categoryMusicBackground; }
+section.Audio         { @import categoryAudioBackground; }
+section.Collage       { @import categoryCollageBackground; }
+section.Painting      { @import categoryPaintingBackground; }
+section.Sculpture     { @import categorySculptureBackground; }
+section.Photography   { @import categoryPhotographyBackground; }
+section.Film          { @import categoryFilmBackground; }
+section.Embroidery    { @import categoryEmbroideryBackground; }
+section.Other         { @import categoryOtherBackground; }
+*/
+
+
+
 @mixin bioNavLink { 
   display: block; float: left; margin: 2px 2px 14px 0; border: 2px solid $categoryPhotography; padding: 3px 0; 
   text-align: center; font-size: 21px;  color: $categoryPhotography; 
