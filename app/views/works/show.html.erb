@@ -1,15 +1,15 @@
 <!-- Work Information Pane -->
 <section class="workInfoPane">
-  <section class="artistInfo <%= @work.medium %>">
+  <section class="artistInfo category<%= @work.medium %>">
     <div class="artistName"><%= @work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
     <div class="workMedium"><%= @work.medium %></div>
     <div class="workLocation"><%= @work.artist.location.gsub(/\s+/, '<br>').html_safe %></div>
   </section>
   
   <% unless @artist.bio.nil? %>  
-  <nav class="bioNav"> 
-        <a id="artLink" href="#" class="selected">Art</a>
-        <a id="moreInfoLink" href="#">More Info</a>
+  <nav class="bioNav category<%= @work.medium %>"> 
+        <a class="artLink selected" href="#">Art</a>
+        <a class="moreInfoLink" href="#">More Info</a>
         <!-- <%= link_to h('bio'), @work.artist, :class => "bioLink" %> -->   
   </nav>
   <% end %>

@@ -5,39 +5,58 @@
 $telephoneRed: #CB213E;
 $workNavBG: #e0e0e0;
 
-$categoryDesign: purple;
-$categoryMultimedia: purple;
-$categoryPerformance: purple;
-$categoryPrint: purple;
-$categoryInstallation: purple;
-$categoryProse: purple;
-$categoryPoetry: purple;
-$categoryMusic: purple;
-$categoryAudio: purple;
-$categoryCollage: purple;
-$categoryPainting: purple;
-$scategorySculpture: purple;
+$categoryDesign: #99cc66;
+$categoryMultimedia: #cc99cc;
+$categoryPerformance: #cc9999;
+$categoryPrint: #99cc66;
+$categoryInstallation: #990099;
+$categoryProse: #996633;
+$categoryPoetry: #ffcc00;
+$categoryMusic: #ff6633;
+$categoryAudio: #ff6633;
+$categoryCollage: #cc99cc;
+$categoryPainting: #ff9933;
+$scategorySculpture: #333399;
 $categoryPhotography: #e96a1e;
-$categoryFilm: purple;
-$categoryEmbroidery: purple;
-$categoryOther: purple;
+$categoryFilm: #cc0033;
+$categoryVideo: #cc0033;
+$categoryEmbroidery: #666666;
+$categoryOther: #666666;
 
-@mixin categoryDesignBackground { color: $categoryDesign; border-color: $categoryDesign;}
-@mixin categoryMultimediaBackground { color: $categoryMultimedia; border-color: $categoryMultimedia;}
-@mixin categoryPerformanceBackground { color: $categoryPerformance; border-color: $categoryPerformance;}
-@mixin categoryPrintBackground { color: $categoryPrint; border-color: $categoryPrint;}
-@mixin categoryInstallationBackground { color: $categoryInstallation; border-color: $categoryInstallation;}
-@mixin categoryProseBackground { color: $categoryProse; border-color: $categoryProse;}
-@mixin categoryPoetryBackground { color: $categoryPoetry; border-color: $categoryPoetry;}
-@mixin categoryMusicBackground { color: $categoryMusic; border-color: $categoryMusic;}
-@mixin categoryAudioBackground { color: $categoryAudio; border-color: $categoryAudio;}
-@mixin categoryCollageBackground { color: $categoryCollage; border-color: $categoryCollage;}
-@mixin categoryPaintingBackground { color: $categoryPainting; border-color: $categoryPainting;}
-@mixin categorySculptureBackground { color: $scategorySculpture; border-color: $scategorySculpture;}
-@mixin categoryPhotographyBackground { color: $categoryPhotography; border-color: $categoryPhotography;}
-@mixin categoryFilmBackground { color: $categoryFilm; border-color: $categoryFilm;}
-@mixin categoryEmbroideryBackground { color: $categoryEmbroidery; border-color: $categoryEmbroidery;}
-@mixin categoryOtherBackground { color: $categoryOther; border-color: $categoryOther;}
+@mixin categoryDesignForeground { color: $categoryDesign; border-color: $categoryDesign;}
+@mixin categoryMultimediaForeground { color: $categoryMultimedia; border-color: $categoryMultimedia;}
+@mixin categoryPerformanceForeground { color: $categoryPerformance; border-color: $categoryPerformance;}
+@mixin categoryPrintForeground { color: $categoryPrint; border-color: $categoryPrint;}
+@mixin categoryInstallationForeground { color: $categoryInstallation; border-color: $categoryInstallation;}
+@mixin categoryProseForeground { color: $categoryProse; border-color: $categoryProse;}
+@mixin categoryPoetryForeground { color: $categoryPoetry; border-color: $categoryPoetry;}
+@mixin categoryMusicForeground { color: $categoryMusic; border-color: $categoryMusic;}
+@mixin categoryAudioForeground { color: $categoryAudio; border-color: $categoryAudio;}
+@mixin categoryCollageForeground { color: $categoryCollage; border-color: $categoryCollage;}
+@mixin categoryPaintingForeground { color: $categoryPainting; border-color: $categoryPainting;}
+@mixin categorySculptureForeground { color: $scategorySculpture; border-color: $scategorySculpture;}
+@mixin categoryPhotographyForeground { color: $categoryPhotography; border-color: $categoryPhotography;}
+@mixin categoryFilmForeground { color: $categoryFilm; border-color: $categoryFilm; }
+@mixin categoryEmbroideryForeground { color: $categoryEmbroidery; border-color: $categoryEmbroidery;}
+@mixin categoryOtherForeground { color: $categoryOther; border-color: $categoryOther;}
+
+@mixin categoryDesignBackground { background: $categoryDesign; border-color: $categoryDesign;}
+@mixin categoryMultimediaBackground { background: $categoryMultimedia; border-color: $categoryMultimedia;}
+@mixin categoryPerformanceBackground { background: $categoryPerformance; border-color: $categoryPerformance;}
+@mixin categoryPrintBackground { background: $categoryPrint; border-color: $categoryPrint;}
+@mixin categoryInstallationBackground { background: $categoryInstallation; border-color: $categoryInstallation;}
+@mixin categoryProseBackground { background: $categoryProse; border-color: $categoryProse;}
+@mixin categoryPoetryBackground { background: $categoryPoetry; border-color: $categoryPoetry;}
+@mixin categoryMusicBackground { background: $categoryMusic; border-color: $categoryMusic;}
+@mixin categoryAudioBackground { background: $categoryAudio; border-color: $categoryAudio;}
+@mixin categoryCollageBackground { background: $categoryCollage; border-color: $categoryCollage;}
+@mixin categoryPaintingBackground { background: $categoryPainting; border-color: $categoryPainting;}
+@mixin categorySculptureBackground { background: $scategorySculpture; border-color: $scategorySculpture;}
+@mixin categoryPhotographyBackground { background: $categoryPhotography; border-color: $categoryPhotography;}
+@mixin categoryFilmBackground { background: $categoryFilm; border-color: $categoryFilm; }
+@mixin categoryEmbroideryBackground { background: $categoryEmbroidery; border-color: $categoryEmbroidery;}
+@mixin categoryOtherBackground { background: $categoryOther; border-color: $categoryOther;}
+
 /*
  * Web Fonts from fontspring.com
  * All OpenType features and all extended glyphs have been removed.
@@ -108,40 +127,70 @@ section.artistInfo {
   .workLocation { font-size: 14px; width: 65%; padding: 0 0 14px 16px; }
   a.bioLink { color: white; border: 1px solid white; margin-right: 16px; padding: 1px; width: 20%; float: right; }  
 }
-
-/*
-section.Design        { @import categoryDesignBackground; }
-section.Multimedia    { @import categoryMultimediaBackground; }
-section.Performance   { @import categoryPerformanceBackground; }
-section.Print         { @import categoryPrintBackground; }
-section.Installation  { @import categoryInstallationBackground; }
-section.Prose         { @import categoryProseBackground; }
-section.Poetry        { @import categoryPoetryBackground; }
-section.Music         { @import categoryMusicBackground; }
-section.Audio         { @import categoryAudioBackground; }
-section.Collage       { @import categoryCollageBackground; }
-section.Painting      { @import categoryPaintingBackground; }
-section.Sculpture     { @import categorySculptureBackground; }
-section.Photography   { @import categoryPhotographyBackground; }
-section.Film          { @import categoryFilmBackground; }
-section.Embroidery    { @import categoryEmbroideryBackground; }
-section.Other         { @import categoryOtherBackground; }
-*/
-
-
-
+section.categoryDesign        { @include categoryDesignBackground; }
+section.categoryMultimedia    { @include categoryMultimediaBackground; }
+section.categoryPerformance   { @include categoryPerformanceBackground; }
+section.categoryPrint         { @include categoryPrintBackground; }
+section.categoryInstallation  { @include categoryInstallationBackground; }
+section.categoryProse         { @include categoryProseBackground; }
+section.categoryPoetry        { @include categoryPoetryBackground; }
+section.categoryMusic         { @include categoryMusicBackground; }
+section.categoryAudio         { @include categoryAudioBackground; }
+section.categoryCollage       { @include categoryCollageBackground; }
+section.categoryPainting      { @include categoryPaintingBackground; }
+section.categorySculpture     { @include categorySculptureBackground; }
+section.categoryPhotography   { @include categoryPhotographyBackground; }
+section.categoryFilm          { @include categoryFilmBackground; }
+section.categoryEmbroidery    { @include categoryEmbroideryBackground; }
+section.categoryOther         { @include categoryOtherBackground; }
 @mixin bioNavLink { 
   display: block; float: left; margin: 2px 2px 14px 0; border: 2px solid $categoryPhotography; padding: 3px 0; 
   text-align: center; font-size: 21px;  color: $categoryPhotography; 
   &:hover { color: white; background: $categoryPhotography; }
 } 
 nav.bioNav {
-  a#artLink { @include bioNavLink; width: 57px; }
-  a#moreInfoLink { @include bioNavLink; width: 135px; }
-  a#artLink.selected { color: white; background: $categoryPhotography; }
-  a#moreInfoLink.selected { color: white; background: $categoryPhotography; }
+  a.artLink { @include bioNavLink; width: 57px; }
+  a.moreInfoLink { @include bioNavLink; width: 135px; }
+  a.artLink.selected { color: white; background: $categoryPhotography; }
+  a.moreInfoLink.selected { color: white; background: $categoryPhotography; }
 }
-nav.workNav {
+/* for unselected links, apply the category foreground color */
+nav.bioNav { &.categoryDesign>a { @include categoryDesignForeground; }}
+nav.bioNav { &.categoryMultimedia>a { @include categoryMultimediaForeground; }}
+nav.bioNav { &.categoryPerformance>a { @include categoryPerformanceForeground; }}
+nav.bioNav { &.categoryPrint>a  { @include categoryPrintForeground; }}
+nav.bioNav { &.categoryInstallation>a { @include categoryInstallationForeground; }}
+nav.bioNav { &.categoryProse>a { @include categoryProseForeground; }}
+nav.bioNav { &.categoryPoetry>a { @include categoryPoetryForeground; }}
+nav.bioNav { &.categoryMusic>a { @include categoryMusicForeground; }}
+nav.bioNav { &.categoryAudio>a { @include categoryAudioForeground; }}
+nav.bioNav { &.categoryCollage>a { @include categoryCollageForeground; }}
+nav.bioNav { &.categoryPainting>a { @include categoryPaintingForeground; }}
+nav.bioNav { &.categorySculpture>a { @include categorySculptureForeground; }}
+nav.bioNav { &.categoryPhotography>a { @include categoryPhotographyForeground; }}
+nav.bioNav { &.categoryFilm>a { @include categoryFilmForeground; }}
+nav.bioNav { &.categoryEmbroidery>a { @include categoryEmbroideryForeground; }}
+nav.bioNav { &.categoryOther>a { @include categoryOtherForeground; }}
+/* for the selected and rolled over states, apply the category background color */
+nav.bioNav { &.categoryDesign>a.selected,&.categoryDesign>a:hover { @include categoryDesignBackground; }}
+nav.bioNav { &.categoryMultimedia>a.selected,&.categoryMultimedia>a:hover { @include categoryMultimediaBackground; }}
+nav.bioNav { &.categoryPerformance>a.selected,&.categoryPerformance>a:hover { @include categoryPerformanceBackground; }}
+nav.bioNav { &.categoryPrint>a.selected,&.categoryPrint>a:hover { @include categoryPrintBackground; }}
+nav.bioNav { &.categoryInstallation>a.selected,&.categoryInstallation>a:hover { @include categoryInstallationBackground; }}
+nav.bioNav { &.categoryProse>a.selected,&.categoryProse>a:hover { @include categoryProseBackground; }}
+nav.bioNav { &.categoryPoetry>a.selected,&.categoryPoetry>a:hover { @include categoryPoetryBackground; }}
+nav.bioNav { &.categoryMusic>a.selected,&.categoryMusic>a:hover { @include categoryMusicBackground; }}
+nav.bioNav { &.categoryAudio>a.selected,&.categoryAudio>a:hover { @include categoryAudioBackground; }}
+nav.bioNav { &.categoryCollage>a.selected,&.categoryCollage>a:hover { @include categoryCollageBackground; }}
+nav.bioNav { &.categoryPainting>a.selected,&.categoryPainting>a:hover { @include categoryPaintingBackground; }}
+nav.bioNav { &.categorySculpture>a.selected,&.categorySculpture>a:hover { @include categorySculptureBackground; }}
+nav.bioNav { &.categoryPhotography>a.selected,&.categoryPhotography>a:hover { @include categoryPhotographyBackground; }}
+nav.bioNav { &.categoryFilm>a.selected,&.categoryFilm>a:hover { @include categoryFilmBackground; }}
+nav.bioNav { &.categoryEmbroidery>a.selected,&.categoryEmbroidery>a:hover { @include categoryEmbroideryBackground; }}
+nav.bioNav { &.categoryOther>a.selected,&.categoryOther>a:hover { @include categoryOtherBackground; }}
+
+
+nav.workNav { 
   clear: both;
   a { display: block; margin-top: 14px; border: 2px solid $telephoneRed; width: 198px; text-align: center; color: $telephoneRed;  }
   a.homeLink { font-size: 48px; }
@@ -175,18 +224,17 @@ nav.workNav {
 ul.experienceTheWork {
   margin: 0px;
   margin-left: 244px;
-  margin-top: 120px;
   padding: 0px;
   list-style: none;
   width: 542px;
   
   img { border: 1px solid #999; }
   
-  li.md div.md-work{ 
+  li.md div.md-work { 
     text-align: left;
-    border: 1px solid #ccc; 
-    padding: 15px; 
     font-size: 16px;
+    height: 540px;
+    overflow: auto;
     
     pre,code{ margin: 0; padding: 0; font-family: inherit; }  
   }
