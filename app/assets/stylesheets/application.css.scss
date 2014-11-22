@@ -239,7 +239,9 @@ ul.experienceTheWork {
     pre,code{ margin: 0; padding: 0; font-family: inherit; }  
   }
   li.mp3 {
-    height: 320px;
+    height: 320px; text-align: center;
+    border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px;
+    /* gradient */  
     background: -moz-linear-gradient(top,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
@@ -247,15 +249,7 @@ ul.experienceTheWork {
     background: -ms-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
     background: linear-gradient(to bottom,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
-
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-
-    text-align: center;
-
     p { padding-top: 100px; padding-bottom: 10px; }
-
     audio { margin: auto 0; }
   }
   

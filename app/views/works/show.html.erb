@@ -3,7 +3,7 @@
   <section class="artistInfo category<%= @work.medium %>">
     <div class="artistName"><%= @work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
     <div class="workMedium"><%= @work.medium %></div>
-    <div class="workLocation"><%= @work.artist.location.gsub(/\s+/, '<br>').html_safe %></div>
+    <div class="workLocation"><%= @work.artist.location.gsub(/[,]\s+/, '<br>').html_safe %></div>
   </section>
   
   <% unless @artist.bio.nil? %>  

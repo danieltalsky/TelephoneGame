@@ -7,7 +7,6 @@ require 'open-uri'
 scArtist = Artist.create(
   name: "Satellite Collective",
   contact: "langston.nathan@gmail.com",
-  bio: "We create accessible and diverse opportunities for artists in the performing and visual arts.",
   url: "http://satellitecollective.org",
   location: "New York City New York USA"
 )
@@ -16,7 +15,7 @@ scWork = Work.create(
   title: "Breton Fisherman's Prayer",
   orig_id: "0001",
   full_orig_id: "0001_0000",
-  medium: "Poem",
+  medium: "Prose",
   parent_id: nil,
   artist_id: scArtist.id
 )

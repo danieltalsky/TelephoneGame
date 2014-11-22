@@ -25,16 +25,16 @@ $( document ).ready(function() {
     /*
      * Art / More Info Toggle
      */
-    $("nav.bioNav a#artLink").click(function(e) {
+    $("nav.bioNav a.artLink").click(function(e) {
         $(this).addClass("selected");
-        $("nav.bioNav a#moreInfoLink").removeClass("selected");
+        $("nav.bioNav a.moreInfoLink").removeClass("selected");
         $("section.moreInfo").hide();
         $("ul.experienceTheWork").show();
         console.log('artlink clicked');
     });
-    $("nav.bioNav a#moreInfoLink").click(function(e) {
+    $("nav.bioNav a.moreInfoLink").click(function(e) {
         $(this).addClass("selected");
-        $("nav.bioNav a#artLink").removeClass("selected");
+        $("nav.bioNav a.artLink").removeClass("selected");
         $("ul.experienceTheWork").hide();
         $("section.moreInfo").show();
         console.log('moreinfo link clicked');

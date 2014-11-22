@@ -7,12 +7,12 @@ class Admin::DataController < Admin::ApplicationController
   # Step 1
   def import_spreadsheet
 
-    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20141014.csv"
+    works_csv_url = "https://dl.dropboxusercontent.com/u/11147571/TelephoneDirectory-20141122.csv"
     works_created = 0
   
-    @data_report = "<h2>Starting spreadsheet import</h2>";  
+    @data_report = "<h2>Starting spreadsheet import</h2>"
     
-    @data_report << "<h3>Opening works CSV URL: #{works_csv_url}</h3>";
+    @data_report << "<h3>Opening works CSV URL: #{works_csv_url}</h3>"
     dir_str = open(works_csv_url).read    
     CSV.parse(dir_str) do |row2|
       row = row2.map{|item| (item.nil? ? "":item).sub(/[\*\s]*\z/,"").strip}
@@ -25,7 +25,7 @@ class Admin::DataController < Admin::ApplicationController
       localartist = Artist.create(name:    row[0] + " " + row[1],
                                   contact: row[11],
                                   url:     row[12],
-                                  location:row[9] + " " + row[8] + " " + row[7])
+                                  location:row[9] + (row[9].empty? ? "" : ", ") + row[8] + (row[8].empty? ? "" : ", ") + row[7])
 
       parentWork = Work.find_by_orig_id(row[5].rjust(4, '0'))
 
@@ -189,5 +189,4 @@ class Admin::DataController < Admin::ApplicationController
   end  
 
 end
-
 
