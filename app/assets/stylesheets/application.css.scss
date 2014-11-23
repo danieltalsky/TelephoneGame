@@ -5,23 +5,23 @@
 $telephoneRed: #CB213E;
 $workNavBG: #e0e0e0;
 
-$categoryDesign: #99cc66;
-$categoryMultimedia: #cc99cc;
-$categoryPerformance: #cc9999;
-$categoryPrint: #99cc66;
-$categoryInstallation: #990099;
-$categoryProse: #996633;
-$categoryPoetry: #ffcc00;
-$categoryMusic: #ff6633;
-$categoryAudio: #ff6633;
-$categoryCollage: #cc99cc;
-$categoryPainting: #ff9933;
-$scategorySculpture: #333399;
-$categoryPhotography: #e96a1e;
-$categoryFilm: #cc0033;
-$categoryVideo: #cc0033;
-$categoryEmbroidery: #666666;
-$categoryOther: #666666;
+$categoryDesign: #b1d565;
+$categoryMultimedia: #c2a0d6;
+$categoryPerformance: #e38897;
+$categoryPrint: #b1d565;
+$categoryInstallation: #9a068a;
+$categoryProse: #987835;
+$categoryPoetry: #f7dc00;
+$categoryMusic: #e96a1e;
+$categoryAudio: #e96a1e;
+$categoryCollage: #c2a0d6;
+$categoryPainting: #f1a31c;
+$scategorySculpture: #2e4486;
+$categoryPhotography: #58622a;
+$categoryFilm: #c70c4a;
+$categoryVideo: #c70c4a;
+$categoryEmbroidery: #7f7f7f;
+$categoryOther: #7f7f7f;
 
 @mixin categoryDesignForeground { color: $categoryDesign; border-color: $categoryDesign;}
 @mixin categoryMultimediaForeground { color: $categoryMultimedia; border-color: $categoryMultimedia;}
@@ -121,7 +121,7 @@ table {
 
 section.workInfoPane { position: absolute; left: 20px; top: 20px; text-transform: uppercase; }
 section.artistInfo { 
-  width: 200px; background-color: $categoryPhotography; color: white; 
+  width: 200px; background-color: $categoryPhotography; color: white; text-transform: uppercase;
   .artistName { font-size: 28px; line-height: 90%; padding: 16px 0 0 16px; }
   .workMedium { font-size: 20px; margin: 11px 0; padding: 0 0 0 16px; } 
   .workLocation { font-size: 14px; width: 65%; padding: 0 0 14px 16px; }
