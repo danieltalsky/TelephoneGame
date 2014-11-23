@@ -203,6 +203,7 @@ nav.workNav {
 .whatCameBefore {position: absolute; left: 20px; top: 500px; width: 122px; height: 140px; background: $workNavBG; 
   header { @include h4title; left: 10px; bottom: 10px; }
   a { position: absolute; right: 0; top: 0; }
+  section.artistInfo { display: none; position: absolute; top: -150px; left: 121px; }
 }
 @mixin rotator {
   -webkit-transform: rotate(-40deg);
@@ -213,7 +214,6 @@ nav.workNav {
   header { @include h4title; left: 10px; top: 10px; }
   ul { position: absolute; top: 110px; margin: 0; padding: 0; list-style: none; }
   li { margin: 0; padding: 0; margin-top: -40px; position: relative;
-    div.connectLine { display: none; position: absolute; width: 300px; top: 75px; right: -14px; @include rotator; border-top: 2px solid red;}
     section.artistInfo { display: none; position: absolute; top: 40px; left: -200px; }
   }
   a {  }
@@ -351,3 +351,40 @@ section#tourStopCaption {
   text-align: center;
   margin-bottom: 1em;
 }
+
+
+/*
+ *  Login Stuff
+ */
+div.text-field {
+  margin-bottom: 5px;
+  label { width: 5em; display: block; float: left;}
+}
+/*
+    form.label :email
+    form.text_field :email, :type => 'email' 
+*/
+div.password-field {
+  margin-bottom: 1em;
+  label { width: 5em; display: block; float: left;}
+}
+/*
+form.label :password 
+    form.password_field :password 
+  </div>
+*/
+div.submit-field {
+  
+}
+/*
+  form.submit 
+*/
+ 
+
+
+
+
+
+
+
+

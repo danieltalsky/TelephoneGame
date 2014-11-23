@@ -40,6 +40,23 @@ $( document ).ready(function() {
         console.log('moreinfo link clicked');
     });
     console.log('loading');
+
+    /*
+     * Before Work Nav Rollovers
+     */
+    $("a.beforeWork").hover(
+        function() {      
+            /* Roll Over */      
+            var workId = $(this).attr('id');
+            $("#beforeWorkInfo" + workId).show();
+        
+      }, function() {
+        /* Roll Out */
+        var workId = $(this).attr('id');
+        $("#beforeWorkInfo" + workId).hide();
+      }
+    );    
+    
     /*
      * Next Work Nav Rollovers
      */

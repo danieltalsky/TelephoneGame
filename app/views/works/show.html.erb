@@ -71,7 +71,19 @@
 <section class="whatCameBefore">
 <% unless @work.parent.nil? %>
   <header>What<br>Came<br>Before</header>
-  <%= link_to h(image_tag('workCameBeforeNav' + @work.parent.medium.downcase! + '.png', :alt => @work.parent.title)), @work.parent %> 
+  <%= 
+    link_to h(image_tag(
+        'workCameBeforeNav' + @work.parent.medium.downcase + '.png', 
+        :alt => @work.parent.title
+    )), @work.parent ,
+        :class  => 'beforeWork',
+        :id     => @work.parent.id
+  %> 
+  <section class="artistInfo category<%= @work.parent.medium %>" id="beforeWorkInfo<%= @work.parent.id %>">
+    <div class="artistName"><%= @work.parent.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
+    <div class="workMedium"><%= @work.parent.medium %></div>
+    <div class="workLocation"><%= @work.parent.artist.location.gsub(/[,]\s+/, '<br>').html_safe %></div>
+  </section>  
 <% end %>
 </section>    
 
@@ -85,10 +97,10 @@
                 link_to h(image_tag(
                     'workCameNextNav' + work.medium.downcase + '.png', 
                     :alt    => work.parent.title,
-                )), work,                     :class  => 'nextWork',
+                )), work,                     
+                    :class  => 'nextWork',
                     :id     => work.id 
             %>
-            <div class="connectLine">ff</div>
             <section class="artistInfo category<%= work.medium %>" id="nextWorkInfo<%= work.id %>">
               <div class="artistName"><%= work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
               <div class="workMedium"><%= work.medium %></div>
