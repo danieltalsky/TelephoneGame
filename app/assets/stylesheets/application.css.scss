@@ -360,26 +360,16 @@ div.text-field {
   margin-bottom: 5px;
   label { width: 5em; display: block; float: left;}
 }
-/*
-    form.label :email
-    form.text_field :email, :type => 'email' 
-*/
 div.password-field {
   margin-bottom: 1em;
   label { width: 5em; display: block; float: left;}
 }
-/*
-form.label :password 
-    form.password_field :password 
-  </div>
-*/
-div.submit-field {
-  
+section#logInOrOut { 
+  position: absolute; padding: 4px; text-align: center; color: #999; font-size: 11px; right: 0; bottom: 0; 
+  input {
+    font-size: 11px;
+  }
 }
-/*
-  form.submit 
-*/
- 
 
 
 

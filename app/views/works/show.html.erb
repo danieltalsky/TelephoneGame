@@ -29,11 +29,11 @@
           <% when 'url' %>
             <div class="url-work">This work is an external website. Visit it by clicking on the link: <a href="<%= wr.url %>" target="_blank"><%= wr.url %></a></div>           
           <% when 'jpg' %>
-            <a href="<%= wr.url %>"><img src="<%= wr.url %><%#= get_resized_jpg_path(wr.url) %>" width="600"/></a>
+            <a href="<%= wr.url %>"><img src="<%= get_resized_jpg_path(wr.url) %>" /></a>
           <% when 'gif' %>
             <a href="<%= wr.url %>"><img src="<%= wr.url %>" /></a>      
           <% when 'png' %>
-            <a href="<%= wr.url %>"><img src="<%= wr.url %><%#= get_resized_jpg_path(wr.url) %>" width="600"/></a>   
+            <a href="<%= wr.url %>"><img src="<%= get_resized_jpg_path(wr.url) %>" /></a>   
           <% when 'pdf' %>
             <a href="<%= wr.url %>" target="_blank">Open the original PDF document of this work.</a>    
           <% when 'zip' %>
