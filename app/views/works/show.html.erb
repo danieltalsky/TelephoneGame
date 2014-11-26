@@ -53,7 +53,7 @@
             <% when 'md' %>
               <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
             <% else %>  
-              <div style="font-size: 11px; background-color: pink;">(( filetype for <em><%= wr.url %></em> is not supported  ))</div>
+              <!--><div style="font-size: 11px; background-color: pink;">(( filetype for <em><%= wr.url %></em> is not supported  ))</div>-->
           <% end %>
         </li>
     <% end %>
@@ -68,8 +68,8 @@
 </section>
 <% end %>
 
-<section class="whatCameBefore">
 <% unless @work.parent.nil? %>
+<section class="whatCameBefore">
   <header>What<br>Came<br>Before</header>
   <%= 
     link_to h(image_tag(
@@ -84,8 +84,10 @@
     <div class="workMedium"><%= @work.parent.medium %></div>
     <div class="workLocation"><%= @work.parent.artist.location.gsub(/[,]\s+/, '<br>').html_safe %></div>
   </section>  
-<% end %>
 </section>    
+<% end %>
+
+
 
 <section class="whatCameNext">
 <% unless @work.children.empty? %>
@@ -109,6 +111,17 @@
     	</li>
   	<% end %>
 	</ul>
+<% else %>
+  <!-- Last Work -->
+  <header>Last<br>Work<br>In<br>This<br>Thread</header>
+    <div id="lastWorkLinks">
+        <a href="/works/1">Back To Start</a>
+        <%= 
+            link_to h('View Random Work'), @random,                     
+                :class  => 'nextWork',
+                :id     => @random.id 
+        %>  
+   </div>
 <% end %>
 </section>
 
