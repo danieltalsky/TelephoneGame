@@ -1,7 +1,7 @@
 <!-- Work Information Pane -->
 <section class="workInfoPane">
   <section class="artistInfo category<%= @work.medium %>">
-    <div class="artistName"><%= @work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
+    <div class="artistName<% if @work.artist.longname? %> longname<% end %>"><%= @work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
     <div class="workMedium"><%= @work.medium %></div>
     <div class="workLocation"><%= @work.artist.location.gsub(/[,]\s+/, '<br>').html_safe %></div>
   </section>
@@ -80,7 +80,7 @@
         :id     => @work.parent.id
   %> 
   <section class="artistInfo category<%= @work.parent.medium %>" id="beforeWorkInfo<%= @work.parent.id %>">
-    <div class="artistName"><%= @work.parent.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
+    <div class="artistName<% if @work.parent.artist.longname? %> longname<% end %>"><%= @work.parent.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
     <div class="workMedium"><%= @work.parent.medium %></div>
     <div class="workLocation"><%= @work.parent.artist.location.gsub(/[,]\s+/, '<br>').html_safe %></div>
   </section>  
@@ -104,7 +104,7 @@
                     :id     => work.id 
             %>
             <section class="artistInfo category<%= work.medium %>" id="nextWorkInfo<%= work.id %>">
-              <div class="artistName"><%= work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
+              <div class="artistName<% if work.artist.longname? %> longname<% end %>"><%= work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
               <div class="workMedium"><%= work.medium %></div>
               <div class="workLocation"><%= work.artist.location.gsub(/[,]\s+/, '<br>').html_safe %></div>
             </section>
