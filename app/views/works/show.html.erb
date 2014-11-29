@@ -28,12 +28,14 @@
           <% case wr.fileext %>
           <% when 'url' %>
             <div class="url-work">This work is an external website. Visit it by clicking on the link: <a href="<%= wr.url %>" target="_blank"><%= wr.url %></a></div>           
-          <% when 'jpg' %>
-            <a href="<%= wr.url %>"><img src="<%= get_resized_jpg_path(wr.url) %>" /></a>
+          <% when 'jpg' || 'png' %>
+            <a href="<%= wr.url %>" target="_blank" class="launch-fullsize" id="launch-fullsize-<%= wr.id %>">
+                <figure class="inline"><img src="<%= get_resized_jpg_path(wr.url) %>" /><figcaption>click image to view larger</figcaption></figure>
+            </a>
+            <!-- Fullsize Work Representation For Lightbox -->
+            <!-- <figure class="fullsize" id="fullsize-<%= wr.id %>"><img src="<%= get_fullsized_jpg_path(wr.url) %>" /></figure>    -->         
           <% when 'gif' %>
-            <a href="<%= wr.url %>"><img src="<%= wr.url %>" /></a>      
-          <% when 'png' %>
-            <a href="<%= wr.url %>"><img src="<%= get_resized_jpg_path(wr.url) %>" /></a>   
+            <a href="<%= wr.url %>"><img src="<%= wr.url %>" /></a>        
           <% when 'pdf' %>
             <a href="<%= wr.url %>" target="_blank">Open the original PDF document of this work.</a>    
           <% when 'zip' %>
@@ -124,6 +126,5 @@
    </div>
 <% end %>
 </section>
-
 
 </div>

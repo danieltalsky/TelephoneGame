@@ -110,8 +110,8 @@ a {
   text-decoration: none;
   &:hover { color: #510D1A }
 }
-
-.main { width: 960px; min-height: 620px; border: 1px solid #999; padding: 20px; margin: 40px auto; clear: both; position: relative;}
+@mixin mainSizedBox { width: 960px; min-height: 620px; border: 1px solid #999; padding: 20px; margin: 40px auto; clear: both; position: relative; }
+main { @include mainSizedBox; }
 
 nav {
   ul {
@@ -281,7 +281,7 @@ body.works-show {
     header { @include h4title; left: 10px; top: 10px; }
     ul { position: absolute; top: 110px; margin: 0; padding: 0; list-style: none; }
     li { margin: 0; padding: 0; margin-top: -40px; position: relative;
-      section.artistInfo { display: none; position: absolute; top: 40px; left: -200px; }
+      section.artistInfo { display: none; position: absolute; top: 40px; left: -202px; }
     }
     a {  }
     #lastWorkLinks {
@@ -300,7 +300,22 @@ body.works-show {
     list-style: none;
     width: 542px;
     
-    img { border: 1px solid #999; }
+    figure.inline {
+      display: table; width: 1px; margin: 0px; padding: 0px;
+      figcaption { 
+        padding: 2px; text-align: right; color: #777; font-size: 11px; 
+        &:hover { color: black; }
+      }
+      img { display: table-row; border: 1px solid #999; }
+    }
+    
+    figure.fullsize {
+      position: absolute;
+      margin: auto 0;
+      display: none;
+      
+      img { border: 0; }
+    }
     
     li.md div.md-work { 
       text-align: left;

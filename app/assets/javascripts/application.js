@@ -38,7 +38,15 @@ $( document ).ready(function() {
         $("section.moreInfo").show();
         console.log('moreinfo link clicked');
     });
-    console.log('loading');
+
+    /*
+     * Larger work click
+     */
+    $("ul.experienceTheWork li a").click(function(e) {
+       //$("main").css('visibility', 'hidden');
+       //$("figure.fullsize").css('visibility', 'visible');
+       //e.preventDefault();
+    });
 
     /*
      * Before Work Nav Rollovers
