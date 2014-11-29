@@ -23,8 +23,7 @@ scWork = Work.create(
 WorkRepresentation.create(
   work_id: scWork.id,
   fileext: 'md',
-  text_body_markdown: "*'Oh God thy sea is so great and my boat is so small.'*  
-- Breton Fisherman's Prayer"
+  text_body_markdown: "<div style=\"font-size: 40px;\"><em>&#0147;Oh God thy sea is so great and my boat is so small.&#0147;</em><br>&#8212; Breton Fisherman&#8217;s Prayer</div>"
 )
 
 # Placeholder Curated Tour
