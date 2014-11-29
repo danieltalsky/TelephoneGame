@@ -236,8 +236,9 @@ nav.workNav {
   }
   a {  }
   #lastWorkLinks {
-    position: absolute; left: 10px; top: 110px; right: 10px; text-align: center;
-    a { display: block; margin-bottom: 1em; }
+    position: absolute; left: 10px; top: 80px; right: 10px; text-align: center;
+    img { margin-bottom: 5px; }
+    a { margin-bottom: 1em; display: block; color: black; font-size: 14px; text-transform: uppercase;  }
   }
 }
 

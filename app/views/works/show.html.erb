@@ -113,11 +113,11 @@
 	</ul>
 <% else %>
   <!-- Last Work -->
-  <header>Last<br>Work<br>In<br>This<br>Thread</header>
+  <header>This<br>Line<br>Ends<br>Here</header>
     <div id="lastWorkLinks">
-        <a href="/works/1">Back To Start</a>
+        <a href="/works/1"><%= h(image_tag('workCameNextNavStart.png')) %>Back To Start</a>
         <%= 
-            link_to h('View Random Work'), @random,                     
+            link_to h(image_tag('workCameNextNavRandom.png') + 'Random Work'), @random,                     
                 :class  => 'nextWork',
                 :id     => @random.id 
         %>  
