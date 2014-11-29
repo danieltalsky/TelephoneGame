@@ -7,7 +7,10 @@ $workNavBG: #e0e0e0;
 
 $categoryDesign: #b1d565;
 $categoryMultimedia: #c2a0d6;
+$categoryDance: #e38897;
 $categoryPerformance: #e38897;
+$categoryIllustration: #b1d565;
+$categoryDrawing: #b1d565;
 $categoryPrint: #b1d565;
 $categoryInstallation: #9a068a;
 $categoryProse: #987835;
@@ -25,7 +28,10 @@ $categoryOther: #7f7f7f;
 
 @mixin categoryDesignForeground { color: $categoryDesign; border-color: $categoryDesign;}
 @mixin categoryMultimediaForeground { color: $categoryMultimedia; border-color: $categoryMultimedia;}
+@mixin categoryDanceForeground { color: $categoryDance; border-color: $categoryDance;}
 @mixin categoryPerformanceForeground { color: $categoryPerformance; border-color: $categoryPerformance;}
+@mixin categoryIllustrationForeground { color: $categoryIllustration; border-color: $categoryIllustration;}
+@mixin categoryDrawingForeground { color: $categoryDrawing; border-color: $categoryDrawing;}
 @mixin categoryPrintForeground { color: $categoryPrint; border-color: $categoryPrint;}
 @mixin categoryInstallationForeground { color: $categoryInstallation; border-color: $categoryInstallation;}
 @mixin categoryProseForeground { color: $categoryProse; border-color: $categoryProse;}
@@ -42,7 +48,10 @@ $categoryOther: #7f7f7f;
 
 @mixin categoryDesignBackground { background: $categoryDesign; border-color: $categoryDesign;}
 @mixin categoryMultimediaBackground { background: $categoryMultimedia; border-color: $categoryMultimedia;}
+@mixin categoryDanceBackground { background: $categoryDance; border-color: $categoryDance;}
 @mixin categoryPerformanceBackground { background: $categoryPerformance; border-color: $categoryPerformance;}
+@mixin categoryIllustrationBackground { background: $categoryInstallation; border-color: $categoryInstallation;}
+@mixin categoryDrawingBackground { background: $categoryDrawing; border-color: $categoryDrawing;}
 @mixin categoryPrintBackground { background: $categoryPrint; border-color: $categoryPrint;}
 @mixin categoryInstallationBackground { background: $categoryInstallation; border-color: $categoryInstallation;}
 @mixin categoryProseBackground { background: $categoryProse; border-color: $categoryProse;}
@@ -129,7 +138,10 @@ section.artistInfo {
 }
 section.categoryDesign        { @include categoryDesignBackground; }
 section.categoryMultimedia    { @include categoryMultimediaBackground; }
+section.categoryDance         { @include categoryDanceBackground; }
 section.categoryPerformance   { @include categoryPerformanceBackground; }
+section.categoryIllustration  { @include categoryIllustrationBackground; }
+section.categoryDrawing       { @include categoryDrawingBackground; }
 section.categoryPrint         { @include categoryPrintBackground; }
 section.categoryInstallation  { @include categoryInstallationBackground; }
 section.categoryProse         { @include categoryProseBackground; }
@@ -157,7 +169,10 @@ nav.bioNav {
 /* for unselected links, apply the category foreground color */
 nav.bioNav { &.categoryDesign>a { @include categoryDesignForeground; }}
 nav.bioNav { &.categoryMultimedia>a { @include categoryMultimediaForeground; }}
+nav.bioNav { &.categoryDance>a { @include categoryDanceForeground; }}
 nav.bioNav { &.categoryPerformance>a { @include categoryPerformanceForeground; }}
+nav.bioNav { &.categoryIllustration>a  { @include categoryIllustrationForeground; }}
+nav.bioNav { &.categoryDrawing>a  { @include categoryDrawingForeground; }}
 nav.bioNav { &.categoryPrint>a  { @include categoryPrintForeground; }}
 nav.bioNav { &.categoryInstallation>a { @include categoryInstallationForeground; }}
 nav.bioNav { &.categoryProse>a { @include categoryProseForeground; }}
@@ -174,7 +189,10 @@ nav.bioNav { &.categoryOther>a { @include categoryOtherForeground; }}
 /* for the selected and rolled over states, apply the category background color */
 nav.bioNav { &.categoryDesign>a.selected,&.categoryDesign>a:hover { @include categoryDesignBackground; }}
 nav.bioNav { &.categoryMultimedia>a.selected,&.categoryMultimedia>a:hover { @include categoryMultimediaBackground; }}
+nav.bioNav { &.categoryDance>a.selected,&.categoryDance>a:hover { @include categoryPerformanceBackground; }}
 nav.bioNav { &.categoryPerformance>a.selected,&.categoryPerformance>a:hover { @include categoryPerformanceBackground; }}
+nav.bioNav { &.categoryIllustration>a.selected,&.categoryIllustation>a:hover { @include categoryIllustrationBackground; }}
+nav.bioNav { &.categoryDrawing>a.selected,&.categoryDrawing>a:hover { @include categoryDrawingBackground; }}
 nav.bioNav { &.categoryPrint>a.selected,&.categoryPrint>a:hover { @include categoryPrintBackground; }}
 nav.bioNav { &.categoryInstallation>a.selected,&.categoryInstallation>a:hover { @include categoryInstallationBackground; }}
 nav.bioNav { &.categoryProse>a.selected,&.categoryProse>a:hover { @include categoryProseBackground; }}
