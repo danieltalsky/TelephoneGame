@@ -1,8 +1,17 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+/************************************************
+ * TELEPHONE GAME SCSS STYLESHEET
+ * @author Daniel Talsky <danieltalsky@gmail.com>
+ * 
+ */
+
+/* ===
+ * 
+ * UNIVERSAL APPLICATION SETUP
+ * 
+ * ===
+ */
 $telephoneRed: #CB213E;
+$telephoneTrimBlue: #bddaf1;
 $workNavBG: #e0e0e0;
 
 $categoryDesign: #b1d565;
@@ -120,188 +129,227 @@ table {
   td { padding: 3px; }
 }
 
-/*
+/* ===
  * 
- *
- *   Works
+ * HOME PAGE
  * 
- * 
+ * ===
  */
-
-section.workInfoPane { position: absolute; left: 20px; top: 20px; text-transform: uppercase; }
-section.artistInfo { 
-  width: 202px; background-color: $categoryPhotography; color: white; text-transform: uppercase;
-  .artistName { font-size: 28px; line-height: 90%; padding: 16px 0 0 16px; }
-  .artistName.longname { font-size: 20px; }
-  .workMedium { font-size: 20px; margin: 11px 0; padding: 0 0 0 16px; } 
-  .workLocation { font-size: 14px; width: 65%; padding: 0 0 14px 16px; }
-  a.bioLink { color: white; border: 1px solid white; margin-right: 16px; padding: 1px; width: 20%; float: right; }  
-}
-section.categoryDesign        { @include categoryDesignBackground; }
-section.categoryMultimedia    { @include categoryMultimediaBackground; }
-section.categoryDance         { @include categoryDanceBackground; }
-section.categoryPerformance   { @include categoryPerformanceBackground; }
-section.categoryIllustration  { @include categoryIllustrationBackground; }
-section.categoryDrawing       { @include categoryDrawingBackground; }
-section.categoryPrint         { @include categoryPrintBackground; }
-section.categoryInstallation  { @include categoryInstallationBackground; }
-section.categoryProse         { @include categoryProseBackground; }
-section.categoryPoetry        { @include categoryPoetryBackground; }
-section.categoryMusic         { @include categoryMusicBackground; }
-section.categoryAudio         { @include categoryAudioBackground; }
-section.categoryCollage       { @include categoryCollageBackground; }
-section.categoryPainting      { @include categoryPaintingBackground; }
-section.categorySculpture     { @include categorySculptureBackground; }
-section.categoryPhotography   { @include categoryPhotographyBackground; }
-section.categoryFilm          { @include categoryFilmBackground; }
-section.categoryEmbroidery    { @include categoryEmbroideryBackground; }
-section.categoryOther         { @include categoryOtherBackground; }
-@mixin bioNavLink { 
-  display: block; float: left; margin: 2px 2px 14px 0; border: 2px solid $categoryPhotography; padding: 3px 0; 
-  text-align: center; font-size: 21px;  color: $categoryPhotography; 
-  &:hover { color: white; background: $categoryPhotography; }
-} 
-nav.bioNav {
-  a.artLink { @include bioNavLink; width: 57px; }
-  a.moreInfoLink { @include bioNavLink; width: 135px; }
-  a.artLink.selected { color: white; background: $categoryPhotography; }
-  a.moreInfoLink.selected { color: white; background: $categoryPhotography; }
-}
-/* for unselected links, apply the category foreground color */
-nav.bioNav { &.categoryDesign>a { @include categoryDesignForeground; }}
-nav.bioNav { &.categoryMultimedia>a { @include categoryMultimediaForeground; }}
-nav.bioNav { &.categoryDance>a { @include categoryDanceForeground; }}
-nav.bioNav { &.categoryPerformance>a { @include categoryPerformanceForeground; }}
-nav.bioNav { &.categoryIllustration>a  { @include categoryIllustrationForeground; }}
-nav.bioNav { &.categoryDrawing>a  { @include categoryDrawingForeground; }}
-nav.bioNav { &.categoryPrint>a  { @include categoryPrintForeground; }}
-nav.bioNav { &.categoryInstallation>a { @include categoryInstallationForeground; }}
-nav.bioNav { &.categoryProse>a { @include categoryProseForeground; }}
-nav.bioNav { &.categoryPoetry>a { @include categoryPoetryForeground; }}
-nav.bioNav { &.categoryMusic>a { @include categoryMusicForeground; }}
-nav.bioNav { &.categoryAudio>a { @include categoryAudioForeground; }}
-nav.bioNav { &.categoryCollage>a { @include categoryCollageForeground; }}
-nav.bioNav { &.categoryPainting>a { @include categoryPaintingForeground; }}
-nav.bioNav { &.categorySculpture>a { @include categorySculptureForeground; }}
-nav.bioNav { &.categoryPhotography>a { @include categoryPhotographyForeground; }}
-nav.bioNav { &.categoryFilm>a { @include categoryFilmForeground; }}
-nav.bioNav { &.categoryEmbroidery>a { @include categoryEmbroideryForeground; }}
-nav.bioNav { &.categoryOther>a { @include categoryOtherForeground; }}
-/* for the selected and rolled over states, apply the category background color */
-nav.bioNav { &.categoryDesign>a.selected,&.categoryDesign>a:hover { @include categoryDesignBackground; }}
-nav.bioNav { &.categoryMultimedia>a.selected,&.categoryMultimedia>a:hover { @include categoryMultimediaBackground; }}
-nav.bioNav { &.categoryDance>a.selected,&.categoryDance>a:hover { @include categoryPerformanceBackground; }}
-nav.bioNav { &.categoryPerformance>a.selected,&.categoryPerformance>a:hover { @include categoryPerformanceBackground; }}
-nav.bioNav { &.categoryIllustration>a.selected,&.categoryIllustation>a:hover { @include categoryIllustrationBackground; }}
-nav.bioNav { &.categoryDrawing>a.selected,&.categoryDrawing>a:hover { @include categoryDrawingBackground; }}
-nav.bioNav { &.categoryPrint>a.selected,&.categoryPrint>a:hover { @include categoryPrintBackground; }}
-nav.bioNav { &.categoryInstallation>a.selected,&.categoryInstallation>a:hover { @include categoryInstallationBackground; }}
-nav.bioNav { &.categoryProse>a.selected,&.categoryProse>a:hover { @include categoryProseBackground; }}
-nav.bioNav { &.categoryPoetry>a.selected,&.categoryPoetry>a:hover { @include categoryPoetryBackground; }}
-nav.bioNav { &.categoryMusic>a.selected,&.categoryMusic>a:hover { @include categoryMusicBackground; }}
-nav.bioNav { &.categoryAudio>a.selected,&.categoryAudio>a:hover { @include categoryAudioBackground; }}
-nav.bioNav { &.categoryCollage>a.selected,&.categoryCollage>a:hover { @include categoryCollageBackground; }}
-nav.bioNav { &.categoryPainting>a.selected,&.categoryPainting>a:hover { @include categoryPaintingBackground; }}
-nav.bioNav { &.categorySculpture>a.selected,&.categorySculpture>a:hover { @include categorySculptureBackground; }}
-nav.bioNav { &.categoryPhotography>a.selected,&.categoryPhotography>a:hover { @include categoryPhotographyBackground; }}
-nav.bioNav { &.categoryFilm>a.selected,&.categoryFilm>a:hover { @include categoryFilmBackground; }}
-nav.bioNav { &.categoryEmbroidery>a.selected,&.categoryEmbroidery>a:hover { @include categoryEmbroideryBackground; }}
-nav.bioNav { &.categoryOther>a.selected,&.categoryOther>a:hover { @include categoryOtherBackground; }}
-
-
-nav.workNav { 
-  clear: both;
-  a { display: block; margin-top: 14px; border: 2px solid $telephoneRed; width: 198px; text-align: center; color: $telephoneRed;  }
-  a.homeLink { font-size: 48px; }
-  a.mapLink { font-size: 31px; }
-}
-
-/* before and after nav */
-
-@mixin h4title { position: absolute; text-transform: uppercase; font-size: 14px; line-height: 95%; }
-.whatCameBefore {position: absolute; left: 20px; top: 500px; width: 122px; height: 140px; background: $workNavBG; 
-  header { @include h4title; left: 10px; bottom: 10px; }
-  a { position: absolute; right: 0; top: 0; }
-  section.artistInfo { display: none; position: absolute; top: -150px; left: 121px; }
-}
-@mixin rotator {
-  -webkit-transform: rotate(-40deg);
-  -moz-transform: rotate(-40deg);
-  transform: rotate(-40deg);
-}
-.whatCameNext {position: absolute; right: 20px; top: 20px; width: 79px; height: 340px; background: $workNavBG; 
-  header { @include h4title; left: 10px; top: 10px; }
-  ul { position: absolute; top: 110px; margin: 0; padding: 0; list-style: none; }
-  li { margin: 0; padding: 0; margin-top: -40px; position: relative;
-    section.artistInfo { display: none; position: absolute; top: 40px; left: -200px; }
-  }
-  a {  }
-  #lastWorkLinks {
-    position: absolute; left: 10px; top: 80px; right: 10px; text-align: center;
-    img { margin-bottom: 5px; }
-    a { margin-bottom: 1em; display: block; color: black; font-size: 14px; text-transform: uppercase;  }
+body.application-index {
+  main {
+    nav {
+      ul {
+        border: 0;
+        padding: 0;
+        list-style-type: none;
+        li {        
+          position: absolute; display: block; float: none; width: 210px; 
+          text-align: center;
+        
+          a { 
+            display: block; position: relative; width: 210px; height: 90px; 
+            background: $telephoneRed;
+            color: white; font-size: 30px; text-transform: uppercase;
+          
+            &:hover { box-shadow: -5px -5px 0 $telephoneTrimBlue; left: -5px; top: -5px; }
+          }
+        }
+        li#aboutTelephone { left: 20px; top: 20px; }
+        li#wanderAround { left: 20px; top: 121px; }
+        li#mapOfTheWorks { left: 20px; top: 221px; }
+        li#curatedTours { right: 20px; top: 20px; }
+        li#webLinksYouCanUse { right: 20px; top: 121px; }
+        li#telephoneSponsors { right: 20px; top: 221px; }  
+      }
+    }
+        
+    
+    background: image-url('homeMainBG.png') center center no-repeat;
   }
 }
 
-/* work representation display */
-
-ul.experienceTheWork {
-  margin: 0px;
-  margin-left: 244px;
-  padding: 0px;
-  list-style: none;
-  width: 542px;
+/* ===
+ * 
+ * WORKS PAGE
+ * 
+ * ===
+ */
+body.works-show {
   
-  img { border: 1px solid #999; }
+  section.workInfoPane { position: absolute; left: 20px; top: 20px; text-transform: uppercase; }
+  section.artistInfo { 
+    width: 202px; background-color: $categoryPhotography; color: white; text-transform: uppercase;
+    .artistName { font-size: 28px; line-height: 90%; padding: 16px 0 0 16px; }
+    .artistName.longname { font-size: 20px; }
+    .workMedium { font-size: 20px; margin: 11px 0; padding: 0 0 0 16px; } 
+    .workLocation { font-size: 14px; width: 65%; padding: 0 0 14px 16px; }
+    a.bioLink { color: white; border: 1px solid white; margin-right: 16px; padding: 1px; width: 20%; float: right; }  
+  }
+  section.categoryDesign        { @include categoryDesignBackground; }
+  section.categoryMultimedia    { @include categoryMultimediaBackground; }
+  section.categoryDance         { @include categoryDanceBackground; }
+  section.categoryPerformance   { @include categoryPerformanceBackground; }
+  section.categoryIllustration  { @include categoryIllustrationBackground; }
+  section.categoryDrawing       { @include categoryDrawingBackground; }
+  section.categoryPrint         { @include categoryPrintBackground; }
+  section.categoryInstallation  { @include categoryInstallationBackground; }
+  section.categoryProse         { @include categoryProseBackground; }
+  section.categoryPoetry        { @include categoryPoetryBackground; }
+  section.categoryMusic         { @include categoryMusicBackground; }
+  section.categoryAudio         { @include categoryAudioBackground; }
+  section.categoryCollage       { @include categoryCollageBackground; }
+  section.categoryPainting      { @include categoryPaintingBackground; }
+  section.categorySculpture     { @include categorySculptureBackground; }
+  section.categoryPhotography   { @include categoryPhotographyBackground; }
+  section.categoryFilm          { @include categoryFilmBackground; }
+  section.categoryEmbroidery    { @include categoryEmbroideryBackground; }
+  section.categoryOther         { @include categoryOtherBackground; }
+  @mixin bioNavLink { 
+    display: block; float: left; margin: 2px 2px 14px 0; border: 2px solid $categoryPhotography; padding: 3px 0; 
+    text-align: center; font-size: 21px;  color: $categoryPhotography; 
+    &:hover { color: white; background: $categoryPhotography; }
+  } 
+  nav.bioNav {
+    a.artLink { @include bioNavLink; width: 57px; }
+    a.moreInfoLink { @include bioNavLink; width: 135px; }
+    a.artLink.selected { color: white; background: $categoryPhotography; }
+    a.moreInfoLink.selected { color: white; background: $categoryPhotography; }
+  }
+  /* for unselected links, apply the category foreground color */
+  nav.bioNav { &.categoryDesign>a { @include categoryDesignForeground; }}
+  nav.bioNav { &.categoryMultimedia>a { @include categoryMultimediaForeground; }}
+  nav.bioNav { &.categoryDance>a { @include categoryDanceForeground; }}
+  nav.bioNav { &.categoryPerformance>a { @include categoryPerformanceForeground; }}
+  nav.bioNav { &.categoryIllustration>a  { @include categoryIllustrationForeground; }}
+  nav.bioNav { &.categoryDrawing>a  { @include categoryDrawingForeground; }}
+  nav.bioNav { &.categoryPrint>a  { @include categoryPrintForeground; }}
+  nav.bioNav { &.categoryInstallation>a { @include categoryInstallationForeground; }}
+  nav.bioNav { &.categoryProse>a { @include categoryProseForeground; }}
+  nav.bioNav { &.categoryPoetry>a { @include categoryPoetryForeground; }}
+  nav.bioNav { &.categoryMusic>a { @include categoryMusicForeground; }}
+  nav.bioNav { &.categoryAudio>a { @include categoryAudioForeground; }}
+  nav.bioNav { &.categoryCollage>a { @include categoryCollageForeground; }}
+  nav.bioNav { &.categoryPainting>a { @include categoryPaintingForeground; }}
+  nav.bioNav { &.categorySculpture>a { @include categorySculptureForeground; }}
+  nav.bioNav { &.categoryPhotography>a { @include categoryPhotographyForeground; }}
+  nav.bioNav { &.categoryFilm>a { @include categoryFilmForeground; }}
+  nav.bioNav { &.categoryEmbroidery>a { @include categoryEmbroideryForeground; }}
+  nav.bioNav { &.categoryOther>a { @include categoryOtherForeground; }}
+  /* for the selected and rolled over states, apply the category background color */
+  nav.bioNav { &.categoryDesign>a.selected,&.categoryDesign>a:hover { @include categoryDesignBackground; }}
+  nav.bioNav { &.categoryMultimedia>a.selected,&.categoryMultimedia>a:hover { @include categoryMultimediaBackground; }}
+  nav.bioNav { &.categoryDance>a.selected,&.categoryDance>a:hover { @include categoryPerformanceBackground; }}
+  nav.bioNav { &.categoryPerformance>a.selected,&.categoryPerformance>a:hover { @include categoryPerformanceBackground; }}
+  nav.bioNav { &.categoryIllustration>a.selected,&.categoryIllustation>a:hover { @include categoryIllustrationBackground; }}
+  nav.bioNav { &.categoryDrawing>a.selected,&.categoryDrawing>a:hover { @include categoryDrawingBackground; }}
+  nav.bioNav { &.categoryPrint>a.selected,&.categoryPrint>a:hover { @include categoryPrintBackground; }}
+  nav.bioNav { &.categoryInstallation>a.selected,&.categoryInstallation>a:hover { @include categoryInstallationBackground; }}
+  nav.bioNav { &.categoryProse>a.selected,&.categoryProse>a:hover { @include categoryProseBackground; }}
+  nav.bioNav { &.categoryPoetry>a.selected,&.categoryPoetry>a:hover { @include categoryPoetryBackground; }}
+  nav.bioNav { &.categoryMusic>a.selected,&.categoryMusic>a:hover { @include categoryMusicBackground; }}
+  nav.bioNav { &.categoryAudio>a.selected,&.categoryAudio>a:hover { @include categoryAudioBackground; }}
+  nav.bioNav { &.categoryCollage>a.selected,&.categoryCollage>a:hover { @include categoryCollageBackground; }}
+  nav.bioNav { &.categoryPainting>a.selected,&.categoryPainting>a:hover { @include categoryPaintingBackground; }}
+  nav.bioNav { &.categorySculpture>a.selected,&.categorySculpture>a:hover { @include categorySculptureBackground; }}
+  nav.bioNav { &.categoryPhotography>a.selected,&.categoryPhotography>a:hover { @include categoryPhotographyBackground; }}
+  nav.bioNav { &.categoryFilm>a.selected,&.categoryFilm>a:hover { @include categoryFilmBackground; }}
+  nav.bioNav { &.categoryEmbroidery>a.selected,&.categoryEmbroidery>a:hover { @include categoryEmbroideryBackground; }}
+  nav.bioNav { &.categoryOther>a.selected,&.categoryOther>a:hover { @include categoryOtherBackground; }}
   
-  li.md div.md-work { 
-    text-align: left;
-    font-size: 16px;
+  
+  nav.workNav { 
+    clear: both;
+    a { display: block; margin-top: 14px; border: 2px solid $telephoneRed; width: 198px; text-align: center; color: $telephoneRed;  }
+    a.homeLink { font-size: 48px; }
+    a.mapLink { font-size: 31px; }
+  }
+  
+  /* before and after nav */
+  
+  @mixin h4title { position: absolute; text-transform: uppercase; font-size: 14px; line-height: 95%; }
+  .whatCameBefore {position: absolute; left: 20px; top: 500px; width: 122px; height: 140px; background: $workNavBG; 
+    header { @include h4title; left: 10px; bottom: 10px; }
+    a { position: absolute; right: 0; top: 0; }
+    section.artistInfo { display: none; position: absolute; top: -150px; left: 121px; }
+  }
+  @mixin rotator {
+    -webkit-transform: rotate(-40deg);
+    -moz-transform: rotate(-40deg);
+    transform: rotate(-40deg);
+  }
+  .whatCameNext {position: absolute; right: 20px; top: 20px; width: 79px; height: 340px; background: $workNavBG; 
+    header { @include h4title; left: 10px; top: 10px; }
+    ul { position: absolute; top: 110px; margin: 0; padding: 0; list-style: none; }
+    li { margin: 0; padding: 0; margin-top: -40px; position: relative;
+      section.artistInfo { display: none; position: absolute; top: 40px; left: -200px; }
+    }
+    a {  }
+    #lastWorkLinks {
+      position: absolute; left: 10px; top: 80px; right: 10px; text-align: center;
+      img { margin-bottom: 5px; }
+      a { margin-bottom: 1em; display: block; color: black; font-size: 14px; text-transform: uppercase;  }
+    }
+  }
+  
+  /* work representation display */
+  
+  ul.experienceTheWork {
+    margin: 0px;
+    margin-left: 244px;
+    padding: 0px;
+    list-style: none;
+    width: 542px;
+    
+    img { border: 1px solid #999; }
+    
+    li.md div.md-work { 
+      text-align: left;
+      font-size: 16px;
+      height: 540px;
+      overflow: auto;
+      
+      pre,code{ margin: 0; padding: 0; font-family: inherit; }  
+    }
+    li.mp3 {
+      height: 320px; text-align: center;
+      border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px;
+      /* gradient */  
+      background: -moz-linear-gradient(top,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+      background: linear-gradient(to bottom,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+      p { padding-top: 100px; padding-bottom: 10px; }
+      audio { margin: auto 0; }
+    }
+    
+    li div.zip-work { 
+      margin: 10px;
+      text-align: left;
+      border: 1px solid #ccc; 
+      padding: 5px; 
+      font-size: 18px; 
+    } 
+    li div.url-work { 
+      margin: 10px;
+      text-align: left;
+      border: 1px solid #ccc; 
+      padding: 5px; 
+      font-size: 18px; 
+    }   
+  }
+  
+  section.moreInfo {
+    margin-left: 244px;
+    margin-top: 10px;
+    width: 540px;
     height: 540px;
     overflow: auto;
-    
-    pre,code{ margin: 0; padding: 0; font-family: inherit; }  
+    display: none;
   }
-  li.mp3 {
-    height: 320px; text-align: center;
-    border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px;
-    /* gradient */  
-    background: -moz-linear-gradient(top,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
-    p { padding-top: 100px; padding-bottom: 10px; }
-    audio { margin: auto 0; }
-  }
-  
-  li div.zip-work { 
-    margin: 10px;
-    text-align: left;
-    border: 1px solid #ccc; 
-    padding: 5px; 
-    font-size: 18px; 
-  } 
-  li div.url-work { 
-    margin: 10px;
-    text-align: left;
-    border: 1px solid #ccc; 
-    padding: 5px; 
-    font-size: 18px; 
-  }   
-}
-
-section.moreInfo {
-  margin-left: 244px;
-  margin-top: 10px;
-  width: 540px;
-  height: 540px;
-  overflow: auto;
-  display: none;
-}
-
+} /* end works show */
 
 
 
