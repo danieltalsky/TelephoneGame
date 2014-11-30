@@ -12,6 +12,9 @@ gem 'rails_12factor', group: :production
 # Use unicorn as the app server
 gem 'unicorn'
 
+# Use rack-zippy to gzip compress assets
+gem 'rack-zippy'
+
 # Use pg as the database for Active Record
 gem 'pg'
 
