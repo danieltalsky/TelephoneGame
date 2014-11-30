@@ -295,13 +295,19 @@ body.works-show {
   
   ul.experienceTheWork {
     margin: 0px;
-    margin-left: 244px;
+    margin-left: 213px;
     padding: 0px;
     list-style: none;
-    width: 542px;
+    width: 655px;
+    
+    /*border: 1px solid red;*/
+    
+    li { 
+      width: 540px; margin: 0 auto;
+    }
     
     figure.inline {
-      display: table; width: 1px; margin: 0px; padding: 0px;
+      display: table; width: 1px; margin: 0px; padding: 0px; margin: 0 auto;
       figcaption { 
         padding: 2px; text-align: right; color: #777; font-size: 11px; 
         &:hover { color: black; }
@@ -313,10 +319,12 @@ body.works-show {
       text-align: left;
       font-size: 16px;
       height: 540px;
+      padding-right: 1em;
       overflow: auto;
       
       pre,code{ margin: 0; padding: 0; font-family: inherit; }  
     }
+    
     li.mp3 {
       height: 320px; text-align: center;
       border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px;
