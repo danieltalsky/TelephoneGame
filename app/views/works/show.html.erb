@@ -64,12 +64,29 @@
 <% end %>
 </ul>
 
+<!-- Work Representation Large Images for Lightbox 
+     content_for renders this OUTSIDE of the main element which gets hidden   
+     when these light box elements are shown 
+-->
+<% content_for :extraElements do %>
+    <% if !@work.work_representations.empty? %>
+        <% for wr in @work.work_representations %>
+          <% if wr.fileext == 'jpg' || 'png' %>
+            <!-- Fullsize Work Representation For Lightbox -->
+            <figure class="fullsize" id="fullsize-<%= wr.id %>"><img src="<%= get_fullsized_jpg_path(wr.url) %>" /></figure> 
+          <% end %>
+        <% end %>
+    <% end %>
+<% end %>
+
+<!-- Artist / Work More Info Panel -->
 <% unless @artist.bio.nil? %>  
 <section class="moreInfo">
     <%= raw(@markdown.render @work.artist.bio) %>    
 </section>
 <% end %>
 
+<!-- What Came Before Navigation -->
 <% unless @work.parent.nil? %>
 <section class="whatCameBefore">
   <header>What<br>Came<br>Before</header>
@@ -89,8 +106,7 @@
 </section>    
 <% end %>
 
-
-
+<!-- What Came Next Navigation -->
 <section class="whatCameNext">
 <% unless @work.children.empty? %>
   <header>What<br>Came<br>Next</header>

@@ -42,11 +42,27 @@ $( document ).ready(function() {
     /*
      * Larger work click
      */
-    $("ul.experienceTheWork li a").click(function(e) {
-       //$("main").css('visibility', 'hidden');
-       //$("figure.fullsize").css('visibility', 'visible');
-       //e.preventDefault();
+    $("ul.experienceTheWork li a").click(function(e) {        
+       var idPattern = /[-](\d+)/; 
+       var workId = $(this).attr("id").match(idPattern)[1];
+        
+       console.log(workId[1]);
+       $("main").fadeOut("fast", function(){              
+           $("figure#fullsize-" + workId).fadeIn("fast");
+           $("body").css('background', '#666');
+       });   
+       e.preventDefault();
     });
+    $("div#extraElements figure.fullsize").click(function(e) {        
+       var idPattern = /[-](\d+)/; 
+       var workId = $(this).attr("id").match(idPattern)[1]; 
+        
+       $("body").css('background', 'white');
+       $("figure#fullsize-" + workId).fadeOut("fast", function(){            
+            $("main").fadeIn("fast");
+       });
+       e.preventDefault();
+    });    
 
     /*
      * Before Work Nav Rollovers

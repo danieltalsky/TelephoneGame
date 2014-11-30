@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore lock file
+Gemfile.lock
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -17,8 +20,10 @@
 /log/*.log
 /tmp
 
+# Ignore IDE files
 .project
-/public/assets/
 
-# Ignore RadRails temp files
-*~
+# Ignore compiled assets
+/public/assets/*
+
+~
