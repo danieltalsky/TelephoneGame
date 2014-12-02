@@ -28,12 +28,14 @@
           <% case wr.fileext %>
           <% when 'url' %>
             <div class="url-work">This work is an external website. Visit it by clicking on the link: <a href="<%= wr.url %>" target="_blank"><%= wr.url %></a></div>           
-          <% when 'jpg' || 'png' %>
+          <% when 'jpg' %>
             <a href="<%= wr.url %>" target="_blank" class="launch-fullsize" id="launch-fullsize-<%= wr.id %>">
                 <figure class="inline"><img src="<%= get_resized_jpg_path(wr.url) %>" /><figcaption>click image to view larger</figcaption></figure>
             </a>
-            <!-- Fullsize Work Representation For Lightbox -->
-            <!-- <figure class="fullsize" id="fullsize-<%= wr.id %>"><img src="<%= get_fullsized_jpg_path(wr.url) %>" /></figure>    -->         
+          <% when 'png' %>
+            <a href="<%= wr.url %>" target="_blank" class="launch-fullsize" id="launch-fullsize-<%= wr.id %>">
+                <figure class="inline"><img src="<%= get_resized_jpg_path(wr.url) %>" /><figcaption>click image to view larger</figcaption></figure>
+            </a>             
           <% when 'gif' %>
             <a href="<%= wr.url %>"><img src="<%= wr.url %>" /></a>        
           <% when 'pdf' %>
@@ -55,7 +57,7 @@
             <% when 'md' %>
               <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
             <% else %>  
-              <!--><div style="font-size: 11px; background-color: pink;">(( filetype for <em><%= wr.url %></em> is not supported  ))</div>-->
+              <!-- <div style="font-size: 11px; background-color: pink;">(( filetype for <em><%= wr.url %></em> is not supported  ))</div> -->
           <% end %>
         </li>
     <% end %>

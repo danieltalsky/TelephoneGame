@@ -15,7 +15,7 @@
   <div id="tourStepBack">   
   <%=
     if @curated_tour_stop.sequential_id > 1 
-      link_to('&#x25C0; Previous Tour Stop'.html_safe, curated_tour_curated_tour_stop_path(@curated_tour.id, @curated_tour_stop.sequential_id - 1))
+      link_to('&#x25C0; Previous Stop'.html_safe, curated_tour_curated_tour_stop_path(@curated_tour.id, @curated_tour_stop.sequential_id - 1))
     end
   %>
   </div>
@@ -23,7 +23,7 @@
   <div id="tourStepNext">
   <%=
     if @curated_tour_stop.sequential_id < @curated_tour_stops_count 
-      link_to('Next Tour Stop &#9654;'.html_safe, curated_tour_curated_tour_stop_path(@curated_tour.id, @curated_tour_stop.sequential_id + 1))
+      link_to('Next Stop &#9654;'.html_safe, curated_tour_curated_tour_stop_path(@curated_tour.id, @curated_tour_stop.sequential_id + 1))
     end
   %>
 
@@ -34,41 +34,68 @@
   <%= @curated_tour_stop.caption_text %>
 </section>
 
+<hr>
+
 <ul id="tourStopWorks" class="experienceTheWork">
 <% if !@curated_tour_stop.work.work_representations.empty? %>
     <% for wr in @curated_tour_stop.work.work_representations %>
-    <li class="<%= wr.fileext %>">
-      <% case wr.fileext %>
-      <% when 'jpg' %>
-        <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="600"/></a>
-      <% when 'gif' %>
-        <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="600"/></a>      
-      <% when 'png' %>
-        <a href="<%= wr.url %>"><img src="<%= wr.url %>" width="600"/></a>    
-      <% when 'mp3' %>
-        <audio controls="controls">
-          <source src="<%= wr.url %>" type="audio/mpeg" />
-        </audio>
-      <% when 'vimeo' %> 
-        <iframe src="//player.vimeo.com/video/<%= wr.url[/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/, 3] %>?title=0&amp;byline=0&amp;portrait=0" 
-          width="600"
-          height="450"
-          frameborder="0" 
-          webkitallowfullscreen 
-          mozallowfullscreen 
-          allowfullscreen></iframe>            
-        <% when 'md' %>
-          <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
-        <% else %>  
-          <div style="display: none;">(( filetype for <em><%= wr.url %></em> is not supported yet ))</div>
-      <% end %>
-    </li>
+        <li class="<%= wr.fileext %>">
+          <% case wr.fileext %>
+          <% when 'url' %>
+            <div class="url-work">This work is an external website. Visit it by clicking on the link: <a href="<%= wr.url %>" target="_blank"><%= wr.url %></a></div>           
+          <% when 'jpg' %>
+            <a href="<%= wr.url %>" target="_blank" class="launch-fullsize" id="launch-fullsize-<%= wr.id %>">
+                <figure class="inline"><img src="<%= get_resized_jpg_path(wr.url) %>" /><figcaption>click image to view larger</figcaption></figure>
+            </a>
+          <% when 'png' %>
+            <a href="<%= wr.url %>" target="_blank" class="launch-fullsize" id="launch-fullsize-<%= wr.id %>">
+                <figure class="inline"><img src="<%= get_resized_jpg_path(wr.url) %>" /><figcaption>click image to view larger</figcaption></figure>
+            </a>       
+          <% when 'gif' %>
+            <a href="<%= wr.url %>"><img src="<%= wr.url %>" /></a>        
+          <% when 'pdf' %>
+            <a href="<%= wr.url %>" target="_blank">Open the original PDF document of this work.</a>    
+          <% when 'zip' %>
+            <div class="zip-work">This work has a downloadable ZIP file: <a href="<%= wr.url %>"><%= wr.url %></a></div>                  
+          <% when 'mp3' %>
+            <p>Press play to hear this recording:</p>
+            <audio controls="controls">
+              <source src="<%= wr.url %>" type="audio/mpeg" />
+            </audio>
+          <% when 'vimeo' %> 
+            <iframe src="//player.vimeo.com/video/<%= wr.url[/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/, 3] %>?title=0&amp;byline=0&amp;portrait=0" 
+              width="540" height="405" 
+              frameborder="0" 
+              webkitallowfullscreen 
+              mozallowfullscreen 
+              allowfullscreen></iframe>            
+            <% when 'md' %>
+              <div class="md-work"><%= raw(@markdown.render wr.text_body_markdown) %></div>
+            <% else %>  
+              <!-- <div style="font-size: 11px; background-color: pink;">(( filetype for <em><%= wr.url %></em> is not supported  ))</div>-->
+          <% end %>
+        </li>
     <% end %>
 <% else %>
-  <div class="noWorkRepresentations">This Work is Still in Progress</div>
+  <div class="noWorkRepresentations">No file exists in the database for this work yet.</div>
 <% end %>
 </ul>
 
 <br /> <br />
 
 <%= link_to 'Back To Beginning',  curated_tour_curated_tour_stop_path(@curated_tour.id, 1) %>
+
+<!-- Work Representation Large Images for Lightbox 
+     content_for renders this OUTSIDE of the main element which gets hidden   
+     when these light box elements are shown 
+-->
+<% content_for :extraElements do %>
+    <% if !@curated_tour_stop.work.work_representations.empty? %>
+        <% for wr in @curated_tour_stop.work.work_representations %>
+          <% if wr.fileext == 'jpg' || 'png' %>
+            <!-- Fullsize Work Representation For Lightbox -->
+            <figure class="fullsize" id="fullsize-<%= wr.id %>"><img src="<%= get_fullsized_jpg_path(wr.url) %>" /></figure> 
+          <% end %>
+        <% end %>
+    <% end %>
+<% end %>
