@@ -122,7 +122,7 @@ nav {
   }
 }
 
-h1 { display: none; }
+h1 { text-transform: uppercase; color: black;  font-size: 48px; }
 
 table {
   th { text-align: left;padding: 3px; }
@@ -411,7 +411,41 @@ body.works-show {
   }
 }
 
+/*
 
+  Works By Medium
+
+ */
+body.works-by_medium {
+  ul {
+    list-style: none;
+    li {
+      a { font-size: 22px; color: black; &:hover { color: $telephoneRed; }}
+    }
+  }
+  
+  h2 { padding: .5em; font-size: 32px; color: white; text-transform: uppercase; }
+  
+  h2.categoryDesign        { @include categoryDesignBackground; }
+  h2.categoryMultimedia    { @include categoryMultimediaBackground; }
+  h2.categoryDance         { @include categoryDanceBackground; }
+  h2.categoryPerformance   { @include categoryPerformanceBackground; }
+  h2.categoryIllustration  { @include categoryIllustrationBackground; }
+  h2.categoryDrawing       { @include categoryDrawingBackground; }
+  h2.categoryPrint         { @include categoryPrintBackground; }
+  h2.categoryInstallation  { @include categoryInstallationBackground; }
+  h2.categoryProse         { @include categoryProseBackground; }
+  h2.categoryPoetry        { @include categoryPoetryBackground; }
+  h2.categoryMusic         { @include categoryMusicBackground; }
+  h2.categoryAudio         { @include categoryAudioBackground; }
+  h2.categoryCollage       { @include categoryCollageBackground; }
+  h2.categoryPainting      { @include categoryPaintingBackground; }
+  h2.categorySculpture     { @include categorySculptureBackground; }
+  h2.categoryPhotography   { @include categoryPhotographyBackground; }
+  h2.categoryFilm          { @include categoryFilmBackground; }
+  h2.categoryEmbroidery    { @include categoryEmbroideryBackground; }
+  h2.categoryOther         { @include categoryOtherBackground; }
+}
 
 /*
 

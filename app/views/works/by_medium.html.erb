@@ -2,17 +2,18 @@
 
 <% @media_collection.sort.each do |medium, works| %>
 
-    <h2><%= medium %></h2>
+    <h2 class="category<%= medium %>"><%= medium %></h2>
 
     <ul>
         <% works.each do |work| %>
             <li>
-                <%= work.orig_id %>_<%= work.parent ? work.parent.orig_id : '0000' %>
-                <%= link_to work.title, work %> 
+                <%= link_to work.artist.name, work %> 
+                <!--
                 <em>
                     (<%= work.work_representations.count %> 
                     <%= 'file'.pluralize(work.work_representations.count) %>)
                 </em>
+                -->
             </li>
         <% end %>
     </ul>
