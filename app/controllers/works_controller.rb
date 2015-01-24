@@ -19,14 +19,19 @@ class WorksController < ApplicationController
   
   # GET /works/tree
   def tree
+    @rootWork = Work.find_by_parent_id(nil)
+  end  
+  
+  # GET /works/old_tree
+  def old_tree
     rootWork = Work.find_by_parent_id(nil)
     @treehtml = '<ul>' + generate_nested_list(rootWork) + '</ul>'
   end
   
   # GET /works/jsontree
   def jsontree
-    rootWork = Work.all#Work.find_by_parent_id(nil)
-    @treehtml = rootWork
+    allWorks = Work.all#Work.find_by_parent_id(nil)
+    @treehtml = allWorks
   end  
   
   def generate_nested_list (node)

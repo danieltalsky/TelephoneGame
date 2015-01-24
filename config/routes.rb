@@ -2,6 +2,7 @@ TelephoneGame::Application.routes.draw do
 
   get "application/index"
   get "works/tree"
+  get "works/old_tree"
   get "works/jsontree"
   get "works/by_medium"
   get "pages/map_concept"
