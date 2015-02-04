@@ -17,11 +17,20 @@ class WorksController < ApplicationController
     end
   end  
   
+  # GET /works/by_location
+  def by_location
+    @locations = Artist.uniq.pluck(:location)  
+    @location_collection = Hash.new
+    @locations.each do |location| 
+      @location_collection[location] = 
+        Work.includes(:artist).where('artists.location = ?', location);
+    end
+    
+    @countries = @locations.uniq {|location| location.split(', ').last }    
+  end    
+  
   # GET /works/tree
   def tree
-    @rootWork = Work.find_by_parent_id(nil)
-    
-    
     @works = Work.all
   end  
   
@@ -33,15 +42,11 @@ class WorksController < ApplicationController
   
   # GET /works/jsontree
   def jsontree
-
     render json: Work.all.to_json(
       :only  => [:id, :medium],
       :include => {:artist => {
         :only => [:name, :location]
-        } 
-      }
-
-    )
+    }})
   end  
   
   def generate_nested_list (node)

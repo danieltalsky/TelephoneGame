@@ -5,6 +5,7 @@ TelephoneGame::Application.routes.draw do
   get "works/old_tree"
   get "works/jsontree"
   get "works/by_medium"
+  get "works/by_location"  
   get "pages/map_concept"
   get "pages/about"
   resources :works

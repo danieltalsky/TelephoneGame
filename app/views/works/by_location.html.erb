@@ -1,0 +1,16 @@
+<h1>Works by Location</h1>
+
+<% @location_collection.sort.each do |location, works| %>
+
+    <h2 class="location"><%= location %></h2>
+
+    <ul>
+        <% works.each do |work| %>
+            <li>
+                <%= link_to work.artist.name, work %> 
+            </li>
+        <% end %>
+    </ul>
+
+<% end %>
+
