@@ -4,31 +4,36 @@
 <script>
 $( document ).ready(function() {
 
-    $("area#tree_node_1").hover(
-        function() {      
-            $("section#nextWorkInfo1").show();
+    $("area.tree_node").hover(
+        function() {      
+            $("section#nextWorkInfo" + this.id).show();
       }, function() {
-            $("section#nextWorkInfo1").hide();
+            $("section#nextWorkInfo" + this.id).hide();
       }
     );    
 });
 </script>
 
-
-
 <div style="position: relative;">
 <%= image_tag "treeviewMap-8.png", :usemap => "#treeMap" %>
     
 <map name="treeMap">
-  <area id="tree_node_1" shape="circle" coords="401,389,7" href="/" alt="test" />
+  <% @works.each do |work| %>
+  <area class="tree_node" id="<%= work.id %>" coords="<%= get_coordinates_for_work_id(work.id).join(",") %>,7" shape="circle" href="/" alt="test" />
+  <% end %>
 </map>
 
 <div>
-    <section style="display:none; position: absolute; left: 430px;  top: 430px;" class="artistInfo category<%= @rootWork.medium %>" id="nextWorkInfo<%= @rootWork.id %>">
-      <div class="artistName<% if @rootWork.artist.longname? %> longname<% end %>"><%= @rootWork.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
-      <div class="workMedium"><%= @rootWork.medium %></div>
-      <div class="workLocation"><%= @rootWork.artist.location.gsub(/[,]\s+/, '<br>').html_safe %></div>
+    <% 
+    @works.each do |work| 
+        c = get_coordinates_for_work_id(work.id)        
+    %>
+    <section style="display:none; position: absolute; left: <%= c[0]+20 %>px;  top: <%= c[1]+20 %>px;" class="artistInfo category<%= work.medium %>" id="nextWorkInfo<%= work.id %>">
+      <div class="artistName<% if work.artist.longname? %> longname<% end %>"><%= work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
+      <div class="workMedium"><%= work.medium %></div>
+      <div class="workLocation"><%= work.artist.location.gsub(/[,]\s+/, '<br>').html_safe %></div>
     </section>    
+    <% end %>
 </div>
 
 </div>

@@ -20,6 +20,9 @@ class WorksController < ApplicationController
   # GET /works/tree
   def tree
     @rootWork = Work.find_by_parent_id(nil)
+    
+    
+    @works = Work.all
   end  
   
   # GET /works/old_tree
@@ -30,8 +33,15 @@ class WorksController < ApplicationController
   
   # GET /works/jsontree
   def jsontree
-    allWorks = Work.all#Work.find_by_parent_id(nil)
-    @treehtml = allWorks
+
+    render json: Work.all.to_json(
+      :only  => [:id, :medium],
+      :include => {:artist => {
+        :only => [:name, :location]
+        } 
+      }
+
+    )
   end  
   
   def generate_nested_list (node)

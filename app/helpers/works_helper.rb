@@ -1,4 +1,5 @@
 module WorksHelper
+  
   def get_resized_jpg_path(fullsize_path)
     return_path = fullsize_path
     replacer_array = {
@@ -24,4 +25,9 @@ module WorksHelper
     end    
     return return_path
   end  
+  
+  def get_coordinates_for_work_id(work_id)
+    return [work_id + work_id, work_id + work_id]
+  end
+  
 end
