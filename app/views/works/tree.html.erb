@@ -18,7 +18,7 @@ $( document ).ready(function() {
     
 <map name="treeMap">
   <% @works.each do |work| %>
-  <area class="tree_node" id="<%= work.id %>" coords="<%= get_coordinates_for_work_id(work.id).join(",") %>,7" shape="circle" href="/" alt="test" />
+  <area class="tree_node" id="<%= work.id %>" coords="<%= get_coordinates_for_work_id(work.id).join(",") %>,7" shape="circle" href="<%= work_url work %>" alt="test" />
   <% end %>
 </map>
 
@@ -27,7 +27,7 @@ $( document ).ready(function() {
     @works.each do |work| 
         c = get_coordinates_for_work_id(work.id)        
     %>
-    <section style="display:none; position: absolute; left: <%= c[0]+20 %>px;  top: <%= c[1]+20 %>px;" class="artistInfo category<%= work.medium %>" id="nextWorkInfo<%= work.id %>">
+    <section style="display:none; position: absolute; left: <%= ((c[0].to_i)+20).to_s %>px;  top: <%= adjust_x_coord_for_height(((c[1].to_i)+20)).to_s %>px;" class="artistInfo category<%= work.medium %>" id="nextWorkInfo<%= work.id %>">
       <div class="artistName<% if work.artist.longname? %> longname<% end %>"><%= work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
       <div class="workMedium"><%= work.medium %></div>
       <div class="workLocation"><%= work.artist.location.gsub(/[,]\s+/, '<br>').html_safe %></div>
