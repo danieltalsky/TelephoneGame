@@ -61,11 +61,11 @@ danielUser.update_password 'tantamounttolove'
 jonathanUser = User.create(:email => 'jonathan.harford@gmail.com')
 jonathanUser.update_password 'drinkdeeplyfromthewell'
 nathanUser = User.create(:email => 'langston.nathan@gmail.com')
-nathanUser.update_password 'amanmightormightnot'
+nathanUser.update_password 'notsodamnedskillful'
 kevinUser = User.create(:email => 'kevin@satellite-collective.org')
-kevinUser.update_password 'heliveswithitalways'
+kevinUser.update_password 'smartestwhendarkest'
 danielPadmosUser = User.create(:email => 'daniel@dexnewyork.com')
-danielPadmosUser.update_password 'aprinceofnewengland'
+danielPadmosUser.update_password 'bellicosemartian'
 mattUser = User.create(:email => 'mattdabrowiak@gmail.com')
 mattUser.update_password 'exansivelypushingintospace'
 
