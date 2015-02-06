@@ -1,7 +1,9 @@
 class WorksController < ApplicationController
-  before_filter :authorize
+  #before_filter :authorize
   before_action :set_work, only: [:show, :edit, :update, :destroy]
 
+  #caches_action :by_medium, :by_location, :tree
+  
   # GET /works
   def index
     @works = Work.all
