@@ -2,6 +2,8 @@ class CuratedToursController < ApplicationController
   before_filter :authorize
   before_action :set_curated_tours, only: [:show]
 
+  caches_action :index, :show
+
   # GET /curated_tours
   def index
     @curated_tours = CuratedTour.all
