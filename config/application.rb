@@ -20,6 +20,9 @@ module TelephoneGame
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     
+    # Only english Locale for now
+    config.i18n.enforce_available_locales = false
+    
     # Gzip compress static assets through Rack::Zippy
     config.middleware.swap(ActionDispatch::Static, Rack::Zippy::AssetServer)
   end
