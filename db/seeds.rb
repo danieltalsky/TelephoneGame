@@ -57,16 +57,16 @@ CuratedTourStop.create(work_id: scWork.id, curated_tour_id: danielPadmosCuratedT
   
 # FAKE SECURITY
 danielUser = User.create(:email => 'danieltalsky@gmail.com')
-danielUser.update_password 'tantamounttolove'
+danielUser.update_password 'fatalisticfaithful'
 jonathanUser = User.create(:email => 'jonathan.harford@gmail.com')
-jonathanUser.update_password 'drinkdeeplyfromthewell'
+jonathanUser.update_password 'somethingwhenthepeopledo'
 nathanUser = User.create(:email => 'langston.nathan@gmail.com')
 nathanUser.update_password 'notsodamnedskillful'
 kevinUser = User.create(:email => 'kevin@satellite-collective.org')
-kevinUser.update_password 'smartestwhendarkest'
+kevinUser.update_password 'painfullycorrect'
 danielPadmosUser = User.create(:email => 'daniel@dexnewyork.com')
-danielPadmosUser.update_password 'bellicosemartian'
+danielPadmosUser.update_password 'sushiisdelicious'
 mattUser = User.create(:email => 'mattdabrowiak@gmail.com')
-mattUser.update_password 'exansivelypushingintospace'
+mattUser.update_password 'borneoisacountry'
 
 
