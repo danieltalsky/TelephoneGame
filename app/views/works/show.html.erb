@@ -77,7 +77,6 @@
           <% if wr.fileext == 'jpg' || wr.fileext == 'png' %>
             <!-- Fullsize Work Representation For Lightbox -->
             <figure class="fullsize" id="fullsize-<%= wr.id %>"><img src="<%= get_fullsized_jpg_path(wr.url) %>" /></figure> 
-            <%= debug wr.fileext %>
           <% end %>
         <% end %>
     <% end %>
