@@ -8,6 +8,10 @@ TelephoneGame::Application.routes.draw do
   get "works/by_location"  
   get "pages/map_concept"
   get "pages/about"
+  get "pages/essays"
+  get "pages/essay_nathan_langston"
+  get "pages/essay_peter_crack"
+  get "pages/essay_lindsey_allgood"
   resources :works
   resources :artists
   resources :curated_tours do
