@@ -29,7 +29,7 @@ WorkRepresentation.create(
 # Placeholder Curated Tour
 danielPadmosCuratedTour = CuratedTour.create(
   tour_author: 'Daniel Padmos',
-  tour_name: 'Curated Tour #1'
+  tour_name: 'A Curated Tour Through Telephone Game'
 )
 CuratedTourStop.create(work_id: scWork.id, curated_tour_id: danielPadmosCuratedTour.id, 
   caption_text: 'Original Message: Oh god thy sea is so great and my boat is so small.')
