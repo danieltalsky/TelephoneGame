@@ -175,6 +175,66 @@ body.application-index {
 
 /* ===
  * 
+ * STATIC PAGES - Essays
+ * 
+ * ===
+ */
+section.essayInfoPane { position: absolute; left: 20px; top: 20px; text-transform: uppercase; 
+  nav.essayNav { 
+    clear: both;
+    a { display: block; margin-top: 14px; border: 2px solid $telephoneRed; width: 200px; text-align: center; color: $telephoneRed;  }
+    a.essaysHomeLink { text-align: left;
+      h1 { font-size: 28px; margin: 15px 0 0 17px; padding: 0; color: $telephoneRed; }
+      h2 { font-size: 18px; margin: 15px 0 15px 17px; padding: 0;  }
+    }
+    a.homeLink { font-size: 48px; }
+  }
+}
+body.pages-essays nav.essayNav a.essaysHomeLink {
+    border-color: #e0e0e0;
+    background: #e0e0e0;
+    h1 {color: black;}
+    h2 {color: black;}
+
+}
+nav.essayList {
+    margin: 0px;
+    margin-left: 273px;
+    text-align: left;
+    font-size: 16px;
+    height: 600px;
+    overflow: auto;
+    padding: 0 1em 0 0;
+    width: 543px;  
+  
+  ul {
+    list-style: none;
+    li { margin-bottom: 3em; 
+      .essayTitle { margin-bottom: .4em; font-size: 32px; }
+      .essayAuthor { font-size: 20px; text-indent: 1em; text-transform: uppercase; }
+    }
+  }
+}
+article.essays {
+    margin: 0px;
+    margin-left: 273px;
+    text-align: left;
+    font-size: 16px;
+    height: 600px;
+    overflow: auto;
+    padding: 0 1em 0 0;
+    width: 543px;  
+    
+    div.author { 
+      font-size: 28px; margin-top: 15px; text-transform: uppercase;
+      
+      a { color: black; }  
+    }
+    h1 { font-size: 20px;  margin: 25px 0; text-transform: none;}
+}
+
+/* ===
+ * 
  * STATIC PAGES - Map Concept
  * 
  * ===
@@ -326,8 +386,6 @@ body.works-show, body.works-tree {
     padding: 0px;
     list-style: none;
     width: 655px;
-    
-    /*border: 1px solid red;*/
     
     li { 
       width: 540px; margin: 0 auto;
