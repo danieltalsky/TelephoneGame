@@ -92,7 +92,7 @@
 <% content_for :extraElements do %>
     <% if !@curated_tour_stop.work.work_representations.empty? %>
         <% for wr in @curated_tour_stop.work.work_representations %>
-          <% if wr.fileext == 'jpg' || 'png' %>
+          <% if wr.fileext == 'jpg' || wr.fileext == 'png' %>
             <!-- Fullsize Work Representation For Lightbox -->
             <figure class="fullsize" id="fullsize-<%= wr.id %>"><img src="<%= get_fullsized_jpg_path(wr.url) %>" /></figure> 
           <% end %>
