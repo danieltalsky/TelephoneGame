@@ -1,6 +1,3 @@
-<h1>Treeview of Works</h1>
-
-
 <script>
 $( document ).ready(function() {
     $("area.tree_node").hover(
@@ -13,29 +10,42 @@ $( document ).ready(function() {
 });
 </script>
 
-<div style="position: relative;">
+<section id="treeviewSidebar">
+    <a href="/" class="homeLink">Home</a>
+    
+    <div class="treeviewInstructions">
+        Roll over the individual nodes to see more information about each work.
+        Click on a node to visit it.
+    </div>
+    
+    <div id="treeviewLegend">
+        <%= image_tag "treeviewLegend.png", :alt => 'Legend' %>
+    </div>
+</section>
+
+<section id="treeView">
 <%= image_tag "treeviewMap-8.png", :usemap => "#treeMap" %>
     
-<map name="treeMap">
-  <% @works.each do |work| %>
-  <area class="tree_node" id="<%= work.id %>" coords="<%= get_coordinates_for_work_id(work.id).join(",") %>,7" shape="circle" href="<%= work_url work %>" alt="test" />
-  <% end %>
-</map>
+    <map name="treeMap">
+      <% @works.each do |work| %>
+      <area class="tree_node" id="<%= work.id %>" coords="<%= get_coordinates_for_work_id(work.id).join(",") %>,7" shape="circle" href="<%= work_url work %>" alt="test" />
+      <% end %>
+    </map>
+    
+    <div>
+        <% 
+        @works.each do |work| 
+            c = get_coordinates_for_work_id(work.id)        
+        %>
+        <section style="display:none; position: absolute; left: <%= ((c[0].to_i)+20).to_s %>px;  top: <%= adjust_x_coord_for_height(((c[1].to_i)+20)).to_s %>px;" class="artistInfo category<%= work.medium %>" id="nextWorkInfo<%= work.id %>">
+          <div class="artistName<% if work.artist.longname? %> longname<% end %>"><%= work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
+          <div class="workMedium"><%= work.medium %></div>
+          <div class="workLocation"><%= work.artist.location.gsub(/[,]\s+/, '<br>').html_safe %></div>
+        </section>    
+        <% end %>
+    </div>
 
-<div>
-    <% 
-    @works.each do |work| 
-        c = get_coordinates_for_work_id(work.id)        
-    %>
-    <section style="display:none; position: absolute; left: <%= ((c[0].to_i)+20).to_s %>px;  top: <%= adjust_x_coord_for_height(((c[1].to_i)+20)).to_s %>px;" class="artistInfo category<%= work.medium %>" id="nextWorkInfo<%= work.id %>">
-      <div class="artistName<% if work.artist.longname? %> longname<% end %>"><%= work.artist.name.gsub(/\s+/, '<br>').html_safe %></div>
-      <div class="workMedium"><%= work.medium %></div>
-      <div class="workLocation"><%= work.artist.location.gsub(/[,]\s+/, '<br>').html_safe %></div>
-    </section>    
-    <% end %>
-</div>
-
-</div>
+</section>
 
 
 
