@@ -1,18 +1,30 @@
-<h1>Works by Location</h1>
+<!-- Works List Navigation -->
+<section class="worksListInfoPane">
+  <nav class="worksListNav">
+    <a class="worksListLink" href="/works/by_medium/">
+        Browse Works By Medium
+    </a>      
+    <a class="worksListLink selected" href="/works/by_location/">
+        Browse Works By Location
+    </a>   
+    <a class="homeLink" href="/">
+        Home
+    </a>
+  </nav>
+</section>
 
-<p><a href="/works/by_medium">View By Location</a></p>
-
-<% @location_collection.sort.each do |location, works| %>
-
-    <h2 class="location"><%= location %></h2>
-
-    <ul>
-        <% works.each do |work| %>
-            <li>
-                <%= link_to work.artist.name, work %> 
-            </li>
-        <% end %>
-    </ul>
-
-<% end %>
-
+<section class="worksList"> 
+    <% @location_collection.sort.each do |location, works| %>
+    
+        <h2 class="location"><%= location %></h2>
+    
+        <ul>
+            <% works.each do |work| %>
+                <li>
+                    <%= link_to work.artist.name, work %> 
+                </li>
+            <% end %>
+        </ul>
+    
+    <% end %>
+</section>

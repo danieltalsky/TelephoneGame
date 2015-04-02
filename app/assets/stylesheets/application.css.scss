@@ -496,18 +496,46 @@ body.works-show, body.works-tree {
 
 /*
 
-  Works By Medium
+  Works By Medium / Works By Location
 
  */
-body.works-by_medium {
+body.works-by_medium, body.works-by_location {
+  
+  section.worksListInfoPane { position: absolute; left: 20px; top: 20px; text-transform: uppercase; 
+    nav.worksListNav { 
+      clear: both;
+      a { display: block; margin-top: 14px; border: 2px solid $telephoneRed; width: 160px; text-align: center; color: $telephoneRed;  }
+      a.worksListLink { text-align: left; font-size: 18px; margin-bottom: 15px; padding: 10px; }
+      .selected { border-color: #e0e0e0; background: #e0e0e0; color: black; }
+      a.homeLink { font-size: 48px; padding: 10px; }
+    }
+  }
+    
+  section.worksList {
+      margin: 0px;
+      margin-left: 273px;
+      text-align: left;
+      font-size: 16px;
+      height: 600px;
+      overflow: auto;
+      padding: 0 1em 0 0;
+      width: 543px;  
+      
+      h1 { font-size: 20px;  margin: 25px 0; text-transform: none;}
+  }  
+  
   ul {
     list-style: none;
+    margin: 0;
     li {
+      margin: 0;
+      
       a { font-size: 22px; color: black; &:hover { color: $telephoneRed; }}
     }
   }
   
-  h2 { padding: .5em; font-size: 32px; color: white; text-transform: uppercase; }
+  h2 { display: inline-block; padding: .2em .8em .2em .3em; font-size: 28px; color: white; background: black; text-transform: uppercase; font-weight: normal;}
+  
   
   h2.categoryDesign        { @include categoryDesignBackground; }
   h2.categoryMultimedia    { @include categoryMultimediaBackground; }

@@ -23,7 +23,13 @@ class WorksController < ApplicationController
   def by_location
     @locations = Artist.uniq.pluck(:location)  
     @location_collection = Hash.new
-    @locations.each do |location| 
+    
+    # Tried to do a color transition too late at night with the wrong gem version
+    # startColor = Color.from_rgb(203, 33,  62)
+    # endColor   = Color.from_rgb(10,  182, 232)
+    # startColor.gradient_to(endColor, @locations.count)
+    
+    @locations.each_with_index do |location, index|
       @location_collection[location] = 
         Work.includes(:artist).where('artists.location = ?', location);
     end
