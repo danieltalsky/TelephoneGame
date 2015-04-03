@@ -168,10 +168,28 @@ body.application-index {
 
 /* ===
  * 
- * STATIC PAGES - About
+ * STATIC PAGES - About / Generic
  * 
  * ===
  */
+section.pagesInfoPane { position: absolute; left: 20px; top: 20px; text-transform: uppercase; 
+  nav.pagesNavList { 
+    clear: both;
+    a { display: block; margin-top: 14px; border: 2px solid $telephoneRed; width: 200px; text-align: center; color: $telephoneRed;  }
+    a.homeLink { font-size: 48px; }
+  }
+}
+article.pageContent {
+    margin: 0px;
+    margin-left: 273px;
+    text-align: left;
+    font-size: 16px;
+    height: 600px;
+    overflow: auto;
+    padding: 0 1em 0 0;
+    width: 543px;  
+    h1 { font-size: 20px;  margin: 25px 0; text-transform: none;}
+}
 
 /* ===
  * 
@@ -239,7 +257,6 @@ article.essays {
  * 
  * ===
  */
-
 body.pages-map_concept {
   main {
     border: 0;   
@@ -253,6 +270,9 @@ body.pages-map_concept {
     }
   }
 }
+
+
+
 /* ===
  * 
  * TREEVIEW PAGE
@@ -278,6 +298,11 @@ body.works-tree {
     }
   }
 }
+
+
+
+
+
 /* ===
  * 
  * WORKS PAGE
