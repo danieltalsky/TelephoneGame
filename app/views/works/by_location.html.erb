@@ -20,7 +20,7 @@
         @location_collection.sort.each do |location, works|  
     %>
     
-        <h2 class="location" style="background: hsl(<%= @steps[index] %>)"><%= location %></h2>
+        <h2 class="location" style="background: hsl(<%= @color_steps[index] %>)"><%= location %></h2>
     
         <ul>
             <% works.each do |work| %>

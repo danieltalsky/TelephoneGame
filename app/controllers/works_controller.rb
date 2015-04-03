@@ -24,34 +24,7 @@ class WorksController < ApplicationController
     @locations = Artist.uniq.pluck(:location)  
     @location_collection = Hash.new
     
-    # set up color transition
-    startHSV   = {:h => 342, :s => 98.5, :v => 79.6}
-    endHSV     = {:h => 194, :s => 95.7, :v => 91.0}
-    
-    diffHSV = {
-      :h => (startHSV[:h] - endHSV[:h]), 
-      :s => (startHSV[:s] - endHSV[:s]), 
-      :v => (startHSV[:v] - endHSV[:v])
-      } 
-    increment = {}
-    increment[:h] = diffHSV[:h].to_f / @locations.count
-    increment[:s] = diffHSV[:s].to_f / @locations.count
-    increment[:v] = diffHSV[:v].to_f / @locations.count
-    
-    # render :text => increment
-    
-    lastStep = startHSV.dup
-    @steps = []
-    @steps << to_hsl_string(lastStep)
-    (@locations.count - 1).times do 
-      lastStep = { 
-        :h => (lastStep[:h] - increment[:h]).round(2),
-        :s => (lastStep[:s] - increment[:s]).round(2),  
-        :v => (lastStep[:v] - increment[:v]).round(2)    
-        }
-      @steps << to_hsl_string(lastStep)
-    end
-    @steps << to_hsl_string(endHSV)
+    @color_steps = get_color_steps @locations.count
     
     @locations.each_with_index do |location, index|
       @location_collection[location] = 
@@ -105,6 +78,36 @@ class WorksController < ApplicationController
 
 
   private
+  
+    def get_color_steps(total)
+      # set up color transition
+      startHSV   = {:h => 342, :s => 98.5, :v => 79.6}
+      endHSV     = {:h => 194, :s => 95.7, :v => 91.0}
+      
+      diffHSV = {
+        :h => (startHSV[:h] - endHSV[:h]), 
+        :s => (startHSV[:s] - endHSV[:s]), 
+        :v => (startHSV[:v] - endHSV[:v])
+        } 
+      increment = {}
+      increment[:h] = diffHSV[:h].to_f / total
+      increment[:s] = diffHSV[:s].to_f / total
+      increment[:v] = diffHSV[:v].to_f / total
+      
+      lastStep = startHSV.dup
+      steps = []
+      steps << to_hsl_string(lastStep)
+      (total - 1).times do 
+        lastStep = { 
+          :h => (lastStep[:h] - increment[:h]).round(2),
+          :s => (lastStep[:s] - increment[:s]).round(2),  
+          :v => (lastStep[:v] - increment[:v]).round(2)    
+          }
+        steps << to_hsl_string(lastStep)
+      end
+      steps << to_hsl_string(endHSV)
+      steps
+    end
   
     # Initialize a color based on RGB values. By default, the values
     # should be between 0 and 255. If you use the option <tt>:percent => true</tt>,
