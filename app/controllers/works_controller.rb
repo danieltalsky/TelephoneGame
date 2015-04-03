@@ -24,10 +24,34 @@ class WorksController < ApplicationController
     @locations = Artist.uniq.pluck(:location)  
     @location_collection = Hash.new
     
-    # Tried to do a color transition too late at night with the wrong gem version
-    # startColor = Color.from_rgb(203, 33,  62)
-    # endColor   = Color.from_rgb(10,  182, 232)
-    # startColor.gradient_to(endColor, @locations.count)
+    # set up color transition
+    startHSV   = {:h => 342, :s => 98.5, :v => 79.6}
+    endHSV     = {:h => 194, :s => 95.7, :v => 91.0}
+    
+    diffHSV = {
+      :h => (startHSV[:h] - endHSV[:h]), 
+      :s => (startHSV[:s] - endHSV[:s]), 
+      :v => (startHSV[:v] - endHSV[:v])
+      } 
+    increment = {}
+    increment[:h] = diffHSV[:h].to_f / @locations.count
+    increment[:s] = diffHSV[:s].to_f / @locations.count
+    increment[:v] = diffHSV[:v].to_f / @locations.count
+    
+    # render :text => increment
+    
+    lastStep = startHSV.dup
+    @steps = []
+    @steps << to_hsl_string(lastStep)
+    (@locations.count - 1).times do 
+      lastStep = { 
+        :h => (lastStep[:h] - increment[:h]).round(2),
+        :s => (lastStep[:s] - increment[:s]).round(2),  
+        :v => (lastStep[:v] - increment[:v]).round(2)    
+        }
+      @steps << to_hsl_string(lastStep)
+    end
+    @steps << to_hsl_string(endHSV)
     
     @locations.each_with_index do |location, index|
       @location_collection[location] = 
@@ -81,6 +105,26 @@ class WorksController < ApplicationController
 
 
   private
+  
+    # Initialize a color based on RGB values. By default, the values
+    # should be between 0 and 255. If you use the option <tt>:percent => true</tt>,
+    # the values should then be between 0.0 and 1.0.
+    def to_hsl_string(hsv_hash)
+      
+      hsl_hash = {}
+      
+      # determine the lightness in the range [0,100]
+      hsl_hash[:l] = (2 - hsv_hash[:s] / 100) * hsv_hash[:v] / 2;
+  
+      l_calculation = (hsl_hash[:l] < 50 ? hsl_hash[:l] * 2 : 200 - hsl_hash[:l] * 2)
+  
+      # store the HSL components
+      hsl_hash[:h] = hsv_hash[:h]
+      hsl_hash[:s] = hsv_hash[:s] * ((l_calculation.nonzero?)?(hsv_hash[:v] / l_calculation):0)
+
+      (hsl_hash[:h]).round.to_s + ',' + (hsl_hash[:s]).round.to_s + '%,' + (hsl_hash[:l]).round.to_s + '%'
+    end
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_work
       @work = Work.find(params[:id])

@@ -14,9 +14,13 @@
 </section>
 
 <section class="worksList"> 
-    <% @location_collection.sort.each do |location, works| %>
+
+    <% 
+        index = 0 
+        @location_collection.sort.each do |location, works|  
+    %>
     
-        <h2 class="location"><%= location %></h2>
+        <h2 class="location" style="background: hsl(<%= @steps[index] %>)"><%= location %></h2>
     
         <ul>
             <% works.each do |work| %>
@@ -26,5 +30,8 @@
             <% end %>
         </ul>
     
-    <% end %>
+    <% 
+        index += 1
+        end 
+    %>
 </section>
