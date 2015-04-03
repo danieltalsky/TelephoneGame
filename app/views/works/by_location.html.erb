@@ -25,7 +25,7 @@
         <ul>
             <% works.each do |work| %>
                 <li>
-                    <%= link_to work.artist.name, work %> 
+                    <%= link_to (work.artist.name + " <em>(" + work.medium + ")</em>").html_safe, work %> 
                 </li>
             <% end %>
         </ul>
