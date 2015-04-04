@@ -147,7 +147,7 @@ body.application-index {
           text-align: center;
         
           a { 
-            display: block; position: relative; width: 210px; height: 90px; line-height: 90px;
+            display: block; position: relative; width: 210px; height: 82px; line-height: 86px;
             background: $telephoneRed;
             color: white; font-size: 30px; text-transform: uppercase;
           
@@ -156,15 +156,15 @@ body.application-index {
         }
         /* First Column */
         li#startAtTheBeginning { left: 20px; top: 20px; a{ font-size: 65px; } }
-        li#treeView { left: 20px; top: 121px; a{ font-size: 39px; } }
-        li#browse { left: 20px; top: 221px; a{ font-size: 44px; } }
-        li#tour { left: 20px; top: 321px; a{ font-size: 58px; } }
+        li#treeView { left: 20px; top: 113px; a{ font-size: 39px; } }
+        li#browse { left: 20px; top: 205px; a{ font-size: 44px; } }
+        li#tour { left: 20px; top: 297px; a{ font-size: 58px; } }
         
         /* Second Column */
         li#about { right: 40px; top: 20px; a{ font-size: 54px; } }
-        li#essays { right: 40px; top: 121px; a{ font-size: 52px; } }
-        li#links { right: 40px; top: 221px; a{ font-size: 64px; } }  
-        li#sponsors { right: 40px; top: 321px; a{ font-size: 36px; } } 
+        li#essays { right: 40px; top: 113px; a{ font-size: 52px; } }
+        li#links { right: 40px; top: 205px; a{ font-size: 64px; } }  
+        li#sponsors { right: 40px; top: 297px; a{ font-size: 36px; } } 
       }
     }      
     header#tagline { position: absolute; bottom: 60px; width: 957px; text-align: center;  font-size: 30px;  color: $telephoneRed; }
