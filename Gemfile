@@ -56,3 +56,6 @@ gem 'sequenced'
 # Use Actionpack Action Caching to selectively cache some pages 
 gem 'actionpack-action_caching'
 #gem 'actionpack-page_caching'
+
+# Use New Relic to monitor server load
+gem 'newrelic_rpm', group: :production
