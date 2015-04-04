@@ -12,6 +12,8 @@ TelephoneGame::Application.routes.draw do
   get "pages/essay_nathan_langston"
   get "pages/essay_peter_crack"
   get "pages/essay_lindsey_allgood"
+  get "pages/links"
+  get "pages/sponsors"  
   resources :works
   resources :artists
   resources :curated_tours do

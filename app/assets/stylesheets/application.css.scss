@@ -154,15 +154,21 @@ body.application-index {
             &:hover { box-shadow: -5px -5px 0 $telephoneTrimBlue; color: #67b5e5; }
           }
         }
+        /* First Column */
         li#startAtTheBeginning { left: 20px; top: 20px; a{ font-size: 65px; } }
-        li#browseByMedium { left: 20px; top: 121px; a{ font-size: 34px; } }
-        li#curatedTours { left: 20px; top: 221px; a{ font-size: 58px; } }
-        li#treeView { right: 20px; top: 20px; a{ font-size: 39px; } }
-        li#essays { right: 20px; top: 121px; a{ font-size: 52px; } }
-        li#about { right: 20px; top: 221px; a{ font-size: 50px; } }  
+        li#treeView { left: 20px; top: 121px; a{ font-size: 39px; } }
+        li#browse { left: 20px; top: 221px; a{ font-size: 44px; } }
+        li#tour { left: 20px; top: 321px; a{ font-size: 58px; } }
+        
+        /* Second Column */
+        li#about { right: 40px; top: 20px; a{ font-size: 54px; } }
+        li#essays { right: 40px; top: 121px; a{ font-size: 52px; } }
+        li#links { right: 40px; top: 221px; a{ font-size: 64px; } }  
+        li#sponsors { right: 40px; top: 321px; a{ font-size: 36px; } } 
       }
     }      
-    background: image-url('homeMainBG.png') center center no-repeat;
+    header#tagline { position: absolute; bottom: 60px; width: 957px; text-align: center;  font-size: 30px;  color: $telephoneRed; }
+    background: image-url('homeMainBGLines.png') center 65px no-repeat;
   }
 }
 
@@ -189,6 +195,7 @@ article.pageContent {
     padding: 0 1em 0 0;
     width: 543px;  
     h1 { font-size: 20px;  margin: 25px 0; text-transform: none;}
+    h2 { font-size: 16px; color: $telephoneTrimBlue; }
 }
 
 /* ===
