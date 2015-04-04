@@ -43,10 +43,12 @@
           <% when 'zip' %>
             <div class="zip-work">This work has a downloadable ZIP file: <a href="<%= wr.url %>"><%= wr.url %></a></div>                  
           <% when 'mp3' %>
-            <p>Press play to hear this recording:</p>
-            <audio controls="controls">
-              <source src="<%= wr.url %>" type="audio/mpeg" />
-            </audio>
+            <section class="mp3Controls">
+                <div class="instructions">Press play</div>
+                <audio controls="controls">
+                  <source src="<%= wr.url %>" type="audio/mpeg" />
+                </audio>
+            </section>
           <% when 'vimeo' %> 
             <iframe src="//player.vimeo.com/video/<%= wr.url[/https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/, 3] %>?title=0&amp;byline=0&amp;portrait=0" 
               width="540" height="405" 
