@@ -70,6 +70,7 @@ mattUser = User.create(:email => 'mattdabrowiak@gmail.com')
 mattUser.update_password 'borneoisacountry'
 ryzikUser = User.create(:email => 'ryzik@nytimes.com')
 ryzikUser.update_password 'Is&&The&&Pen&&Indeed&&Mightier?'
-
+guestUser = User.create(:email => 'preview@satellitecollective.org')
+guestUser.update_password 'collectiveguest'
 
 
