@@ -53,6 +53,9 @@ gem 'clearance'
 # Use Sequenced for the curated tours: https://github.com/djreimer/sequenced
 gem 'sequenced'
 
+# Use Cloudinary for image CDN serving
+gem 'cloudinary'
+
 # Use Actionpack Action Caching to selectively cache some pages 
 gem 'actionpack-action_caching'
 #gem 'actionpack-page_caching'

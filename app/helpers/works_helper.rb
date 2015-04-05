@@ -30,6 +30,17 @@ module WorksHelper
     return return_path
   end  
   
+  # using cloudinary service to get resized gif
+  def get_resized_gif_img(orig_url)
+    uri = URI.parse(orig_url)
+    cl_image_tag(File.basename(uri.path), :width=>540, :height=>540, :crop=>:scale)
+  end
+  
+  # using cloudinary service to get resized gif
+  def get_fullsized_gif_img(orig_url)
+    cl_image_tag("0121_0046_Gertz_Visual_rjium4.gif", :width=>960, :height=>960, :crop=>:scale)
+  end
+  
   def position_by_top_or_bottom(position)
     highest_position_that_needs_adjustment = 400
     if position.to_i > lowest_position_to_use_top

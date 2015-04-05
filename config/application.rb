@@ -25,5 +25,13 @@ module TelephoneGame
     
     # Gzip compress static assets through Rack::Zippy
     config.middleware.swap(ActionDispatch::Static, Rack::Zippy::AssetServer)
+    
+    # Cloudinary settings
+    Cloudinary.config do |config|
+      config.cloud_name = 'lvrhd4o70'
+      config.api_key = '119418929438547'
+      config.api_secret = '2EGwXXMvALUnKDK7SzNfuVnlfZc'
+      config.cdn_subdomain = true
+    end
   end
 end
