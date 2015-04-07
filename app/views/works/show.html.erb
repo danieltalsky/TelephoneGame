@@ -27,15 +27,31 @@
         <li class="<%= wr.fileext %>">
           <% case wr.fileext %>
           <% when 'url' %>
-            <div class="url-work">This work is an external website. Visit it by clicking on the link: <a href="<%= wr.url %>" target="_blank"><%= wr.url %></a></div>           
+            <div class="url-work">
+                <p>This artwork is in the form of a website.  
+                Click the "More Info" tab to the left to read more information about the work.
+                Then, click on the preview image to load it in a new window.</p>
+                <a href="<%= wr.url %>" target="_blank">
+                    <%= image_tag(wr.url + 'thumbnail.jpg') %>                    
+                </a>                
+            </div>           
           <% when 'jpg', 'png', 'gif' %>
             <a href="<%= wr.url %>" target="_blank" class="launch-fullsize" id="launch-fullsize-<%= wr.id %>">
                 <figure class="inline"><%= work_show_image_tag(wr.url) %><figcaption>click image to view larger</figcaption></figure>
             </a>    
           <% when 'pdf' %>
-            <a href="<%= wr.url %>" target="_blank">Open the original PDF document of this work.</a>    
+            <div class="pdf-work">
+                <p>This artwork is in the form of a .pdf document.</p><p><a href="<%= wr.url %>" target="_blank">Click here to view the file in a new window.</a></p>
+            </div> 
           <% when 'zip' %>
-            <div class="zip-work">This work has a downloadable ZIP file: <a href="<%= wr.url %>"><%= wr.url %></a></div>                  
+            <div class="zip-work">
+                This file is a program, and is stored in a ZIP file.   There is usually a movie that shows how the program works presented
+                along with this work.  
+                If you would like to experience the original program, you can read the "More Info" tab about this
+                work and decide if you'd like to download and run the file.  We do not offer any technical support beyond the artist's 
+                description, but have verified that the files are not viruses or harmful.
+                <a href="<%= wr.url %>">Click here to download the program.</a>
+            </div>                  
           <% when 'mp3' %>
             <section class="mp3Controls">
                 <div class="instructions">Press play</div>

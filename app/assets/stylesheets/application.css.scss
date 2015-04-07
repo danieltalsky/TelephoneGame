@@ -479,20 +479,13 @@ body.works-show, body.works-tree {
       }
     }
     
-    li div.zip-work { 
+    li div.zip-work, li div.pdf-work, li div.url-work { 
       margin: 10px;
       text-align: left;
       border: 1px solid #ccc; 
       padding: 5px; 
       font-size: 18px; 
     } 
-    li div.url-work { 
-      margin: 10px;
-      text-align: left;
-      border: 1px solid #ccc; 
-      padding: 5px; 
-      font-size: 18px; 
-    }   
   }
   
   section.moreInfo {
