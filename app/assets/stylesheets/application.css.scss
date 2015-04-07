@@ -611,11 +611,14 @@ body.works-by_medium, body.works-by_location {
 */
 body.curated_tour_stops-show {
   
-  h1 { font-size: 36px; margin-bottom: .2em; text-transform: uppercase; }
+  #notice {display:none;}
+  
+  h1 { font-size: 36px; margin-top: 8px; margin-bottom: .2em; text-transform: uppercase; }
   
   article.pageContent {
     margin-left: 233px;
     width: 700px;  
+    height: auto;
   }
   
   ul#tourStopWorks.experienceTheWork {
@@ -653,7 +656,6 @@ body.curated_tour_stops-show {
     font-weight: bold;
     margin-bottom: 1em;
     font-size: 24px;
-    background-color: $telephoneTrimBlue;
     
     #stepCount {
       text-align: center;

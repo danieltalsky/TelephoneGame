@@ -6,7 +6,7 @@ module WorksHelper
   def work_show_image_tag(original_path)
     returnpath = original_path.dup
     replacer_array = {
-      "/workrepresentations/" => "/workrepresentations/540/",
+      "/0" => "/540/0",
       ".jpg" => "_540.jpg",
       ".png" => "_540.jpg",
       ".gif" => "_540.gif"
@@ -21,7 +21,7 @@ module WorksHelper
   def lightbox_image_tag(original_path)
     returnpath = original_path.dup
     replacer_array = {
-      "/workrepresentations/" => "/workrepresentations/960/",
+      "/0" => "/960/0",
       ".jpg" => "_960x620.jpg",
       ".png" => "_960x620.jpg",
       ".gif" => "_960x620.gif"
