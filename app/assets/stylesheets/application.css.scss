@@ -167,8 +167,12 @@ body.application-index {
         li#links { right: 40px; top: 205px; a{ font-size: 64px; } }  
         li#sponsors { right: 40px; top: 297px; a{ font-size: 36px; } } 
       }
-    }      
-    header#tagline { position: absolute; bottom: 60px; width: 957px; text-align: center;  font-size: 30px;  color: $telephoneRed; }
+    }    
+    a#homeLogoLink { position: absolute; bottom: 162px; left: 477px; width: 46px; height: 47px; }  
+    section#telephoneSatelliteCollective { position: absolute; bottom: 35px; width: 957px; text-align: center;  
+      h1 { margin: 0px;  font-weight: normal; text-transform: none; font-size: 30px;  color: $telephoneRed; }
+      h2 { margin: 0; padding: .2em 0 0 0; font-weight: normal; a { font-size: 22px;  color: $telephoneRed; } }
+    }
     background: image-url('homeMainBGLines.png') center 65px no-repeat;
   }
 }
