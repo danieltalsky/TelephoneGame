@@ -28,16 +28,10 @@
           <% case wr.fileext %>
           <% when 'url' %>
             <div class="url-work">This work is an external website. Visit it by clicking on the link: <a href="<%= wr.url %>" target="_blank"><%= wr.url %></a></div>           
-          <% when 'jpg' %>
+          <% when 'jpg', 'png', 'gif' %>
             <a href="<%= wr.url %>" target="_blank" class="launch-fullsize" id="launch-fullsize-<%= wr.id %>">
-                <figure class="inline"><img src="<%= get_resized_jpg_path(wr.url) %>" /><figcaption>click image to view larger</figcaption></figure>
-            </a>
-          <% when 'png' %>
-            <a href="<%= wr.url %>" target="_blank" class="launch-fullsize" id="launch-fullsize-<%= wr.id %>">
-                <figure class="inline"><img src="<%= get_resized_jpg_path(wr.url) %>" /><figcaption>click image to view larger</figcaption></figure>
-            </a>             
-          <% when 'gif' %>
-            <a href="<%= wr.url %>"><img src="<%= wr.url %>" /></a>        
+                <figure class="inline"><%= work_show_image_tag(wr.url) %><figcaption>click image to view larger</figcaption></figure>
+            </a>    
           <% when 'pdf' %>
             <a href="<%= wr.url %>" target="_blank">Open the original PDF document of this work.</a>    
           <% when 'zip' %>
@@ -76,9 +70,9 @@
 <% content_for :extraElements do %>
     <% if !@work.work_representations.empty? %>
         <% for wr in @work.work_representations %>
-          <% if wr.fileext == 'jpg' || wr.fileext == 'png' %>
+          <% if wr.fileext == 'jpg' || wr.fileext == 'png' || wr.fileext == 'gif'%>
             <!-- Fullsize Work Representation For Lightbox -->
-            <figure class="fullsize" id="fullsize-<%= wr.id %>"><img src="<%= get_fullsized_jpg_path(wr.url) %>" /></figure> 
+            <figure class="fullsize" id="fullsize-<%= wr.id %>"><%= lightbox_image_tag(wr.url) %></figure> 
           <% end %>
         <% end %>
     <% end %>

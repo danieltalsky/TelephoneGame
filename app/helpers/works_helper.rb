@@ -2,32 +2,34 @@ require 'csv'
 
 module WorksHelper
   
-  # hacky way to get a medium-resized jpeg path from the original work
-  def get_resized_jpg_path(fullsize_path)
-    return_path = fullsize_path
+  # get resized image tags
+  def work_show_image_tag(original_path)
+    returnpath = original_path.dup
     replacer_array = {
       "/workrepresentations/" => "/workrepresentations/540/",
       ".jpg" => "_540.jpg",
-      ".png" => "_540.jpg"
+      ".png" => "_540.jpg",
+      ".gif" => "_540.gif"
     }
     replacer_array.each do |find, replace|
-      return_path = return_path.sub find, replace
+      returnpath = returnpath.sub find, replace
     end    
-    return return_path
+    return image_tag(returnpath)
   end
   
-  # hacky way to get a full-resized jpeg path from the original work
-  def get_fullsized_jpg_path(fullsize_path)
-    return_path = fullsize_path
+  # get resized image tags
+  def lightbox_image_tag(original_path)
+    returnpath = original_path.dup
     replacer_array = {
       "/workrepresentations/" => "/workrepresentations/960/",
       ".jpg" => "_960x620.jpg",
-      ".png" => "_960x620.jpg"
+      ".png" => "_960x620.jpg",
+      ".gif" => "_960x620.gif"
     }
     replacer_array.each do |find, replace|
-      return_path = return_path.sub find, replace
+      returnpath = returnpath.sub find, replace
     end    
-    return return_path
+    return image_tag(returnpath)
   end  
   
   def position_by_top_or_bottom(position)
