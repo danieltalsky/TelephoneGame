@@ -61,13 +61,13 @@ class Admin::DataController < Admin::ApplicationController
   
   def import_bios
 
-    artist_bios_url = "http://telephone.satellitepress.org/artistbios/"
+    artist_bios_url = "http://telephoneassets.satellitecollective.org/artistbios/"
 
     @data_report = "<h2>Starting artist bio import</h2>";
 
     # populate artist bio file list
-    artist_bios_html = open(artist_bios_url).read
-    artist_bios = artist_bios_html.scan(/(?<=")\d\d\d\d[^<>]+(?=")/)    
+    artist_bios_json = open(artist_bios_url).read
+    artist_bios = JSON.parse(artist_bios_json)    
   
     # Bios in markdown 
     artist_bios.each do |filename| 
@@ -96,15 +96,14 @@ class Admin::DataController < Admin::ApplicationController
   # step 3
   def import_work_representations
 
-    work_representations_url = "http://telephone.satellitepress.org/workrepresentations/"
+    # json file list
+    work_representations_url = "http://telephoneassets.satellitecollective.org/"
 
     @data_report = "<h2>Starting work representations import</h2>";
 
-    # Note that this way of getting a list of representations depends on the 
-    # directory being viewable, which is suboptimal.
     @data_report << "<h3>Opening work representations URL: #{work_representations_url}</h3>";
-    work_representations_html = open(work_representations_url).read
-    work_representations = work_representations_html.scan(/(?<=")\d\d\d\d[^<>]+(?=")/)  
+    work_representations_json = open(work_representations_url).read
+    work_representations = JSON.parse(work_representations_json)  
   
     worksList = Work.all
     worksList.each do |localWork|
