@@ -55,7 +55,7 @@ CuratedTourStop.create(work_id: scWork.id, curated_tour_id: danielPadnosCuratedT
   caption_text: 'Roberta Orlando of Italy did not know the title of Marenz’s photographic collage. In fact, none of the artists were privy to the titles of the works that inspired them. Even so, her translation of the message given to her was this surprising photograph, taken in Spain, which she calls “High Set”. A full year after Jana Weaver received the sailor’s prayer, nine works of art were inspired, one after the other, traversing the United States, the Western Hemisphere and the Atlantic ocean (twice), and still reminding us of our diminutive presence beside the greatness of nature.')  
   
   
-# FAKE SECURITY
+# FAKE SECURITY (it's a little sad this is the only way I know to clear the cache)
 danielUser = User.create(:email => 'danieltalsky@gmail.com')
 danielUser.update_password 'fatalisticfaithful'
 jonathanUser = User.create(:email => 'jonathan.harford@gmail.com')
