@@ -515,8 +515,9 @@ body.works-show, body.works-tree {
       display: block;
       top: 50%;
       left: 50%;
-      /* bring your own prefixes */
       transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%); /* IE 9 */
+      -webkit-transform: translate(-50%, -50%); /* Safari */
       box-shadow: 3px 3px 5px #444;
     }
   }
