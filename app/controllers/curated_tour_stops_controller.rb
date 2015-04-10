@@ -1,7 +1,8 @@
 class CuratedTourStopsController < ApplicationController
-  before_filter :authorize
   before_action :set_curated_tour, only: [:show]
   before_action :set_curated_tour_stops, only: [:show]
+  
+  caches_action :index, :show
   
   # GET /curated_tour_stops
   def index
@@ -11,7 +12,7 @@ class CuratedTourStopsController < ApplicationController
   # GET /curated_tour_stops/1
   def show
      @curated_tour_stops_count = @curated_tour.curated_tour_stop.count  
-     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)  
+     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
   end
 
   private

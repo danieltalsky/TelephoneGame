@@ -1,5 +1,4 @@
 class CuratedToursController < ApplicationController
-  before_filter :authorize
   before_action :set_curated_tours, only: [:show]
 
   caches_action :index, :show

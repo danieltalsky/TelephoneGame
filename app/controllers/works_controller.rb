@@ -2,7 +2,7 @@ class WorksController < ApplicationController
   before_filter :authorize
   before_action :set_work, only: [:show, :edit, :update, :destroy]
 
-  caches_action :by_medium, :by_location, :tree, :show, :old_tree, :jsontree
+  caches_action :index, :by_medium, :by_location, :tree, :show, :old_tree, :jsontree
   
   # GET /works
   def index

@@ -1,5 +1,4 @@
 class WorkRepresentationsController < ApplicationController
-  before_filter :authorize
   before_action :set_work_representation, only: [:show, :edit, :update, :destroy]
 
   # GET /work_representations
