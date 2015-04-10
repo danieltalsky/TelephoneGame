@@ -40,7 +40,7 @@ module WorksHelper
     end
   end
   
-  # if boxes are too low to the bottom they need to be moved up
+  # if boxes are too low to the bottom they need to be moved up +
   def adjust_x_coord_for_height(height)
     y_coords_below_this_need_adjustment = 500
     if height.to_i > y_coords_below_this_need_adjustment
