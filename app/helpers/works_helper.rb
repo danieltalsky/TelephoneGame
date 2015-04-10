@@ -2,35 +2,36 @@ require 'csv'
 
 module WorksHelper
   
-  # get resized image tags
-  def work_show_image_tag(original_path)
+  def work_image_tag(original_path, size = :work_show)
     returnpath = original_path.dup
-    replacer_array = {
-      "/0" => "/540/0",
-      ".jpg" => "_540.jpg",
-      ".png" => "_540.jpg",
-      ".gif" => "_540.gif"
-    }
-    replacer_array.each do |find, replace|
-      returnpath = returnpath.sub find, replace
-    end    
-    return image_tag(returnpath)
-  end
+    
+    # replace the original image URL with its resized version path (I know, it's ugly)
+    if size == :work_show
+      replacer_array = {
+        "/0" => "/540/0",
+        ".jpg" => "_540.jpg",
+        ".png" => "_540.jpg",
+        ".gif" => "_540.gif"
+      }      
+    elsif size == :lightbox
+      replacer_array = {
+        "/0" => "/960/0",
+        ".jpg" => "_960x620.jpg",
+        ".png" => "_960x620.jpg",
+        ".gif" => "_960x620.gif"
+      }      
+    end
+    
+    # replace the satellite collective asset URL with an AWS URL if available
+    if ENV['ASSET_URL_SATELLITECOLLECTIVE'] && ENV['ASSET_URL_AWS_S3']
+      replacer_array[ENV['ASSET_URL_SATELLITECOLLECTIVE']] = ENV['ASSET_URL_AWS_S3']
+    end
   
-  # get resized image tags
-  def lightbox_image_tag(original_path)
-    returnpath = original_path.dup
-    replacer_array = {
-      "/0" => "/960/0",
-      ".jpg" => "_960x620.jpg",
-      ".png" => "_960x620.jpg",
-      ".gif" => "_960x620.gif"
-    }
     replacer_array.each do |find, replace|
       returnpath = returnpath.sub find, replace
     end    
-    return image_tag(returnpath)
-  end  
+    return image_tag(returnpath)   
+  end
   
   def position_by_top_or_bottom(position)
     highest_position_that_needs_adjustment = 400

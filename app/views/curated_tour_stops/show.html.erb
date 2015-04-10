@@ -60,7 +60,7 @@
                 </div>      
               <% when 'jpg', 'png', 'gif' %>
                 <a href="<%= wr.url %>" target="_blank" class="launch-fullsize" id="launch-fullsize-<%= wr.id %>">
-                    <figure class="inline"><%= work_show_image_tag(wr.url) %><figcaption>click image to view larger</figcaption></figure>
+                    <figure class="inline"><%= work_image_tag(wr.url) %><figcaption>click image to view larger</figcaption></figure>
                 </a>    
               <% when 'pdf' %>
                 <div class="pdf-work">
@@ -113,7 +113,7 @@
         <% for wr in @curated_tour_stop.work.work_representations %>
           <% if wr.fileext == 'jpg' || wr.fileext == 'png' || wr.fileext == 'gif'%>
             <!-- Fullsize Work Representation For Lightbox -->
-            <figure class="fullsize" id="fullsize-<%= wr.id %>"><%= lightbox_image_tag(wr.url) %></figure> 
+            <figure class="fullsize" id="fullsize-<%= wr.id %>"><%= work_image_tag(wr.url, :lightbox) %></figure> 
           <% end %>
         <% end %>
     <% end %>
