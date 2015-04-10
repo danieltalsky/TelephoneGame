@@ -35,6 +35,7 @@ TelephoneGame::Application.routes.draw do
     get "data/import_bios"    
     get "data/import_work_representations"
     get "data/populate_tour"
+    get "data/tests"
     get "works/tree"
     get "works/jsontree"
     get "application/index"

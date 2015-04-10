@@ -186,6 +186,11 @@ class Admin::DataController < Admin::ApplicationController
       @data_report << "<div>Assigned work to tour stop # #{cts.sequential_id.to_s}</div>"
     end
   end  
+  
+  
+  def tests
+    render :text => "<pre>" + ENV.inspect + "</pre>".html_safe
+  end
 
 end
 
