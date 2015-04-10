@@ -189,13 +189,7 @@ class Admin::DataController < Admin::ApplicationController
   
   
   def tests
-    
-    # replace the satellite collective asset URL with an AWS URL if available
-    if ENV['ASSET_URL_SATELLITECOLLECTIVE'] && ENV['ASSET_URL_AWS_S3']
-      msg = "IT IS SO!!!!! "
-    end
-    
-    render :text => "<pre>" + msg + ENV.inspect + "</pre>".html_safe
+    render :text => "<pre>" + 'No Tests' + "</pre>".html_safe
   end
 
 end
