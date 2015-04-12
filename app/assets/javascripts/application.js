@@ -19,6 +19,13 @@
  */
 
 $( document ).ready(function() {
+
+    /*
+     * Open all offsite links in another browser
+     */
+    $(document.links).filter(function() {
+        return this.hostname != window.location.hostname;
+    }).attr('target', '_blank');
     
     /*
      * Art / More Info Toggle
