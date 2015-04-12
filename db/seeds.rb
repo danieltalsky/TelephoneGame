@@ -75,5 +75,5 @@ guestUser.update_password 'collectiveguest'
 if ENV['ADMIN_USER_PASSWORD']
   adminUser = User.create(:email => 'admin@satellitecollective.org')
   adminUser.update_password ENV['ADMIN_USER_PASSWORD']
-end
+end 
 
