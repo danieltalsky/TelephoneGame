@@ -2,7 +2,7 @@ require 'csv'
 
 module WorksHelper
   
-  def work_image_tag(original_path, size = :work_show)
+  def work_image_url(original_path, size = :work_show, use_image_server = true)
     returnpath = original_path.dup
     
     # replace the original image URL with its resized version path (I know, it's ugly)
@@ -23,14 +23,19 @@ module WorksHelper
     end
     
     # replace the satellite collective asset URL with an AWS URL if available
-    if ENV['ASSET_URL_SATELLITECOLLECTIVE'] && ENV['ASSET_URL_AWS_S3']
+    if ENV['ASSET_URL_SATELLITECOLLECTIVE'] && ENV['ASSET_URL_AWS_S3'] && use_image_server
       replacer_array[ENV['ASSET_URL_SATELLITECOLLECTIVE']] = ENV['ASSET_URL_AWS_S3']
     end
   
     replacer_array.each do |find, replace|
       returnpath = returnpath.sub find, replace
     end    
-    return image_tag(returnpath)   
+    
+    returnpath           
+  end
+  
+  def work_image_tag(original_path, size = :work_show, use_image_server = true)
+    image_tag work_image_url(original_path, size, use_image_server)   
   end
   
   def position_by_top_or_bottom(position)
@@ -49,7 +54,7 @@ module WorksHelper
       return height     
     end
   end
- 
+
   # hacky way to get the coordinates for the image map for each work id
   def get_coordinates_for_work_id(work_id)
     
