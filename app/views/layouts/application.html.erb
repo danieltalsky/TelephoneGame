@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TelephoneGame</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <% set_meta_tags :publisher => 'https://plus.google.com/+SatellitecollectiveOrgNYC' %>
+  <%= display_meta_tags :site => 'TELEPHONE', :reverse => true %>
+  
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   
   <% if Rails.env == "production"  %>

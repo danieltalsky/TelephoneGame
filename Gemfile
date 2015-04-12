@@ -31,7 +31,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-#gem 'turbolinks'
+# Turbolinks didn't work well for me.
+# gem 'turbolinks'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -52,6 +53,9 @@ gem 'clearance'
 
 # Use Sequenced for the curated tours: https://github.com/djreimer/sequenced
 gem 'sequenced'
+
+# Use meta tags to write SEO-friendly meta tags
+gem 'meta-tags'
 
 # Use Actionpack Action Caching to selectively cache some pages 
 gem 'actionpack-action_caching'

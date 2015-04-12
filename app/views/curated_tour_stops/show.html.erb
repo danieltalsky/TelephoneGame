@@ -1,3 +1,6 @@
+<% title @curated_tour_stop.sequential_id.to_s  + '/' + @curated_tour_stops_count.to_s + " | " + @curated_tour_stop.curated_tour.tour_name + ' by ' + @curated_tour_stop.curated_tour.tour_author %>
+<% description 'Curated Tour Stop ' + @curated_tour_stop.sequential_id.to_s  + '/' + @curated_tour_stops_count.to_s + ': ' + @curated_tour_stop.work.medium + ' by ' + @curated_tour_stop.work.artist.name +  ' | ' + @curated_tour_stop.curated_tour.tour_name + ' by ' + @curated_tour_stop.curated_tour.tour_author + ' | Let hand-picked curators show you around telephone game | TELEPHONE: An International Arts Experience Presented by Satellite Collective' %>
+<% keywords 'art, game, international, experiment, nathan langston, daniel talsky, satellite collective' %>
 <section class="pagesInfoPane">
   <nav class="pagesNavList">
     <a class="homeLink" href="/">
