@@ -101,7 +101,7 @@ class WorksController < ApplicationController
     # set facebook og: metadata for works on the site
     def set_facebook_og_meta      
       og = {
-        :title        => "An Original TELEPHONE #{@work.medium} Work by #{@artist.name}",
+        :title        => "TELEPHONE #{@work.medium} Work by #{@artist.name}",
         :description  => "#{@artist.name} created this work as a part of the international art game TELEPHONE.  315 artists in 43 countries participated.",
         :type         => 'website',
         :url          => url_for(:controller => :works, :only_path => false)+'/'+@work.id.to_s
@@ -118,7 +118,7 @@ class WorksController < ApplicationController
       twitter = {
         :card  => 'summary',
         :site  => '@Sat_Collective',
-        :title        => "An Original TELEPHONE #{@work.medium} Work by #{@artist.name}",
+        :title        => "TELEPHONE #{@work.medium} Work by #{@artist.name}",
         :description  => "#{@artist.name} created this work as a part of the international art game TELEPHONE.  315 artists in 43 countries participated.",
         :image => @social_image_url
       }

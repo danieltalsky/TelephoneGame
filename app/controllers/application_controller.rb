@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_public_facebook_og_meta
   before_action :set_public_twitter_card_meta
   include Clearance::Controller
+  
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -21,7 +22,7 @@ class ApplicationController < ActionController::Base
         :title        => 'TELEPHONE',
         :description  => "An International Arts Experience Presented by Satellite Collective.  315 artists in 43 countries participated.",
         :type         => 'website',
-        :url          => 'http://telephone.satellitecollective.org',
+        :url          => request.original_url,
         :image        => @social_image_url
       }         
       set_meta_tags :og => og
