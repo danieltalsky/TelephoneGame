@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
-  before_filter :authorize
+
+  skip_before_action :authorize, only: [:show, :by_location]
   before_action :set_work, only: [:show, :edit, :update, :destroy]
 
   caches_action :index, :by_medium, :by_location, :tree, :show, :old_tree, :jsontree
@@ -7,6 +8,19 @@ class WorksController < ApplicationController
   # GET /works
   def index
     @works = Work.all
+  end
+
+  # GET /works/1
+  def show
+    @artist = Artist.find_by_id(@work.artist_id);
+    if @work.children.empty?
+      @random = Work.random
+    end
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)  
+    
+    populate_social_urls
+    set_facebook_og_meta
+    set_twitter_card_meta
   end
 
   # GET /works/by_medium
@@ -66,19 +80,53 @@ class WorksController < ApplicationController
     ghtml << '</li>'
     ghtml
   end
-  
-  # GET /works/1
-  def show
-    @artist = Artist.find_by_id(@work.artist_id);
-    if @work.children.empty?
-      @random = Work.random
-    end
-    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)  
-  end
-
 
   private
+
+    # comb through a work to find its 
+    def populate_social_urls
+      @default_image_url = request.protocol + request.host_with_port + view_context.image_path('TelephoneSatelliteCollectiveSocialWork.png')
+      
+      @social_image_url = false
+      @social_audio_url = false
+      @debug = []
+      @work.work_representations.each do |wr|
+        if ['mp3'].include?(wr.fileext.downcase) && !@social_audio_url then @social_audio_url = wr.url end
+        if ['gif','jpg','png'].include?(wr.fileext.downcase) && !@social_image_url then @social_image_url = view_context.work_image_url(wr.url, :lightbox, false) end
+      end
+ 
+      if !@social_image_url then @social_image_url = @default_image_url end
+    end
+
+    # set facebook og: metadata for works on the site
+    def set_facebook_og_meta      
+      og = {
+        :title        => "An Original TELEPHONE #{@work.medium} Work by #{@artist.name}",
+        :description  => "#{@artist.name} created this work as a part of the international art game TELEPHONE.  315 artists in 43 countries participated.",
+        :type         => 'website',
+        :url          => url_for(:controller => :works, :only_path => false)+'/'+@work.id.to_s
+      }   
+      
+      if @social_image_url.is_a? String then og[:image] = @social_image_url end
+      if @social_audio_url.is_a? String then og[:audio] = @social_audio_url end
+      
+      set_meta_tags :og => og
+    end
+      
+    # set twitter card metadata for works on the site  
+    def set_twitter_card_meta
+      twitter = {
+        :card  => 'summary',
+        :site  => '@Sat_Collective',
+        :title        => "An Original TELEPHONE #{@work.medium} Work by #{@artist.name}",
+        :description  => "#{@artist.name} created this work as a part of the international art game TELEPHONE.  315 artists in 43 countries participated.",
+        :image => @social_image_url
+      }
+      
+      set_meta_tags :twitter => twitter
+    end
   
+    # Get color steps for the custom by_location headers
     def get_color_steps(total)
       # set up color transition
       startHSV   = {:h => 342, :s => 98.5, :v => 79.6}

@@ -2,6 +2,7 @@ require 'csv'
 
 module WorksHelper
   
+  # get the url for an image work representation
   def work_image_url(original_path, size = :work_show, use_image_server = true)
     returnpath = original_path.dup
     
@@ -34,10 +35,12 @@ module WorksHelper
     returnpath           
   end
   
+  # get an image tag for an image work representation
   def work_image_tag(original_path, size = :work_show, use_image_server = true)
     image_tag work_image_url(original_path, size, use_image_server)   
   end
   
+  # hack to get treeview hover boxes to appear above or below the cursor properly
   def position_by_top_or_bottom(position)
     highest_position_that_needs_adjustment = 400
     if position.to_i > lowest_position_to_use_top
