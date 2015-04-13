@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
 
-  skip_before_action :authorize, only: [:show, :by_location]
+  #skip_before_action :authorize, only: [:show, :by_location]
   before_action :set_work, only: [:show, :edit, :update, :destroy]
 
   caches_action :index, :by_medium, :by_location, :tree, :show, :old_tree, :jsontree
