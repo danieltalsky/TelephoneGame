@@ -22,8 +22,6 @@
     <a class="homeLink" href="/">Home</a>
     <a class="mapLink" href="/works/tree">The Map</a>
   </nav>
-  
-  <%= @debug.inspect %>
 </section>
 
 <!-- Work Representations -->
@@ -34,9 +32,10 @@
           <% case wr.fileext %>
           <% when 'url' %>
             <div class="url-work">
-                <p>This artwork is in the form of a website.  
-                Click the "More Info" tab to the left to read more information about the work.
-                Then, click on the preview image to load it in a new window.</p>
+                <p><strong>This link opens to an external site</strong>
+                By clicking on this work, you will be directed to an external website.
+                Before doing so, learn more about the TELEPHONE artist by clicking on the More Info tab. 
+                </p>
                 <a href="<%= wr.url %>" target="_blank">
                     <%= image_tag(wr.url + 'thumbnail.jpg') %>                    
                 </a>                
@@ -51,8 +50,8 @@
             </div> 
           <% when 'zip' %>
             <div class="zip-work">
-                This file is a program, and is stored in a ZIP file.   There is usually a movie that shows how the program works presented
-                along with this work.  
+                This file is a program, and is stored in a ZIP file.   
+                There is a movie that shows how the program works presented along with this work.  
                 If you would like to experience the original program, you can read the "More Info" tab about this
                 work and decide if you'd like to download and run the file.  We do not offer any technical support beyond the artist's 
                 description, but have verified that the files are not viruses or harmful.
