@@ -89,7 +89,7 @@ class WorksController < ApplicationController
       @social_work_title = "TELEPHONE #{@work.medium.downcase} work by #{@artist.name}"
       @social_work_description = "#{@artist.name} created this work as a part of the international art game TELEPHONE.  315 artists in 43 countries participated."
       
-      @default_image_url = request.protocol + request.host_with_port + view_context.image_path('TelephoneSatelliteCollectiveSocialWork.png')
+      @default_image_url = request.protocol + request.host_with_port + view_context.image_path('TelephoneSatelliteCollectiveSocialWork2.png')
       
       @social_image_url = false
       @social_audio_url = false

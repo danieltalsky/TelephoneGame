@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   
     # comb through a work to find its 
     def populate_public_social_urls
-      @social_image_url = request.protocol + request.host_with_port + view_context.image_path('TelephoneSatelliteCollectiveSocialWork.png')
+      @social_image_url = request.protocol + request.host_with_port + view_context.image_path('TelephoneSatelliteCollectiveSocial2.png')
     end
 
     # set facebook og: metadata for works on the site
