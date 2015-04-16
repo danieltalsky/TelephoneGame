@@ -112,7 +112,7 @@ a {
   &:hover { color: #510D1A }
 }
 @mixin mainSizedBox { width: 960px; min-height: 620px; border: 1px solid #999; padding: 20px; margin: 40px auto; clear: both; position: relative; }
-main { @include mainSizedBox; }
+section.main { @include mainSizedBox; }
 
 nav {
   ul {
@@ -441,7 +441,7 @@ body.works-show, body.works-tree {
   /* jquery prettySocial plugin styles*/
   
   .social-container {
-    padding-top: 8px;
+    padding-top: 20px;
     width: 200px;
     height: 60px;
   }
