@@ -86,7 +86,7 @@ class WorksController < ApplicationController
     # comb through a work to find its 
     def populate_social_urls
       @social_work_url = url_for(:controller => :works, :only_path => false)+'/'+@work.id.to_s;
-      @social_work_title = "TELEPHONE #{@work.medium} Work by #{@artist.name}"
+      @social_work_title = "TELEPHONE #{@work.medium.downcase} work by #{@artist.name}"
       @social_work_description = "#{@artist.name} created this work as a part of the international art game TELEPHONE.  315 artists in 43 countries participated."
       
       @default_image_url = request.protocol + request.host_with_port + view_context.image_path('TelephoneSatelliteCollectiveSocialWork.png')
