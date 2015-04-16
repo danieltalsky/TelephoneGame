@@ -24,7 +24,7 @@ $( document ).ready(function() {
     /**
      * Set up the prettySocial jQuery plugin for custom share buttons
      */
-    $('.prettySocial').prettySocial();
+    //$('.prettySocial').prettySocial();
 
     /*
      * Open all offsite links in another browser
@@ -59,7 +59,7 @@ $( document ).ready(function() {
        var workId = $(this).attr("id").match(idPattern)[1];
         
        console.log(workId[1]);
-       $("main").fadeOut("fast", function(){              
+       $("section.main").fadeOut("fast", function(){              
            $("figure#fullsize-" + workId).fadeIn("fast");
            $("body").css('background', '#666');
        });   
@@ -71,7 +71,7 @@ $( document ).ready(function() {
         
        $("body").css('background', 'white');
        $("figure#fullsize-" + workId).fadeOut("fast", function(){            
-            $("main").fadeIn("fast");
+            $("section.main").fadeIn("fast");
        });
        e.preventDefault();
     });    
