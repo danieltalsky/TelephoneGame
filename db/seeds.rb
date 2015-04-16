@@ -53,25 +53,7 @@ CuratedTourStop.create(work_id: scWork.id, curated_tour_id: danielPadnosCuratedT
   caption_text: 'Back in the UK, Emanuela Marenz and 11 others described their ideas of heaven. Visualizing each as a photographic subject, she produced this piece, called “Heavens”.')
 CuratedTourStop.create(work_id: scWork.id, curated_tour_id: danielPadnosCuratedTour.id, 
   caption_text: 'Roberta Orlando of Italy did not know the title of Marenz’s photographic collage. In fact, none of the artists were privy to the titles of the works that inspired them. Even so, her translation of the message given to her was this surprising photograph, taken in Spain, which she calls “High Set”. A full year after Jana Weaver received the sailor’s prayer, nine works of art were inspired, one after the other, traversing the United States, the Western Hemisphere and the Atlantic ocean (twice), and still reminding us of our diminutive presence beside the greatness of nature.')  
-  
-  
-# FAKE SECURITY 
-danielUser = User.create(:email => 'danieltalsky@gmail.com')
-danielUser.update_password 'fatalisticfaithful'
-jonathanUser = User.create(:email => 'jonathan.harford@gmail.com')
-jonathanUser.update_password 'somethingwhenthepeopledo'
-nathanUser = User.create(:email => 'langston.nathan@gmail.com')
-nathanUser.update_password 'notsodamnedskillful'
-kevinUser = User.create(:email => 'kevin@satellite-collective.org')
-kevinUser.update_password 'painfullycorrect'
-danielPadmosUser = User.create(:email => 'daniel@dexnewyork.com')
-danielPadmosUser.update_password 'sushiisdelicious'
-mattUser = User.create(:email => 'mattdabrowiak@gmail.com')
-mattUser.update_password 'borneoisacountry'
-ryzikUser = User.create(:email => 'ryzik@nytimes.com')
-ryzikUser.update_password 'Is&&The&&Pen&&Indeed&&Mightier?'
-guestUser = User.create(:email => 'preview@satellitecollective.org')
-guestUser.update_password 'collectiveguest'
+    
 if ENV['ADMIN_USER_PASSWORD']
   adminUser = User.create(:email => 'admin@satellitecollective.org')
   adminUser.update_password ENV['ADMIN_USER_PASSWORD']

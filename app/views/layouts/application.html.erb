@@ -32,10 +32,8 @@
 <section class="main">
     <%= yield %>
 </section>
-<!--
-<figure id="logo"><a href="/"><img src="<%= asset_path 'footer-stamp-issue-2-collective.png' %>" /></a></figure>
--->
 
+<!--
 <section id="logInOrOut">
     <% if signed_in? -%>
       You're logged in.  <%= button_to t('.sign_out'), sign_out_path, :method => :delete %>
@@ -43,6 +41,7 @@
       <%= link_to t('.sign_in').downcase, sign_in_path %>
     <% end -%>
 </section>
+-->
 
 <div id="extraElements">
     <%= yield :extraElements %>    
