@@ -85,6 +85,10 @@ class WorksController < ApplicationController
 
     # comb through a work to find its 
     def populate_social_urls
+      @social_work_url = url_for(:controller => :works, :only_path => false)+'/'+@work.id.to_s;
+      @social_work_title = "TELEPHONE #{@work.medium} Work by #{@artist.name}"
+      @social_work_description = "#{@artist.name} created this work as a part of the international art game TELEPHONE.  315 artists in 43 countries participated."
+      
       @default_image_url = request.protocol + request.host_with_port + view_context.image_path('TelephoneSatelliteCollectiveSocialWork.png')
       
       @social_image_url = false
@@ -101,10 +105,10 @@ class WorksController < ApplicationController
     # set facebook og: metadata for works on the site
     def set_facebook_og_meta      
       og = {
-        :title        => "TELEPHONE #{@work.medium} Work by #{@artist.name}",
-        :description  => "#{@artist.name} created this work as a part of the international art game TELEPHONE.  315 artists in 43 countries participated.",
+        :title        => @social_work_title,
+        :description  => @social_work_description,
         :type         => 'website',
-        :url          => url_for(:controller => :works, :only_path => false)+'/'+@work.id.to_s
+        :url          => @social_work_url
       }   
       
       if @social_image_url.is_a? String then og[:image] = @social_image_url end
@@ -118,8 +122,8 @@ class WorksController < ApplicationController
       twitter = {
         :card  => 'summary',
         :site  => '@Sat_Collective',
-        :title        => "TELEPHONE #{@work.medium} Work by #{@artist.name}",
-        :description  => "#{@artist.name} created this work as a part of the international art game TELEPHONE.  315 artists in 43 countries participated.",
+        :title        => @social_work_title,
+        :description  => @social_work_description,
         :image => @social_image_url
       }
       
