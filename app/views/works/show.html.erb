@@ -22,6 +22,16 @@
     <a class="homeLink" href="/">Home</a>
     <a class="mapLink" href="/works/tree">The Map</a>
   </nav>
+
+  <div class="social-container">
+    <div class="links">
+      <a href="#" data-type="twitter" data-url="<%= url_for(:controller => :works, :only_path => false)+'/'+@work.id.to_s %>" class="prettySocial fa fa-twitter"></a>
+      <a href="#" data-type="facebook" data-url="<%= url_for(:controller => :works, :only_path => false)+'/'+@work.id.to_s %>" class="prettySocial fa fa-facebook"></a>
+      <!--<a href="#" data-type="googleplus" data-url="http://sonnyt.com/prettySocial" data-description="Custom share buttons for Pinterest, Twitter, Facebook and Google Plus." class="prettySocial fa fa-google-plus"></a>-->   
+      <a href="#" data-type="pinterest" data-url="<%= url_for(:controller => :works, :only_path => false)+'/'+@work.id.to_s %>" class="prettySocial fa fa-pinterest"></a>
+      <!--<a href="#" data-type="linkedin" data-url="http://sonnyt.com/prettySocial" data-via="sonnyt" data-media="http://sonnyt.com/assets/imgs/prettySocial.png" class="prettySocial fa fa-linkedin"></a>-->   
+    </div>
+  </div> 
 </section>
 
 <!-- Work Representations -->

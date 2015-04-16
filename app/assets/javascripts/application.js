@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.prettySocial
 //= require_tree .
 
 /*
@@ -19,6 +20,11 @@
  */
 
 $( document ).ready(function() {
+
+    /**
+     * Set up the prettySocial jQuery plugin for custom share buttons
+     */
+    $('.prettySocial').prettySocial();
 
     /*
      * Open all offsite links in another browser
