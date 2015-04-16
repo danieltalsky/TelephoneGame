@@ -24,7 +24,7 @@ $( document ).ready(function() {
     /**
      * Set up the prettySocial jQuery plugin for custom share buttons
      */
-    //$('.prettySocial').prettySocial();
+    $('.prettySocial').prettySocial();
 
     /*
      * Open all offsite links in another browser
