@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :authorize
   before_action :populate_public_social_urls
   before_action :set_public_facebook_og_meta
   before_action :set_public_twitter_card_meta
