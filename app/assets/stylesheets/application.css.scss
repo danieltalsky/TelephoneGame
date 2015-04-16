@@ -137,7 +137,7 @@ table {
  * ===
  */
 body.application-index {
-  main {
+  section.main {
     nav {
       ul {
         border: 0;
@@ -270,7 +270,7 @@ article.essays {
  * ===
  */
 body.pages-map_concept {
-  main {
+  section.main {
     border: 0;   
       background: image-url('map_concept.png') center center no-repeat;
       &:hover { background-image: image-url('map_concept_rollover.png'); }
@@ -292,7 +292,7 @@ body.pages-map_concept {
  * ===
  */
 body.works-tree {
-  main { padding: 0; min-height: 640px;
+  section.main { padding: 0; min-height: 640px;
     section#treeviewSidebar { width: 239px; float: left;
       a.homeLink { 
         display: block; border: 1px solid $telephoneRed; 
