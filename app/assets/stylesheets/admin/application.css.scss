@@ -1,0 +1,174 @@
+/************************************************
+ * TELEPHONE GAME SCSS STYLESHEET
+ * @author Daniel Talsky <danieltalsky@gmail.com>
+ * 
+ */
+
+/* ===
+ * 
+ * UNIVERSAL APPLICATION SETUP
+ * 
+ * ===
+ */
+$telephoneRed: #CB213E;
+$telephoneTrimBlue: #bddaf1;
+$telephoneBrightBlue: #67b5e5;
+$workNavBG: #e0e0e0;
+
+$categoryDesign: #b1d565;
+$categoryMultimedia: #c2a0d6;
+$categoryDance: #e38897;
+$categoryPerformance: #e38897;
+$categoryIllustration: #b1d565;
+$categoryDrawing: #b1d565;
+$categoryPrint: #b1d565;
+$categoryInstallation: #9a068a;
+$categoryProse: #987835;
+$categoryPoetry: #f7dc00;
+$categoryMusic: #e96a1e;
+$categoryAudio: #e96a1e;
+$categoryCollage: #c2a0d6;
+$categoryPainting: #f1a31c;
+$scategorySculpture: #2e4486;
+$categoryPhotography: #58622a;
+$categoryFilm: #c70c4a;
+$categoryVideo: #c70c4a;
+$categoryEmbroidery: #7f7f7f;
+$categoryOther: #7f7f7f;
+
+@mixin categoryDesignForeground { color: $categoryDesign; border-color: $categoryDesign;}
+@mixin categoryMultimediaForeground { color: $categoryMultimedia; border-color: $categoryMultimedia;}
+@mixin categoryDanceForeground { color: $categoryDance; border-color: $categoryDance;}
+@mixin categoryPerformanceForeground { color: $categoryPerformance; border-color: $categoryPerformance;}
+@mixin categoryIllustrationForeground { color: $categoryIllustration; border-color: $categoryIllustration;}
+@mixin categoryDrawingForeground { color: $categoryDrawing; border-color: $categoryDrawing;}
+@mixin categoryPrintForeground { color: $categoryPrint; border-color: $categoryPrint;}
+@mixin categoryInstallationForeground { color: $categoryInstallation; border-color: $categoryInstallation;}
+@mixin categoryProseForeground { color: $categoryProse; border-color: $categoryProse;}
+@mixin categoryPoetryForeground { color: $categoryPoetry; border-color: $categoryPoetry;}
+@mixin categoryMusicForeground { color: $categoryMusic; border-color: $categoryMusic;}
+@mixin categoryAudioForeground { color: $categoryAudio; border-color: $categoryAudio;}
+@mixin categoryCollageForeground { color: $categoryCollage; border-color: $categoryCollage;}
+@mixin categoryPaintingForeground { color: $categoryPainting; border-color: $categoryPainting;}
+@mixin categorySculptureForeground { color: $scategorySculpture; border-color: $scategorySculpture;}
+@mixin categoryPhotographyForeground { color: $categoryPhotography; border-color: $categoryPhotography;}
+@mixin categoryFilmForeground { color: $categoryFilm; border-color: $categoryFilm; }
+@mixin categoryEmbroideryForeground { color: $categoryEmbroidery; border-color: $categoryEmbroidery;}
+@mixin categoryOtherForeground { color: $categoryOther; border-color: $categoryOther;}
+
+@mixin categoryDesignBackground { background: $categoryDesign; border-color: $categoryDesign;}
+@mixin categoryMultimediaBackground { background: $categoryMultimedia; border-color: $categoryMultimedia;}
+@mixin categoryDanceBackground { background: $categoryDance; border-color: $categoryDance;}
+@mixin categoryPerformanceBackground { background: $categoryPerformance; border-color: $categoryPerformance;}
+@mixin categoryIllustrationBackground { background: $categoryInstallation; border-color: $categoryInstallation;}
+@mixin categoryDrawingBackground { background: $categoryDrawing; border-color: $categoryDrawing;}
+@mixin categoryPrintBackground { background: $categoryPrint; border-color: $categoryPrint;}
+@mixin categoryInstallationBackground { background: $categoryInstallation; border-color: $categoryInstallation;}
+@mixin categoryProseBackground { background: $categoryProse; border-color: $categoryProse;}
+@mixin categoryPoetryBackground { background: $categoryPoetry; border-color: $categoryPoetry;}
+@mixin categoryMusicBackground { background: $categoryMusic; border-color: $categoryMusic;}
+@mixin categoryAudioBackground { background: $categoryAudio; border-color: $categoryAudio;}
+@mixin categoryCollageBackground { background: $categoryCollage; border-color: $categoryCollage;}
+@mixin categoryPaintingBackground { background: $categoryPainting; border-color: $categoryPainting;}
+@mixin categorySculptureBackground { background: $scategorySculpture; border-color: $scategorySculpture;}
+@mixin categoryPhotographyBackground { background: $categoryPhotography; border-color: $categoryPhotography;}
+@mixin categoryFilmBackground { background: $categoryFilm; border-color: $categoryFilm; }
+@mixin categoryEmbroideryBackground { background: $categoryEmbroidery; border-color: $categoryEmbroidery;}
+@mixin categoryOtherBackground { background: $categoryOther; border-color: $categoryOther;}
+
+/*
+ * Web Fonts from fontspring.com
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ * (c) 2010-2014 Fontspring
+ * The fonts included are copyrighted by the vendor listed below.
+ * Vendor:      Mark Simonson Studio
+ * License URL: http://www.fontspring.com/licenses/mark-simonson-studio/webfont
+ */
+
+@font-face {
+    font-family: 'proxima_nova_ltlight';
+    src: font-url('ProximaNova-Light-webfont.eot');
+    src: font-url('ProximaNova-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('ProximaNova-Light-webfont.woff2') format('woff2'),
+         font-url('ProximaNova-Light-webfont.woff') format('woff'),
+         font-url('ProximaNova-Light-webfont.ttf') format('truetype'),
+         font-url('ProximaNova-Light-webfont.svg#proxima_nova_ltlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body { font-family: 'proxima_nova_ltlight', 'Times New Roman', sans-serif;}
+figure#logo { margin: 0 0 20px 20px; }
+
+a {
+  color: $telephoneRed;
+  text-decoration: none;
+  &:hover { color: #510D1A }
+}
+@mixin mainSizedBox { width: 960px; min-height: 620px; border: 1px solid #999; padding: 20px; margin: 40px auto; clear: both; position: relative; }
+section.main { @include mainSizedBox; }
+
+nav {
+  ul {
+    border: 0;
+    padding: 0;
+    list-style-type: none;
+    li { float: left;  margin-left: 20px; }
+  }
+}
+
+h1 { text-transform: uppercase; color: black;  font-size: 48px; }
+
+table {
+  th { text-align: left;padding: 3px; }
+  td { padding: 3px; border-bottom: 1px solid #ccc; }
+}
+
+/* Form Stuff */
+body.admin {
+  div.field {
+    textarea {
+      width: 600px;
+      height: 1em;
+    }
+  }
+  div.big {
+    textarea {
+      width: 600px;
+      height: 6em;
+    }
+  }  
+}
+
+
+/*
+ *  Login Stuff
+ */
+div.text-field {
+  margin-bottom: 5px;
+  label { width: 5em; display: block; float: left;}
+}
+div.password-field {
+  margin-bottom: 1em;
+  label { width: 5em; display: block; float: left;}
+}
+section#logInOrOut { 
+  position: absolute; padding: 4px; text-align: center; color: #999; font-size: 11px; right: 0; bottom: 0; 
+  input {
+    font-size: 11px;
+  }
+}
+
+
+
+
+
+
+
+
