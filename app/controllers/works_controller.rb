@@ -91,10 +91,8 @@ class WorksController < ApplicationController
       @default_image_url = request.protocol + request.host_with_port + view_context.image_path('TelephoneSatelliteCollectiveSocialWork2.png')
       
       @social_image_url = false
-      @social_audio_url = false
       @debug = []
       @work.work_representations.each do |wr|
-        if ['mp3'].include?(wr.fileext.downcase) && !@social_audio_url then @social_audio_url = wr.url end
         if ['gif','jpg','png'].include?(wr.fileext.downcase) && !@social_image_url then @social_image_url = view_context.work_image_url(wr.url, :lightbox, false) end
       end
  
@@ -111,7 +109,6 @@ class WorksController < ApplicationController
       }   
       
       if @social_image_url.is_a? String then og[:image] = @social_image_url end
-      if @social_audio_url.is_a? String then og[:audio] = @social_audio_url end
       
       set_meta_tags :og => og
     end
