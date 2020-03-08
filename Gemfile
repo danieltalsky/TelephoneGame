@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Heroku likes the ruby version specified
-ruby "2.0.0"
+ruby "2.7.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
