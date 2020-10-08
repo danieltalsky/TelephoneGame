@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 # Heroku likes the ruby version specified
-ruby "2.7.0"
+ruby "1.9.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.0.0'
 
 # Allows Heroku asset packaging
 gem 'rails_12factor', group: :production
@@ -22,10 +22,10 @@ gem 'pg'
 gem 'acts_as_sane_tree'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -34,10 +34,10 @@ gem 'jquery-rails'
 # Turbolinks didn't work well for me.
 # gem 'turbolinks'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
+# group :doc do
+#   # bundle exec rake doc:rails generates the API under doc/api.
+#   gem 'sdoc', require: false
+# end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

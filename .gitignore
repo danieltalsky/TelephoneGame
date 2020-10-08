@@ -19,6 +19,7 @@
 
 # Ignore IDE files
 .project
+.idea/
 
 # Ignore compiled assets
 /public/assets/*
