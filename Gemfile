@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 ruby "2.4.4"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.6'
 
 # Allows Heroku asset packaging
 gem 'rails_12factor', group: :production
