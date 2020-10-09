@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 # Heroku likes the ruby version specified
-ruby "2.4.4"
+ruby "2.3.7"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.8'
+gem 'rails', '4.0.13'
 
 # Allows Heroku asset packaging
 gem 'rails_12factor', group: :production
