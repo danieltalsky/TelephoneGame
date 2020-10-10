@@ -4,8 +4,10 @@
   <% set_meta_tags :publisher => 'https://plus.google.com/+SatellitecollectiveOrgNYC' %>
   <%= display_meta_tags :site => 'TELEPHONE', :reverse => true %>
   
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_pack_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+
   <%= csrf_meta_tags %>
   
   <!-- FontAwesome For Social Media Buttons -->

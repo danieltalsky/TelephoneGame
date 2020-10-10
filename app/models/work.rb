@@ -4,8 +4,6 @@ class Work < ActiveRecord::Base
   has_many :work_representations, -> { order(:created_at) }
   
   def self.random
-    if (c = count) != 0
-      find(:first, :offset =>rand(c))
-    end
+    order('RANDOM()').first
   end  
 end

@@ -2,8 +2,6 @@ require 'csv'
 require 'open-uri'
 
 class Admin::DataController < Admin::ApplicationController
-  before_filter :authorize
-  
   # Step 1
   def import_spreadsheet
  
