@@ -10,10 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+//= require jquery/dist/jquery.min.js
 //= require jquery.prettySocial
-//= require_tree .
+//= require_self
 
 /*
  * Work Page Events

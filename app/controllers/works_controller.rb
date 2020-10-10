@@ -24,7 +24,7 @@ class WorksController < ApplicationController
 
   # GET /works/by_medium
   def by_medium
-    @media = Work.uniq.pluck(:medium)
+    @media = Work.all.pluck(:medium)
   
     @media_collection = Hash.new
     @media.each do |medium| 
@@ -34,14 +34,13 @@ class WorksController < ApplicationController
   
   # GET /works/by_location
   def by_location
-    @locations = Artist.uniq.pluck(:location)  
+    @locations = Artist.pluck(:location)  
     @location_collection = Hash.new
     
     @color_steps = get_color_steps @locations.count
     
-    @locations.each_with_index do |location, index|
-      @location_collection[location] = 
-        Work.includes(:artist).where('artists.location = ?', location);
+    @locations.each do |location|
+      @location_collection[location] = Work.joins(:artist).where('artists.location = ?', location);
     end
     
     @countries = @locations.uniq {|location| location.split(', ').last }    
