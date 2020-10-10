@@ -39,6 +39,7 @@ services:
     mem_limit: 64m
     volumes:
       - ./log:/root/log:cached
+      - ./tmp:/root/tmp:cached
       - postgresql:/var/lib/postgresql/data:delegated
     ports:
       - "127.0.0.1:5432:5432"
@@ -84,6 +85,15 @@ services:
     command: bash -c "rm -rf /usr/src/app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
       - "127.0.0.1:${PORT:-3000}:3000"
+
+  webpacker:
+    <<: *app
+    mem_limit: 256m
+    command: ./bin/webpack-dev-server
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    ports:
+      - "127.0.0.1:3035:3035"
 
 volumes:
   postgresql:
