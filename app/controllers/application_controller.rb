@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :populate_public_social_urls
   before_action :set_public_facebook_og_meta
   before_action :set_public_twitter_card_meta
+  before_action :set_expires_header
   include Clearance::Controller
   
   # Prevent CSRF attacks by raising an exception.
@@ -37,5 +38,9 @@ class ApplicationController < ActionController::Base
         :image => @social_image_url
       }    
       set_meta_tags :twitter => twitter
+    end
+
+    def set_expires_header
+      expires_in 6.hours, public: true
     end
 end
