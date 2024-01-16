@@ -3,10 +3,13 @@
 A web application written in Rails for administering and viewing The Telephone Game method of collaborative network art.
 
 For more information about the project:
-http://transmission.satellitepress.org/VOLUME/001/ISSUE/004/telephone/
+[http://transmission.satellitepress.org/VOLUME/001/ISSUE/004/telephone/](http://transmission.satellitepress.org/VOLUME/001/ISSUE/004/telephone/)
 
 Or view the live tool now at:
-http://telephone.satellitecommunication.org
+[[http://telephone.satellitecommunication.org](https://telephone.satellitecollective.org/)](https://telephone.satellitecollective.org/)
+
+Or read the New York Times coverage of the project:
+[https://www.nytimes.com/2015/04/19/arts/design/telephone-an-international-arts-experiment-by-nathan-langston.html](https://www.nytimes.com/2015/04/19/arts/design/telephone-an-international-arts-experiment-by-nathan-langston.html)
 
 Enjoy!
 
